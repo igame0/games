@@ -5800,7 +5800,7 @@ function saveSettings(){ try{ localStorage.setItem(SKEY, JSON.stringify(state.se
 
 /* ---------- وسوم الأسئلة (الصف/المادة/الفصل الدراسي) والثيمات ---------- */
 const GRADES=['الأول الابتدائي','الثاني الابتدائي','الثالث الابتدائي','الرابع الابتدائي','الخامس الابتدائي','السادس الابتدائي','الأول المتوسط','الثاني المتوسط','الثالث المتوسط','الأول الثانوي','الثاني الثانوي','الثالث الثانوي'];
-const TERMS=['الفصل الأول','الفصل الثاني','الفصل الثالث'];
+const TERMS=['الفصل الأول','الفصل الثاني'];
 const SUBJECTS=['القرآن الكريم','الدراسات الإسلامية','لغتي','الرياضيات','العلوم','الدراسات الاجتماعية','اللغة الإنجليزية','المهارات الرقمية','التفكير الناقد','الفيزياء','الكيمياء','الأحياء','علم البيئة','الحاسب وتقنية المعلومات'];
 const VT={'':{n:'الافتراضي (داكن)',ic:'🎮',c:['#0b1226','#16224a','#fbbf24','#22d3ee']},ramadan:{n:'رمضان',ic:'🌙',c:['#1a1033','#2c1b5c','#ffd166','#7be0c3']},national:{n:'اليوم الوطني',ic:'🌴',c:['#05301f','#0d4a31','#f1fbe9','#86efac']},space:{n:'الفضاء',ic:'🪐',c:['#05060f','#0e1330','#c4b5fd','#f472b6']},football:{n:'ملعب كرة القدم',ic:'⚽',c:['#0b3d1a','#14602b','#fde047','#ffffff']}};
 const _ordA=['الأول','الثاني','الثالث','الرابع','الخامس','السادس'];
@@ -5810,7 +5810,7 @@ function normGrade(x){
   const r=s.replace(/ابتدائ\S*|متوسط\S*|ثانوي\S*|الصف/g,' '), n=/(^|\s)(ال)?ا?ول|(^|\s)1(\s|$)/.test(r)?0:/ثاني|(^|\s)2(\s|$)/.test(r)?1:/ثالث|(^|\s)3(\s|$)/.test(r)?2:/رابع|(^|\s)4(\s|$)/.test(r)?3:/خامس|(^|\s)5(\s|$)/.test(r)?4:/سادس|(^|\s)6(\s|$)/.test(r)?5:-1;
   const g=n>=0?_ordA[n]+' '+lv:''; return GRADES.includes(g)?g:String(x).trim().slice(0,30);
 }
-function normTerm(x){ const s=String(x==null?'':x).replace(/[أإآ]/g,'ا'); if (!s.trim()) return ''; return /اول|(^|\s)1(\s|$)/.test(s)?TERMS[0]:/ثاني|(^|\s)2(\s|$)/.test(s)?TERMS[1]:/ثالث|(^|\s)3(\s|$)/.test(s)?TERMS[2]:''; }
+function normTerm(x){ const s=String(x==null?'':x).replace(/[أإآ]/g,'ا'); if (!s.trim()) return ''; return /اول|(^|\s)1(\s|$)/.test(s)?TERMS[0]:/ثاني|(^|\s)2(\s|$)/.test(s)?TERMS[1]:''; }
 function qfClean(o){ o=o&&typeof o==='object'?o:{}; return {g:normGrade(o.g),s:String(o.s||'').trim().slice(0,40),t:normTerm(o.t)}; }
 function qfOn(){ const f=state.settings.qf; return !!(f&&(f.g||f.s||f.t)); }
 function qfMatch(q){ const f=state.settings.qf; if (!f||!q) return true; return (!f.g||!q.g||q.g===f.g)&&(!f.s||!q.s||q.s===f.s)&&(!f.t||!q.t||q.t===f.t); }
@@ -7885,27 +7885,7 @@ async function zipGet(z,name){
   const ds=new DecompressionStream('deflate-raw'), w=ds.writable.getWriter(); w.write(f.raw); w.close();
   return new TextDecoder().decode(await new Response(ds.readable).arrayBuffer());
 }
-async function xlsxRows(buf){
-  const z=await zipRead(buf), P=new DOMParser();
-  const ss=[], sx=await zipGet(z,'xl/sharedStrings.xml');
-  if (sx){ P.parseFromString(sx,'application/xml').querySelectorAll('si').forEach(si=>ss.push([...si.querySelectorAll('t')].map(t=>t.textContent).join(''))); }
-  const sheetName=Object.keys(z).filter(k=>/^xl\/worksheets\/sheet\d+\.xml$/.test(k)).sort((a,b)=>parseInt(a.match(/\d+/))-parseInt(b.match(/\d+/)))[0];
-  if (!sheetName) throw new Error('لا توجد ورقة بيانات في الملف');
-  const doc=P.parseFromString(await zipGet(z,sheetName),'application/xml'), rows=[];
-  doc.querySelectorAll('sheetData > row').forEach(r=>{
-    const ri=(parseInt(r.getAttribute('r'))||rows.length+1)-1, arr=rows[ri]=rows[ri]||[];
-    r.querySelectorAll('c').forEach(c=>{
-      const ref=c.getAttribute('r')||'', m=ref.match(/^([A-Z]+)/); if (!m) return;
-      let ci=0; for (const ch of m[1]) ci=ci*26+ch.charCodeAt(0)-64; ci--;
-      const t=c.getAttribute('t'); let v='';
-      if (t==='s'){ const x=c.querySelector('v'); v=x?(ss[parseInt(x.textContent)]||''):''; }
-      else if (t==='inlineStr'){ v=[...c.querySelectorAll('t')].map(x=>x.textContent).join(''); }
-      else { const x=c.querySelector('v'); v=x?x.textContent:''; }
-      arr[ci]=v;
-    });
-  });
-  return Array.from(rows,r=>Array.from(r||[],x=>x==null?'':String(x)));
-}
+async function xlsxRows(buf){ return (await xlsxBook(buf))[0].rows; }
 function csvRows(text){
   text=String(text||'').replace(/^﻿/,'');
   const first=text.split(/\r?\n/)[0]||'', d=[',',';','\t'].map(c=>[c,first.split(c).length]).sort((a,b)=>b[1]-a[1])[0][0];
@@ -8797,6 +8777,7 @@ async function exportCompFlow(t){
 /* ---------- الاستيراد ---------- */
 function pickXls(target){ state.xlsTarget=target; $('#xlsIn').click(); }
 function applyImport(tg,rows){
+  if ((tg.kind==='qbank'||tg.kind==='bank')&&rows.sheets&&rows.sheets.length>1){ const sh=rows.sheets; rows.sheets=null; sh.forEach(s=>applyImport(tg,s.rows)); return; }
   if (tg.kind==='teams'){ teamsImport(rows); return; }
   if (tg.kind==='names'){ namesImport(rows); return; }
   if (tg.kind==='roster'){
