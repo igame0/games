@@ -1,0 +1,33 @@
+{
+ "name": "صائد الكنز",
+ "short_name": "صائد الكنز",
+ "description": "رحلة على الخريطة: عقبات وأسئلة حتى الوصول إلى الكنز",
+ "lang": "ar",
+ "dir": "rtl",
+ "start_url": "./index.html",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "any",
+ "background_color": "#7a4a12",
+ "theme_color": "#7a4a12",
+ "icons": [
+  {
+   "src": "ic3-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "ic3-256.png",
+   "sizes": "256x256",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "ic3-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  }
+ ]
+}
