@@ -572,7 +572,7 @@ body:has(.trp){background:linear-gradient(160deg,#f7ecc9 0%,#f3e2b6 45%,#dcefe6 
 /* الصفحة الرئيسية */
 .trwrap{max-width:1100px}
 .trhero{text-align:center;padding:26px 10px 4px}
-.trhero h1{font-size:clamp(38px,7vw,64px);margin:.05em 0;background:linear-gradient(90deg,#d83a3a,#0e8a96,#2f6fd6);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.trhero h1{font-size:clamp(38px,7vw,64px);margin:.05em 0;color:#8a3a12;background:none;-webkit-text-fill-color:#8a3a12;text-shadow:0 2px 0 #fff3cf,0 4px 10px rgba(122,75,20,.28);letter-spacing:1px}
 .trstory{max-width:640px;margin:0 auto;color:var(--muted);line-height:1.7}
 .trlogo{width:min(260px,60vw);height:auto;max-height:200px;filter:drop-shadow(0 8px 10px #8a4b0033);animation:trfloat 4s ease-in-out infinite}
 @keyframes trfloat{50%{transform:translateY(-6px)}}
@@ -686,7 +686,7 @@ body:has(.trp){background:linear-gradient(160deg,#f7ecc9 0%,#f3e2b6 45%,#dcefe6 
 }
 
 /* ===== إضافات صائد الكنز ===== */
-.trsvg{border-radius:14px;background:#fff}
+.trsvg{border-radius:14px;background:transparent}
 .trsvg .tn{cursor:default}
 .trstage.sel .tn.tgt,.trstage.pick .tn.tgt{cursor:pointer}
 .trsvg .tn.tgt .nc{stroke:#0e8a96;stroke-width:6;animation:trtgt 1s infinite}
@@ -706,10 +706,47 @@ body:has(.trp){background:linear-gradient(160deg,#f7ecc9 0%,#f3e2b6 45%,#dcefe6 
 .trprev svg{width:100%;height:auto;max-height:60vh}
 .trlogo{width:min(300px,70vw);height:auto;filter:drop-shadow(0 8px 10px #7a4b1433);animation:trfloat 4s ease-in-out infinite}
 @keyframes trfloat{50%{transform:translateY(-6px)}}
-.trhero h1{background:linear-gradient(90deg,#b5461f,#0e6f78,#8a4b00)!important;-webkit-background-clip:text;background-clip:text;color:transparent}
+
 .trmc.c1{color:#b5461f;border-color:#b5461f88}.trmc.c2{color:#0e6f78;border-color:#0e6f7888}.trmc.c3{color:#8a4b00;border-color:#8a4b0088}
 .trscroll svg{min-width:0}
 @media(max-width:900px){.trscroll{align-items:flex-start;justify-content:flex-start}.trscroll svg{margin:0}}
+
+/* ===== رسائل دائمة، وحالة العالق، وأثر العقبات ===== */
+.trov.soft{background:rgba(30,27,75,.22)}
+.trnote{max-width:480px;border-width:4px}
+.trnote .tric.big{font-size:64px}.trnote p{font-size:1.15rem;line-height:1.8;margin:6px 0 12px}
+.trcard.obc{border-color:#d9a000}.trnote.obc{border-color:#d9a000}
+.trobh.obc{background:#fff4d6;border:2px solid #d9a000;border-radius:12px;padding:4px 10px}
+.trstuck{font-weight:800;background:#fde7e7;border:2px solid #d83a3a;color:#8a1c1c;border-radius:10px;padding:3px 6px;font-size:.9rem}
+.trsvg .tn.ob .nc{stroke:#d9a000}
+.trsvg .tn.tgt .nc{stroke:#0e8a96;stroke-width:5;animation:trtgt 1s infinite}
+.trsvg .trpn{pointer-events:none}
+@media(max-width:900px){.trnote{max-width:94%}.trov.soft{align-items:flex-start}}
+
+.trstagewrap{background:radial-gradient(ellipse at 50% 50%,#6b4a26,#3a2713 85%);border-color:#8a6a3a}
+.trsvg .trpawn,.trsvg text{pointer-events:none}
+
+.trsvg .lab{opacity:0;transition:opacity .15s}.trsvg .tn:hover .lab,.trsvg .tn.tgt .lab{opacity:1}
+.trpiece{vertical-align:-6px;margin-inline-end:6px;filter:drop-shadow(0 1px 1px #0005)}
+.trth{display:flex;align-items:center;justify-content:center;gap:2px}
+
+.trsvg .tn.dim{opacity:.68}.trsvg .tn{transition:opacity .2s}.trsvg .trhl{animation:trdash15 1.1s linear infinite}@keyframes trdash15{to{stroke-dashoffset:-15}}
+.trsvg .tn.tgt .nc{stroke:#ffe27a;stroke-width:5.5;filter:drop-shadow(0 0 7px #ff9f1a)}
+.trleg{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0}.trleg i{display:inline-block;width:34px;height:9px;border-radius:5px;vertical-align:middle;margin-inline-end:6px;border:1px solid #0003}
+.trbadge{vertical-align:middle}
+/* جوال أفقي: اللوحتان على الجانبين والخريطة تملأ الوسط بلا تمرير */
+@media(max-width:950px) and (max-height:520px) and (orientation:landscape){
+ .trscr{height:100vh;height:100dvh;min-height:0;overflow:hidden}
+ .trmain{flex-direction:row;overflow:hidden;flex:1;min-height:0;padding:4px;gap:4px}
+ .trteam,.trteam:first-child,.trteam:last-child{display:flex;flex-direction:column;flex:0 0 108px;order:0;padding:4px;overflow:auto;gap:2px}
+ .trstage{order:0}.trstagewrap{min-height:0}
+ .trteam .trcells span{font-size:1.5rem}.trteam .trgoal,.trteam .trpl,.trteam .trst{font-size:.68rem}
+ .trhelp{flex-direction:column;gap:3px}.trhb{font-size:.62rem;min-height:26px}
+ .trban,.trpick{font-size:.8rem;padding:3px 8px}
+}
+@media(max-width:950px) and (max-height:520px) and (orientation:landscape){
+ .trbar{padding:2px 6px;gap:4px;flex-wrap:nowrap;overflow:hidden}.trbar .trttl{display:none}.trbar .btn.sm{min-height:28px;padding:0 6px;font-size:.78rem}.trtools{display:flex;gap:4px;flex-wrap:nowrap;align-items:center}.trtime{font-size:1.1rem}
+}
 
 </style>
 <script>document.documentElement.dir="rtl";document.documentElement.lang="ar";</script>
@@ -3246,42 +3283,37 @@ ER_BANK.spc=[
 ["h","o","رتّب إنجازات الفضاء (أول رائد وأول رائدة وأول مشي على القمر وتلسكوب ويب) من الأقدم إلى الأحدث:",["أول إنسان في الفضاء","أول امرأة في الفضاء","أول مشي على القمر","إطلاق تلسكوب جيمس ويب"]]
 ];
 
-/* ===== صائد الكنز: المحرك (منطق صرف، حتمي بـ seed) + الخريطة + واجهة اللعب =====
-   الخريطة رسم بياني: مواقع (nodes) ومسارات (edges) من البداية إلى الكنز. مسار مشترك متفرع في الوسط:
-   فرع قصير بعقبات أصعب (مع باب مقفل) وفرع طويل بعقبات أسهل (مع مفتاح واختصارات).
-   عدد المواقع K = عدد المواقع بين البداية والكنز في الخريطة كلها (7/11/16)، وتُضاف إليها البداية والكنز. */
+/* ===== صائد الكنز: المحرك (منطق صرف، حتمي بـ seed) =====
+   الخريطة رسم بياني موجَّه متعدد الطبقات: البداية (طبقة ٠) ثم L طبقة من المواقع (٢–٤ في كل طبقة) ثم الكنز.
+   كل موقع يتصل بموقعين أو ثلاثة في الطبقة التالية فقط، والوصلات تتقاطع، ولا وصلة تقفز طبقة ولا وصلة تعود للخلف.
+   الحركة الوحيدة المسموحة: من موقع إلى موقع مجاور في الطبقة التالية (trMoveTo يرفض أي غير ذلك)، وكل حركة إما بإجابة أو بوسيلة مسجَّلة. */
 const TR_LV={e:'سهل',m:'متوسط',h:'صعب'};
 const TR_LEVELS=[['e','سهل','مستوى المرحلة الابتدائية'],['m','متوسط','مستوى المرحلة المتوسطة'],['h','صعب','مستوى المرحلة الثانوية']];
 const TR_DOMS=[['fb','رياضة','⚽'],['lab','علوم وصحة','🧪'],['spc','فضاء وتقنية','🚀'],['cas','تاريخ','🏰'],['mus','حضارات وفنون','🏛️'],['env','بيئة','🌿'],['lib','ثقافة ولغة','📚'],['her','تراث وثقافة سعودية وعربية','🏺'],
   ['ara','اللغة العربية (منهج المملكة)','📜'],['mth','الرياضيات (منهج المملكة)','📐'],['sci','العلوم (منهج المملكة)','🔬']];
 const TR_GEN=['fb','lab','spc','cas','mus','env','lib','her']; /* المجالات المنهجية لا تدخل في «متنوعة» */
-/* أنواع العقبات: القواعد ثابتة والاسم والرسمة حسب الخريطة */
-const TR_OB={bridge:{lvl:'m',q:1,nm:'معبر'},double:{lvl:'m',q:2,nm:'عبور مزدوج'},wall:{lvl:'h',q:1,nm:'جدار'},easy:{lvl:'e',q:1,nm:'سهل / اختصار'},door:{lvl:null,q:0,nm:'باب مقفل'}};
+/* أنواع العقبات (موقع عقبة): مستوى السؤال وعدده من نوع العقبة. لا اختصارات: كل موقع يُدخل إليه بسؤال */
+const TR_OB={bridge:{lvl:'m',q:1,nm:'معبر',w:1},double:{lvl:'m',q:2,nm:'عبور مزدوج',w:2},wall:{lvl:'h',q:1,nm:'جدار',w:1.6},easy:{lvl:'e',q:1,nm:'عقبة سهلة',w:.6},door:{lvl:'m',q:1,nm:'باب مقفل',w:1.2}};
 const TR_OBKEYS=['bridge','double','wall','easy','door'];
-const TR_OBDESC={bridge:'سؤال واحد من المستوى المتوسط',double:'سؤالان متتاليان يجب صحتهما (الخطأ يخسر الدور)',wall:'سؤال صعب',easy:'سؤال سهل، وعبوره يفتح اختصارًا لفريقك',door:'يحتاج مفتاحًا يُجمع من صندوق في موقع آخر'};
+const TR_OBDESC={bridge:'سؤال من المستوى المتوسط',double:'سؤالان متتاليان يجب صحتهما (الخطأ يعيد المحاولة كاملة في دور لاحق)',wall:'سؤال صعب',easy:'سؤال سهل',door:'يلزم مفتاح يُجمع من صندوق للدخول، ثم سؤال متوسط'};
 /* الصناديق: رسوماتها SVG مخصصة (لا اعتماد على إيموجي حديث) */
-const TR_CHESTS={compass:{nm:'بوصلة',d:'تكشف لفريقك الطريق الأقصر المتبقي إلى الكنز'},step:{nm:'تقدّم',d:'خطوة مجانية إلى موقع مجاور'},magnet:{nm:'مغناطيس',d:'يأخذ من الخصم ورقة خيار'},trap:{nm:'فخ',d:'يرجع فريقك موقعًا واحدًا'},key:{nm:'مفتاح',d:'يفتح بابًا مقفلًا'}};
+const TR_CHESTS={compass:{nm:'بوصلة',d:'تكشف لفريقك أيسر طريق متبقٍ إلى الكنز'},step:{nm:'تقدّم',d:'تذكرة تفعّلها في دورك فتتحرك إلى موقع أمامي مجاور واحد دون سؤال (وسيلة معلنة)'},magnet:{nm:'مغناطيس',d:'يأخذ من الخصم ورقة خيار'},trap:{nm:'فخ',d:'يخسر فريقك دوره التالي (لا رجوع للخلف)'},key:{nm:'مفتاح',d:'يفتح بابًا مقفلًا'}};
 const TR_OPTS=[{k:'swap',ic:'🔄',nm:'استبدال سؤال'},{k:'friend',ic:'🤝',nm:'مساعدة صديق'},{k:'vehicle',ic:'🚀',nm:'المركبة'}];
+/* L عدد الطبقات بين البداية والكنز (k = عدد الطبقات؛ وعدد الخطوات في أي طريق = L+1)، وعرض الطبقة بين wmin وwmax، وp احتمال أن يكون الموقع عقبة، وgap المسافة بين الأعمدة */
 const TR_SIZES={
-  short:{k:7,ob:[4,5],time:8,nm:'قصيرة',shapes:[[2,1,2,2],[1,1,3,2],[2,1,3,1]]},
-  normal:{k:11,ob:[7,8],time:12,nm:'عادية',shapes:[[3,2,4,2],[2,2,5,2],[3,2,5,1],[3,3,4,1]]},
-  long:{k:16,ob:[10,12],time:18,nm:'طويلة',shapes:[[4,3,6,3],[3,3,7,3],[4,4,6,2],[4,3,7,2]]}};
+  short:{L:7,wmin:3,wmax:4,p:.34,time:12,nm:'قصيرة',k:7,gap:124},
+  normal:{L:11,wmin:3,wmax:5,p:.3,time:20,nm:'عادية',k:11,gap:92},
+  long:{L:16,wmin:4,wmax:5,p:.27,time:30,nm:'طويلة',k:16,gap:80}};
 const TR_SIZEKEYS=['short','normal','long'];
 const TR_CHESTMODES={none:'بدون',normal:'عادي',many:'كثير'};
-/* قوالب الخرائط الستة: تسميات العقبات (معبر / مزدوج / جدار / سهل / باب) وأيقوناتها والمركبة */
+/* قوالب الخرائط الستة: تسميات العقبات وأيقوناتها (للرسائل والدليل) والمركبة. الرسم في trv.js */
 const TR_THEMES=[
- {id:'pirates',nm:'جزيرة القراصنة',ic:'🏝️',ob:{bridge:['جسر مكسور','🌉'],double:['نهر التماسيح','🐊'],wall:['جدار الصخور','⛰️'],easy:['أدغال','🌴'],door:['صندوق مقفل','🔒']},veh:['سفينة سريعة','⛵'],
-  pal:{bg1:'#bfe9ff',bg2:'#6cc3ea',land:'#f3dfa6',road:'#8a5a2b',node:'#fff4d0',ink:'#3a2a12',deco:'#2a8fc0'},geo:{rot:0,wig:.35,curve:.18}},
- {id:'forest',nm:'غابة الأسرار',ic:'🌲',ob:{bridge:['جذع ساقط','🌲'],double:['مستنقع','💦'],wall:['شجرة عملاقة','🌳'],easy:['أدغال','🌿'],door:['بوابة مقفلة','🔒']},veh:['حبل أشجار','➰'],
-  pal:{bg1:'#d6f0c8',bg2:'#8fcf86',land:'#b9e3a8',road:'#7a5230',node:'#f4ffe6',ink:'#1f3d1a',deco:'#2e7d32'},geo:{rot:.12,wig:.9,curve:.3}},
- {id:'desert',nm:'الصحراء والواحة',ic:'🏜️',ob:{bridge:['كثبان رملية','🏜️'],double:['عاصفة رملية','🌪️'],wall:['جدار الواحة','🏛️'],easy:['واحة','🌴'],door:['ختم قديم','🔒']},veh:['جمل','🐪'],
-  pal:{bg1:'#ffeebd',bg2:'#f3c46f',land:'#f7d98d',road:'#b0762c',node:'#fff8df',ink:'#4a2e0a',deco:'#d49a3a'},geo:{rot:0,wig:.25,curve:.22}},
- {id:'snow',nm:'جبال الثلج',ic:'🏔️',ob:{bridge:['جسر جليدي','❄️'],double:['شق جليدي','🌨️'],wall:['جبل شاهق','🏔️'],easy:['كهف دافئ','🔥'],door:['كهف مغلق','🔒']},veh:['مزلجة','🎿'],
-  pal:{bg1:'#eaf6ff',bg2:'#b4d4ee',land:'#ffffff',road:'#5b7da0',node:'#ffffff',ink:'#17324f',deco:'#8fb5d8'},geo:{rot:-.5,wig:.35,curve:.15}},
- {id:'cave',nm:'كهف المناجم',ic:'⛏️',ob:{bridge:['ممر ضيق','🔦'],double:['بحيرة جوفية','💧'],wall:['صخرة ضخمة','⛰️'],easy:['نفق مضيء','💡'],door:['باب حجري','🔒']},veh:['عربة مناجم','🚃'],
-  pal:{bg1:'#6b5a4d',bg2:'#3b2f29',land:'#7d6a5b',road:'#d9b77a',node:'#f2e2c4',ink:'#2a1d12',deco:'#8c7867'},geo:{rot:.5,wig:.25,curve:.08}},
- {id:'city',nm:'المدينة القديمة',ic:'🏰',ob:{bridge:['بوابة صغيرة','🚪'],double:['سور عالٍ','🏙️'],wall:['قلعة محصّنة','🏰'],easy:['سوق','🏪'],door:['باب ذهبي','🔒']},veh:['حصان','🐎'],
-  pal:{bg1:'#f6ead7',bg2:'#dcc5a0',land:'#efe0c4',road:'#9b7b57',node:'#fffaf0',ink:'#3a2a18',deco:'#b69a74'},geo:{rot:0,wig:0,curve:0}}];
+ {id:'pirates',nm:'جزيرة القراصنة',ic:'🏝️',ob:{bridge:['جسر مكسور','🌉'],double:['نهر التماسيح','🐊'],wall:['جدار الصخور','⛰️'],easy:['أدغال','🌴'],door:['صندوق مقفل','🔒']},veh:['سفينة سريعة','⛵']},
+ {id:'forest',nm:'غابة الأسرار',ic:'🌲',ob:{bridge:['جذع ساقط','🌲'],double:['مستنقع','💦'],wall:['شجرة عملاقة','🌳'],easy:['أدغال','🌿'],door:['بوابة مقفلة','🔒']},veh:['حبل أشجار','➰']},
+ {id:'desert',nm:'الصحراء والواحة',ic:'🏜️',ob:{bridge:['كثبان رملية','🏜️'],double:['عاصفة رملية','🌪️'],wall:['جدار الأطلال','🏛️'],easy:['واحة','🌴'],door:['ختم قديم','🔒']},veh:['جمل','🐪']},
+ {id:'snow',nm:'جبال الثلج',ic:'🏔️',ob:{bridge:['جسر جليدي','❄️'],double:['شق جليدي','🌨️'],wall:['جدار جليدي','🏔️'],easy:['كهف دافئ','🔥'],door:['كهف مغلق','🔒']},veh:['مزلجة','🎿']},
+ {id:'cave',nm:'كهف المناجم',ic:'⛏️',ob:{bridge:['ممر ضيق','🔦'],double:['بحيرة جوفية','💧'],wall:['صخرة ضخمة','⛰️'],easy:['نفق مضيء','💡'],door:['باب حجري','🔒']},veh:['عربة مناجم','🚃']},
+ {id:'city',nm:'المدينة القديمة',ic:'🏰',ob:{bridge:['بوابة صغيرة','🚪'],double:['سور عالٍ','🏙️'],wall:['قلعة محصّنة','🏰'],easy:['سوق','🏪'],door:['باب ذهبي','🔒']},veh:['حصان','🐎']}];
 function trTheme(id){ return TR_THEMES.find(t=>t.id===id)||TR_THEMES[0]; }
 function trObName(themeId,type){ return trTheme(themeId).ob[type][0]; }
 function trObIcon(themeId,type){ return trTheme(themeId).ob[type][1]; }
@@ -3289,7 +3321,7 @@ const TR_AR_DIG='٠١٢٣٤٥٦٧٨٩';
 function trNum(n){ return String(n).replace(/\d/g,d=>TR_AR_DIG[+d]); }
 function trFmt(s){ s=Math.max(0,Math.ceil(s)); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
 function trDefTime(size){ return (TR_SIZES[size]||TR_SIZES.normal).time; }
-function trNeed(size){ return {short:14,normal:24,long:34}[size]||24; }
+function trNeed(size){ return {short:22,normal:38,long:54}[size]||38; }
 
 /* ---------- مولّد عشوائي حتمي ---------- */
 function trRng(seed){ let a=seed>>>0; return ()=>{ a=(a+0x6D2B79F5)>>>0; let t=a; t=Math.imul(t^(t>>>15),t|1); t^=t+Math.imul(t^(t>>>7),t|61); return ((t^(t>>>14))>>>0)/4294967296; }; }
@@ -3297,118 +3329,131 @@ const trRi=(r,a,b)=>a+Math.floor(r()*(b-a+1));
 function trShuf(r,a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(r()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 
 /* ---------- توليد الخريطة ---------- */
-/* أوزان صعوبة العقبات لحساب كلفة كل فرع (تُستعمل في عدالة المسارين) */
-const TR_OBW={bridge:1,double:2,wall:1.6,easy:.6,door:1.2};
-function trRouteEdges(map,branch){ return map.edges.filter(e=>!e.sc&&(e.grp==='in'||e.grp==='out'||e.grp===branch)); }
-function trRouteCost(map,branch){ return trRouteEdges(map,branch).reduce((s,e)=>s+1+(e.ob?TR_OBW[e.ob.type]:0),0); }
-/* عدالة الخريطة: الفرع القصير أقل مواقع وأصعب عقبات، والفرع الطويل أسهل، وكلفتاهما متقاربتان */
-function trFair(map){ const sh=trRouteCost(map,'sh'), lg=trRouteCost(map,'lg'), avg=b=>{ const a=trRouteEdges(map,b).filter(e=>e.ob&&e.ob.type!=='door'); return a.length?a.reduce((s,e)=>s+TR_OBW[e.ob.type],0)/a.length:0; };
-  return {short:sh,long:lg,ratio:lg/sh,hopsShort:trRouteEdges(map,'sh').length,hopsLong:trRouteEdges(map,'lg').length,hardShort:avg('sh'),hardLong:avg('lg')}; }
-/* توليد الخريطة: تُعاد المحاولة بتغيير بذرة فرعية حتى تتقارب كلفتا الفرعين */
+/* مستوى سؤال الموقع: العقبة حسب نوعها، والموقع العادي سهل في النصف الأول من الرحلة ومتوسط بعده */
+/* الدخول إلى أي موقع بسؤال خطوة واحد (سهل في النصف الأول ومتوسط بعده)؛ وموقع العقبة يعلَّق فيه الفريق حتى يجيب سؤال العقبة (ob) */
+function trNodeInfo(map,n){ const nd=map.nodes[n], d=nd.ob?TR_OB[nd.ob]:null;
+  return {type:nd.ob||'',n:1,lvl:nd.layer<=Math.ceil(map.L/2)?'e':'m',door:nd.ob==='door',obN:d?d.q:0,obLvl:d?d.lvl:''}; }
+const trW=(map,n)=>{ const nd=map.nodes[n]; return 1+(nd.ob?TR_OB[nd.ob].w:0); };
+/* كلفة الطرق: برنامج ديناميكي على الطبقات (أرخص كلفة وأغلاها ومتوسطها وعدد الطرق) */
+function trFair(map){
+  const N=map.nodes.length, mn=Array(N).fill(1e9), mx=Array(N).fill(0), mnD=Array(N).fill(1e9), cnt=Array(N).fill(0), sum=Array(N).fill(0), noDoorOk=Array(N).fill(false);
+  mn[map.treasure]=0; mx[map.treasure]=0; mnD[map.treasure]=0; cnt[map.treasure]=1; noDoorOk[map.treasure]=true;
+  for(let l=map.L;l>=0;l--) map.layers[l].forEach(a=>{ map.out[a].forEach(b=>{ const w=trW(map,b), door=map.nodes[b].ob==='door';
+      mn[a]=Math.min(mn[a],w+mn[b]); mx[a]=Math.max(mx[a],w+mx[b]); cnt[a]+=cnt[b]; sum[a]+=cnt[b]*w+sum[b];
+      if(!door){ mnD[a]=Math.min(mnD[a],w+mnD[b]); if(noDoorOk[b]) noDoorOk[a]=true; } }); });
+  const S=map.start, avg=sum[S]/cnt[S];
+  /* تقاطع الوصلات هندسيًا */
+  let cross=0; const E=map.edges, ccw=(a,b,c)=>(b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);
+  for(let i=0;i<E.length;i++) for(let j=i+1;j<E.length;j++){ const e=E[i], f=E[j]; if(e.a===f.a||e.b===f.b||e.a===f.b||e.b===f.a) continue; const A=map.nodes[e.a],B=map.nodes[e.b],C=map.nodes[f.a],D=map.nodes[f.b];
+    if(ccw(A,B,C)*ccw(A,B,D)<0&&ccw(C,D,A)*ccw(C,D,B)<0) cross++; }
+  let maxDy=0, maxLen=0; E.forEach(e=>{ const A=map.nodes[e.a],B=map.nodes[e.b]; maxDy=Math.max(maxDy,Math.abs(A.y-B.y)); maxLen=Math.max(maxLen,Math.hypot(A.x-B.x,A.y-B.y)); });
+  const inner=map.nodes.filter(n=>n.kind==='node'), out23=inner.filter(n=>map.out[n.id].length>=2).length/inner.length, gapx=(map.nodes[map.layers[0][0]].x-map.nodes[map.layers[1][0]].x);
+  const obs=map.nodes.filter(n=>n.ob).length, doorFree=map.nodes.every(n=>n.kind==='treasure'||noDoorOk[n.id]);
+  return {paths:cnt[S],hops:map.L+1,min:mn[S],minNoDoor:mnD[S],max:mx[S],avg,ratio:mnD[S]/avg,ratioAll:mn[S]/avg,spread:(mx[S]-mn[S])/avg,crossings:cross,maxDy,maxLen,out23,doorFree,
+    obs,ok:obs>=Math.max(3,Math.round((N-2)*.15))&&cnt[S]>=map.L+2&&mnD[S]/avg>=.8&&mn[S]/avg>=.74&&(mx[S]-mn[S])/avg<=.55&&cross>=Math.max(3,Math.round(map.L/2))&&cross<=Math.round(map.L*1.4)+3&&maxDy<=map.row*1.7&&out23>=.75&&doorFree}; }
 function trGen(o){
   o=o||{}; const seed0=((o.seed==null?Math.floor(Math.random()*4294967295):o.seed)>>>0); let th=o.theme; if(!TR_THEMES.some(x=>x.id===th)) th=TR_THEMES[trRi(trRng(seed0+5),0,TR_THEMES.length-1)].id;
-  let best=null, bd=1e9; for(let att=0;att<40;att++){ const m=trGen1(Object.assign({},o,{seed:seed0,theme:th}),att), f=trFair(m), d=Math.abs(Math.log(f.ratio)); if(d<bd){ best=m; bd=d; } if(f.ratio>=.85&&f.ratio<=1.2&&f.hardShort>f.hardLong) { best=m; break; } }
-  best.fair=trFair(best); return best; }
+  let best=null, bs=1e9; for(let att=0;att<240;att++){ const m=trGen1(Object.assign({},o,{seed:seed0,theme:th}),att), f=trFair(m); m.fair=f; const sc=(f.ok?0:10)+Math.abs(f.ratio-1)+f.spread; if(sc<bs){ best=m; bs=sc; } if(f.ok) break; }
+  if(typeof trAssignGlyphs==='function') trAssignGlyphs(best);
+  return best; }
 function trGen1(o,att){
-  o=o||{}; const th=trTheme(o.theme), sz=TR_SIZES[o.size]||TR_SIZES.normal, seed=((o.seed==null?Math.floor(Math.random()*4294967295):o.seed)>>>0), r=trRng(seed*2654435761+th.id.length*97+sz.k+att*7919);
-  const cm=['none','normal','many'].includes(o.chests)?o.chests:'normal';
-  const [p,s,l,q]=sz.shapes[trRi(r,0,sz.shapes.length-1)];
-  const nodes=[], add=(kind,grp,idx)=>{ nodes.push({id:nodes.length,kind,grp,idx,x:0,y:0,u:0,v:0}); return nodes.length-1; };
-  const S=add('start','in',0), tin=[]; for(let i=0;i<p;i++) tin.push(add('node','in',i+1)); const F=tin[p-1];
-  const sh=[]; for(let i=0;i<s;i++) sh.push(add('node','sh',i+1)); const lg=[]; for(let i=0;i<l;i++) lg.push(add('node','lg',i+1));
-  const tout=[]; for(let i=0;i<q;i++) tout.push(add('node','out',i+1)); const T=add('treasure','out',q+1), M0=tout[0];
-  const edges=[], chains={in:[S,...tin],sh:[F,...sh,M0],lg:[F,...lg,M0],out:[...tout,T]};
-  Object.keys(chains).forEach(g=>{ const c=chains[g]; for(let i=0;i<c.length-1;i++) edges.push({id:edges.length,a:c[i],b:c[i+1],grp:g,i,ob:null,sc:false,need:null}); });
-  const byG=g=>edges.filter(e=>e.grp===g);
-  /* العقبات */
-  const doors=cm!=='none', O=trRi(r,sz.ob[0],sz.ob[1]), eSh=byG('sh'), eLg=byG('lg'), eIn=byG('in'), eOut=byG('out');
-  const shT=['wall']; if(doors) shT.push('door'); while(shT.length<eSh.length) shT.push(r()<.55?'wall':'double'); if(!shT.includes('double')&&shT.length>=3) shT[shT.length-1]='double'; /* تنويع */
-  trShuf(r,shT).forEach((t,i)=>{ eSh[i].ob={type:t}; });
-  const nE=trRi(r,1,Math.max(1,l-s)), okE=eLg.filter(e=>e.i<=l-1-0&&e.i+3<=l+1).map(e=>e.id); /* الاختصار من c[i+1] إلى c[i+3] */
-  const easyIds=trShuf(r,okE).slice(0,Math.min(nE,l-s)); easyIds.forEach(id=>{ edges[id].ob={type:'easy'}; });
-  let rem=O-eSh.length-easyIds.length; const pool=trShuf(r,[...eLg.filter(e=>!e.ob),...eIn,...eOut]);
-  for(let k=0;k<pool.length&&rem>0;k++,rem--){ const e=pool[k], x=r(); e.ob={type:e.grp==='lg'?'bridge':(x<.68?'bridge':x<.9?'double':'wall')}; }
-  /* الاختصارات */
-  easyIds.forEach(id=>{ const e=edges[id], c=chains.lg, a=c[e.i+1], b=c[e.i+3]; edges.push({id:edges.length,a,b,grp:'sc',i:e.i,ob:null,sc:true,need:id}); });
-  const adj=nodes.map(()=>[]); edges.forEach(e=>{ adj[e.a].push(e.id); adj[e.b].push(e.id); });
-  /* الصناديق: لا تقع على البداية/الكنز، والمفتاح في الفرع الطويل، والفخاخ في فرع واحد فقط (لا تحجب الطريق) */
-  const chests={}, cnt=cm==='none'?0:Math.round(sz.k*(cm==='many'?.5:.3)); let used=new Set();
-  if(cnt>0){ const keyN=lg[trRi(r,0,Math.max(0,Math.ceil(l/2)-1))]; chests[keyN]='key'; used.add(keyN);
-    const nT=Math.floor(cnt/3), trapBranch=doors?sh:(r()<.5?sh:lg), tc=trShuf(r,trapBranch.filter(n=>!used.has(n))).slice(0,nT); tc.forEach(n=>{ chests[n]='trap'; used.add(n); });
-    const kinds=trShuf(r,['step','compass','magnet']); let ki=0; const rest=trShuf(r,nodes.filter(n=>n.kind==='node'&&!used.has(n.id)).map(n=>n.id));
-    for(let k=0;rest.length&&Object.keys(chests).length<cnt;k++){ chests[rest.shift()]=kinds[ki++%3]; } }
-  const map={theme:th.id,size:o.size&&TR_SIZES[o.size]?o.size:'normal',seed,K:sz.k,shape:[p,s,l,q],nodes,edges,adj,start:S,treasure:T,fork:F,merge:M0,chests,chains,chestMode:cm,W:1000,H:620};
-  trLayout(map,th,r); return map;
-}
-/* التخطيط: الإحداثيات المنطقية (u على الرحلة من اليمين إلى اليسار، v عرضيًا) ثم دوران حسب القالب وملاءمة الإطار */
-function trLayout(map,th,r){
-  const [p,s,l,q]=map.shape, B=Math.max(2.7,(l+1)*.66), U=p+B+q, hv=Math.max(1.55,U/3.9), ph=r()*6.28, g=th.geo, N=map.nodes, ch=map.chains;
-  const set=(id,u,v)=>{ N[id].u=u; N[id].v=v; };
-  ch.in.forEach((id,i)=>set(id,i,g.wig*hv*.5*Math.sin(i*1.6+ph)*(i?1:0)));
-  const Fu=p; set(map.fork,Fu,0);
-  ch.sh.slice(1,-1).forEach((id,i)=>set(id,Fu+B*(i+1)/(s+1),-hv*(.9+.1*Math.sin(i+ph))));
-  ch.lg.slice(1,-1).forEach((id,i)=>set(id,Fu+B*(i+1)/(l+1),hv*(.78+(l>=4?(i%2?.2:-.2):0))+g.wig*.1*Math.sin(i+ph)));
-  ch.out.forEach((id,i)=>set(id,Fu+B+i,i?g.wig*hv*.4*Math.sin(i*1.4+ph):0)); set(map.merge,Fu+B,0);
-  const c=Math.cos(g.rot), sn=Math.sin(g.rot), pts=N.map(n=>{ const x=-(n.u-U/2), y=n.v; return [x*c-y*sn, x*sn+y*c]; });
-  const xs=pts.map(a=>a[0]), ys=pts.map(a=>a[1]), mnx=Math.min(...xs), mxx=Math.max(...xs), mny=Math.min(...ys), mxy=Math.max(...ys), pad=58;
-  const sc=Math.min((map.W-2*pad)/(mxx-mnx||1),(map.H-2*pad)/(mxy-mny||1)), ox=(map.W-(mxx-mnx)*sc)/2, oy=(map.H-(mxy-mny)*sc)/2;
-  N.forEach((n,i)=>{ n.x=Math.round((ox+(pts[i][0]-mnx)*sc)*10)/10; n.y=Math.round((oy+(pts[i][1]-mny)*sc)*10)/10; });
-  /* ترقيم المواقع بحسب ترتيب الرحلة (u ثم v) */
-  const order=N.filter(n=>n.kind==='node').sort((a,b)=>a.u-b.u||a.v-b.v); order.forEach((n,i)=>{ n.n=i+1; }); N[map.start].n=0; N[map.treasure].n=order.length+1;
-  map.curve=g.curve; map.sc=sc;
-}
-/* طول أقصر مسار (بعدد المسارات) على الخريطة الأساسية دون اختصارات، أو معها */
-function trBfs(map,from,opt){ opt=opt||{}; const d=map.nodes.map(()=>-1), prev=map.nodes.map(()=>-1); d[from]=0; const q=[from];
-  while(q.length){ const x=q.shift(); for(const eid of map.adj[x]){ const e=map.edges[eid]; if(e.sc&&!(opt.sc===true||(opt.sc&&opt.sc[e.need]))) continue; if(opt.skip&&opt.skip(e)) continue; const y=e.a===x?e.b:e.a; if(d[y]<0){ d[y]=d[x]+1; prev[y]=x; q.push(y); } } }
-  return {d,prev}; }
-function trBranchLens(map){ const [,s,l]=map.shape; return {short:s+1,long:l+1}; }
-
+  const th=trTheme(o.theme), sz=TR_SIZES[o.size]||TR_SIZES.normal, size=TR_SIZES[o.size]?o.size:'normal', seed=((o.seed==null?0:o.seed)>>>0), r=trRng(seed*2654435761+th.id.length*97+sz.L+att*7919);
+  const cm=['none','normal','many'].includes(o.chests)?o.chests:'normal', L=sz.L, maxw=sz.wmax, W=Math.round((L+1)*sz.gap+140), top=122, H=Math.round(W/({short:1.45,normal:1.5,long:1.6}[size]||1.5)), bot=H-56, row=Math.min(150,(bot-top)/(maxw+.5));
+  const nodes=[], layers=[], add=(kind,layer)=>{ const n={id:nodes.length,kind,layer,rank:0,x:0,y:0,ob:null,g:'',nm:''}; nodes.push(n); (layers[layer]=layers[layer]||[]).push(n.id); n.rank=layers[layer].length-1; return n.id; };
+  const S=add('start',0); let pw=0; for(let l=1;l<=L;l++){ const lo=(l===1||l===L)?sz.wmin:Math.max(sz.wmin,pw-1), hi=(l===1||l===L)?Math.min(3,sz.wmax):(pw?Math.min(sz.wmax,pw+1):sz.wmax), w=trRi(r,Math.min(lo,hi),hi); pw=w; for(let i=0;i<w;i++) add('node',l); }
+  const T=add('treasure',L+1);
+  const out=nodes.map(()=>[]), inn=nodes.map(()=>[]), edges=[], link=(a,b)=>{ if(out[a].includes(b)) return; out[a].push(b); inn[b].push(a); edges.push({id:edges.length,a,b}); };
+  const cols=L+2, x0=W-70, x1=70;
+  const sh=[0]; for(let l=1;l<=L;l++){ const wp=layers[l-1].length, wc=layers[l].length, fp=(((wp-1)/2+sh[l-1])%1+1)%1, fc=((wc-1)/2%1+1)%1; sh[l]=Math.abs(fp-fc)<.01?(l%2?.5:-.5):0; }
+  nodes.forEach(n=>{ const w=layers[n.layer].length; n.x=x0-(x0-x1)*n.layer/(cols-1)+(n.kind==='node'?(r()-.5)*16:0);
+    if(n.kind!=='node') n.y=(top+bot)/2+8; else { const step=Math.min((bot-top)/w,row), off=sh[n.layer]*step; n.y=(top+bot)/2+8+step*(n.rank+.5-w/2)+off+(r()-.5)*step*.12; n.y=Math.max(top,Math.min(bot,n.y)); } n.x=Math.round(n.x*10)/10; n.y=Math.round(n.y*10)/10; });
+  /* الربط: كل موقع بأقرب مواقع الطبقة التالية رأسيًا فقط (لا وصلات طويلة تقطع الخريطة) */
+  const yOf=i=>nodes[i].y;
+  for(let l=0;l<=L;l++){ const A=layers[l], B=layers[l+1], wa=A.length, wb=B.length;
+    if(l===0||l===L){ A.forEach(a=>B.forEach(b=>link(a,b))); continue; }
+    const cap=row*1.5;
+    A.forEach(a=>{ const c=B.map(b=>({b,d:Math.abs(yOf(b)-yOf(a))+r()*4})).sort((u,v)=>u.d-v.d); const deg=Math.min(wb,(c[1]&&c[1].d>cap)?1:2+((c[2]&&c[2].d<cap+row*.14&&r()<.28)?1:0)); c.slice(0,deg).forEach(x=>link(a,x.b)); });
+    B.forEach(b=>{ if(inn[b].length) return; const c=A.map(a=>({a,d:Math.abs(yOf(b)-yOf(a))})).sort((u,v)=>u.d-v.d).find(x=>out[x.a].length<3)||A.map(a=>({a,d:Math.abs(yOf(b)-yOf(a))})).sort((u,v)=>u.d-v.d)[0]; link(c.a,b); }); }
+  /* العقبات: على المواقع (لا على الوصلات). باب واحد كحد أقصى في الطبقة، ولا أبواب إن لم تُفعّل الصناديق */
+  const types=[['bridge',.28],['double',.14],['wall',.22],['easy',.2],['door',cm==='none'?0:.16]], tot=types.reduce((s,x)=>s+x[1],0);
+  const pick=()=>{ let x=r()*tot; for(const [k,w] of types){ if((x-=w)<=0) return k; } return 'bridge'; };
+  for(let l=1;l<=L;l++){ let door=false; const ids=layers[l], plain=ids[trRi(r,0,ids.length-1)]; ids.forEach(id=>{ if(id===plain||r()>sz.p) return; let t=pick(); if(t==='door'){ if(door||l<2) t='bridge'; else door=true; } nodes[id].ob=t; }); }
+  /* الصناديق: لا على البداية/الكنز، المفاتيح في النصف الأول، والفخاخ لا تغلق طريقًا (الفخ يخسر دورًا فقط) */
+  const chests={}, inner=nodes.filter(n=>n.kind==='node'), K=inner.length, cnt=cm==='none'?0:Math.round(K*(cm==='many'?.36:.2)), doors=inner.filter(n=>n.ob==='door').length; const used=new Set();
+  if(cnt>0){ if(doors){ const early=trShuf(r,inner.filter(n=>n.layer<=Math.ceil(L/2)&&!n.ob).map(n=>n.id)); for(let k=0;k<Math.min(early.length,Math.min(3,doors+1));k++){ chests[early[k]]='key'; used.add(early[k]); } }
+    const free=()=>trShuf(r,inner.filter(n=>!used.has(n.id)&&!n.ob).map(n=>n.id)), nT=Math.max(1,Math.floor(cnt/4)), kinds=['step','compass','magnet','trap'];
+    let ki=0; for(const id of free()){ if(Object.keys(chests).length>=cnt) break; let k=ki<nT?'trap':kinds[(ki-nT)%3]; ki++; chests[id]=k; used.add(id); } }
+  /* التخطيط: الأعمدة من اليمين (البداية) إلى اليسار (الكنز)، وأعلى الإطار أفق وسماء */
+  return {theme:th.id,size,seed,L,K,row,nodes,layers,out,inn,edges,start:S,treasure:T,chests,chestMode:cm,W,H,att}; }
 /* ---------- حالة المباراة ---------- */
 function trNew(o){
   const map=o.map||trGen({theme:o.theme,size:o.size,seed:o.seed,chests:o.chests}), time=Math.max(180,Math.min(1800,parseInt(o.time)||trDefTime(map.size)*60));
   const qmap={}; (o.qlist||[]).forEach(q=>{ qmap[q.id]=q; });
   const pools=o.pools||{any:Object.keys(qmap)}, cs=o.opts||{}, od=k=>Math.max(0,Math.min(3,parseInt(cs[k])===0?0:(parseInt(cs[k])||0)));
   const M={map,theme:map.theme,size:map.size,fog:!!o.fog,time,left:time,elapsed:0,status:'run',win:null,turn:0,first:0,cp:null,section:o.section||'s1',qmap,pools,asked:{},cycles:0,curQ:null,
-    log:[],helps:[],taken:{},level:o.level||'',src:o.src||'',classId:o.classId||'',className:o.className||'',
+    log:[],moves:[],helps:[],taken:{},level:o.level||'',src:o.src||'',classId:o.classId||'',className:o.className||'',
     teams:(o.teams||[]).slice(0,2).map(t=>({name:t.name,color:t.color,players:t.players.map(p=>({id:p.id,name:p.name,plays:0,right:0,wrong:0})),
-      pos:map.start,prev:-1,path:[map.start],crossed:{},cross:0,keys:0,compass:false,errors:0,right:0,wrong:0,chestsUsed:[],
+      pos:map.start,path:[map.start],crossed:{},cross:0,keys:0,compass:false,errors:0,right:0,wrong:0,chestsUsed:[],skip:0,free:false,tickets:0,qprog:{},vehTo:-1,stuck:-1,
       opts:{swap:od('swap'),friend:od('friend'),vehicle:od('vehicle')},opts0:{swap:od('swap'),friend:od('friend'),vehicle:od('vehicle')}}))};
   return M;
 }
 function trCurP(M){ const T=M.teams[M.turn]; return T.players.find(p=>p.id===M.cp)||T.players[0]; }
 function trDraw(M,avoid){ const T=M.teams[M.turn], min=Math.min(...T.players.map(p=>p.plays)); let c=T.players.filter(p=>p.plays===min); if(avoid&&c.length>1) c=c.filter(p=>p.id!==avoid); return c[Math.floor(Math.random()*c.length)]; }
 function trEv(M,t,kind,x){ const T=M.teams[t]; const ev=Object.assign({left:Math.round(M.left),team:t,tn:T.name,kind,at:T.pos},x||{}); M.log.push(ev); return ev; }
-/* المسارات المتاحة لفريق من موقع: المسارات الأساسية + اختصاراته المفتوحة */
-function trAdj(M,t,n){ const T=M.teams[t], out=[]; M.map.adj[n].forEach(eid=>{ const e=M.map.edges[eid]; if(e.sc&&!T.crossed[e.need]) return; out.push({e,to:e.a===n?e.b:e.a}); }); return out; }
-function trEdgeBetween(M,t,a,b){ const x=trAdj(M,t,a).find(z=>z.to===b); return x?x.e:null; }
-/* ماذا يلزم لعبور مسار: free حرّ، q أسئلة، locked باب مقفل، key باب وبحوزتهم مفتاح */
-function trNeedOf(M,t,e){ const T=M.teams[t]; if(!e.ob||T.crossed[e.id]) return {k:'free'};
-  if(e.ob.type==='door') return {k:T.keys>0?'key':'locked',type:'door',n:0}; const d=TR_OB[e.ob.type]; return {k:'q',type:e.ob.type,n:d.q,lvl:d.lvl}; }
-function trDist(M,t){ const T=M.teams[t], opt={sc:T.crossed}; return trBfs(M.map,T.pos,opt).d[M.map.treasure]; }
-/* الطريق الأقصر المتبقي الصالح للعبور (الأبواب المقفلة دون مفتاح مغلقة) */
-function trRoute(M,t){ const T=M.teams[t], N=M.map.nodes.length, dist=Array(N).fill(1e9), prev=Array(N).fill(-1), done=Array(N).fill(false); dist[T.pos]=0;
-  for(let it=0;it<N;it++){ let u=-1; for(let i=0;i<N;i++) if(!done[i]&&(u<0||dist[i]<dist[u])) u=i; if(u<0||dist[u]>=1e9) break; done[u]=true;
-    trAdj(M,t,u).forEach(({e,to})=>{ const nd=trNeedOf(M,t,e); if(nd.k==='locked') return; const w=1+(nd.k==='q'?.01*nd.n+(nd.lvl==='h'?.02:0):nd.k==='key'?.005:0); if(dist[u]+w<dist[to]){ dist[to]=dist[u]+w; prev[to]=u; } }); }
-  if(dist[M.map.treasure]>=1e9) return null; const path=[]; for(let x=M.map.treasure;x!==-1;x=prev[x]) path.push(x); return path.reverse(); }
-function trCrossEdge(M,t,e,how){ const T=M.teams[t]; if(!e.ob||T.crossed[e.id]) return false; T.crossed[e.id]=how||'q'; T.cross++; if(e.ob.type==='door'&&how==='key') T.keys--; return true; }
-/* الانتقال إلى موقع (بعد العبور) ثم الوصول: كنز أو صندوق */
-function trMoveTo(M,t,to){ const T=M.teams[t]; T.prev=T.pos; T.pos=to; T.path.push(to); T.compass=false; return trArrive(M,t); }
+/* ماذا يلزم للدخول إلى موقع مجاور: سؤال خطوة (q)، والباب المقفل بلا مفتاح مغلق (locked) */
+function trNeedOf(M,t,to){ const T=M.teams[t], nf=trNodeInfo(M.map,to); if(nf.door&&!(T.keys>0)) return {k:'locked',type:'door',n:1,lvl:nf.lvl}; return {k:'q',type:nf.type,n:1,lvl:nf.lvl,obN:nf.obN,obLvl:nf.obLvl}; }
+/* المواقع المتاحة الآن: المجاورة في الطبقة التالية فقط؛ ومن كان عالقًا في عقبة لا يتحرك إلى أي موقع */
+function trTargets(M,t){ const T=M.teams[t]; if(T.stuck>=0) return []; return M.map.out[T.pos].map(to=>({to,nd:trNeedOf(M,t,to)})); }
+function trDist(M,t){ return M.map.nodes[M.map.treasure].layer-M.map.nodes[M.teams[t].pos].layer; }
+/* أيسر طريق صالح للبوصلة: كلفة الدخول 1+وزن العقبة، والباب المقفل بلا مفتاح مغلق */
+function trRoute(M,t){ const map=M.map, T=M.teams[t], N=map.nodes.length, cost=Array(N).fill(1e9), nxt=Array(N).fill(-1); cost[map.treasure]=0;
+  for(let l=map.L;l>=0;l--){ if(l<map.nodes[T.pos].layer) break; map.layers[l].forEach(a=>{ map.out[a].forEach(b=>{ const door=map.nodes[b].ob==='door'; if(door&&!(T.keys>0)) return; const c=trW(map,b)+cost[b]; if(c<cost[a]){ cost[a]=c; nxt[a]=b; } }); }); }
+  if(cost[T.pos]>=1e9) return null; const path=[T.pos]; for(let x=T.pos;nxt[x]!==-1&&x!==map.treasure;){ x=nxt[x]; path.push(x); } return path; }
+/* ===== الحركة: هذه الدالة هي الباب الوحيد لتغيير موقع فريق، وترفض كل ما ليس انتقالًا مجاورًا للأمام، وكل انتقال بإجابة أو بوسيلة مساعدة مسجَّلة ===== */
+function trMoveTo(M,t,to,how){
+  const T=M.teams[t], map=M.map; if(M.status!=='run') throw new Error('match over');
+  if(T.stuck>=0) throw new Error('stuck at obstacle');
+  if(!map.out[T.pos]||!map.out[T.pos].includes(to)) throw new Error('illegal move '+T.pos+'->'+to);
+  if(map.nodes[to].layer!==map.nodes[T.pos].layer+1) throw new Error('layer jump');
+  const nf=trNodeInfo(map,to);
+  if(how==='q'){ if((T.qprog[to]||0)<nf.n) throw new Error('move without answers'); if(nf.door){ if(!(T.keys>0)) throw new Error('door without key'); T.keys--; } }
+  else if(how==='free'){ if(!T.free) throw new Error('no free step'); if(nf.door) throw new Error('free step through door'); T.free=false; }
+  else throw new Error('unknown how '+how);
+  const from=T.pos; T.pos=to; T.path.push(to); T.compass=false; T.qprog={}; T.vehTo=-1;
+  if(nf.type&&!T.crossed[to]) T.stuck=to; /* عالق في موقع العقبة حتى يجتازها */
+  M.moves.push({t,from,to,how,left:Math.round(M.left),layerFrom:map.nodes[from].layer,layerTo:map.nodes[to].layer});
+  trEv(M,t,'move',{from,node:to,how,ob:nf.type});
+  return trArrive(M,t); }
+/* اجتياز العقبة التي عَلِق فيها الفريق: بإجابات سؤالها كلها أو بالمركبة؛ ولا حركة إلى أي موقع قبل ذلك */
+function trObNeed(M,t){ const T=M.teams[t]; if(T.stuck<0) return null; const nf=trNodeInfo(M.map,T.stuck); return {node:T.stuck,type:nf.type,n:nf.obN,lvl:nf.obLvl}; }
+function trClearOb(M,t,how){ const T=M.teams[t], nd=trObNeed(M,t); if(!nd) throw new Error('not stuck');
+  if(how==='q'){ if((T.qprog['o'+nd.node]||0)<nd.n) throw new Error('obstacle without answers'); }
+  else if(how==='veh'){ if(T.vehTo!==nd.node) throw new Error('vehicle not armed'); }
+  else throw new Error('unknown how '+how);
+  T.crossed[nd.node]=how; T.cross++; T.stuck=-1; T.qprog={}; T.vehTo=-1;
+  trEv(M,t,'cross',{ob:nd.type,how,from:T.pos,node:nd.node}); return {kind:'cleared',type:nd.type,how}; }
 function trArrive(M,t){ const T=M.teams[t], map=M.map;
   if(T.pos===map.treasure){ M.status='won'; M.win={team:t,reason:'treasure',path:T.path.slice()}; M.elapsed=M.time-M.left; trEv(M,t,'treasure'); return {kind:'treasure'}; }
-  const c=map.chests[T.pos]; if(!c||M.taken[T.pos]) return null; M.taken[T.pos]={team:t,kind:c}; T.chestsUsed.push(c); const res={kind:'chest',chest:c,at:T.pos};
+  const c=map.chests[T.pos]; if(!c||M.taken[T.pos]) return T.stuck>=0?{kind:'stuck',type:map.nodes[T.pos].ob}:null; M.taken[T.pos]={team:t,kind:c}; T.chestsUsed.push(c); const res={kind:'chest',chest:c,at:T.pos};
   if(c==='key') T.keys++;
   else if(c==='compass') T.compass=true;
   else if(c==='magnet'){ const O=M.teams[1-t], have=TR_OPTS.map(x=>x.k).filter(k=>O.opts[k]>0); if(have.length){ const k=have[Math.floor(Math.random()*have.length)]; O.opts[k]--; T.opts[k]++; res.stolen=k; } }
-  else if(c==='trap'){ const back=T.prev; if(back>=0&&back!==T.pos){ T.pos=back; T.path.push(back); T.prev=-1; T.compass=false; res.back=back; } }
-  trEv(M,t,'chest',{chest:c,node:res.at,stolen:res.stolen||'',back:res.back==null?'':res.back}); return res; }
-function trFreeTargets(M,t){ const T=M.teams[t]; return trAdj(M,t,T.pos).filter(x=>{ const nd=trNeedOf(M,t,x.e); return nd.k==='free'||nd.k==='q'; }); }
-function trFreeStep(M,t,to){ const x=trFreeTargets(M,t).find(z=>z.to===to); if(!x) return null; const T=M.teams[t], from=T.pos; if(trCrossEdge(M,t,x.e,'free')) trEv(M,t,'cross',{ob:x.e.ob.type,how:'free',from,node:to}); trEv(M,t,'free',{from,node:to}); return trMoveTo(M,t,to); }
-function trVehicleUse(M,t,e){ const T=M.teams[t]; if(!(T.opts.vehicle>0)||!e.ob||T.crossed[e.id]) return false; T.opts.vehicle--; M.helps.push({k:'vehicle',team:t,left:Math.round(M.left)}); trCrossEdge(M,t,e,'veh'); return true; }
-/* تسجيل إجابة: الخطأ يخسر الدور فقط والعقبة كما هي */
-function trAnswer(M,ok,why,ctx){ const t=M.turn, T=M.teams[t], p=trCurP(M); p.plays++; ctx=ctx||{};
-  if(ok){ p.right++; T.right++; trEv(M,t,'right',{name:p.name,ob:ctx.ob||'',stage:ctx.stage||0,node:ctx.to}); return; }
-  p.wrong++; T.wrong++; T.errors++; trEv(M,t,why==='timeout'?'timeout':'wrong',{name:p.name,ob:ctx.ob||'',stage:ctx.stage||0,node:ctx.to}); }
-function trCommitCross(M,t,e,from,to,how){ if(trCrossEdge(M,t,e,how)) trEv(M,t,'cross',{ob:e.ob.type,how,from,node:to,name:M.teams[t].players.length&&M.cp?trCurP(M).name:''}); }
+  else if(c==='trap'){ T.skip++; }
+  else if(c==='step'){ T.tickets++; }
+  trEv(M,t,'chest',{chest:c,node:res.at,stolen:res.stolen||''}); return res; }
+/* خطوة «تقدّم» المجانية: إلى موقع مجاور فقط، وليس بابًا، ولا يستعملها من هو عالق */
+function trFreeTargets(M,t){ const T=M.teams[t]; if(T.stuck>=0) return []; return M.map.out[T.pos].filter(to=>!trNodeInfo(M.map,to).door).map(to=>({to})); }
+function trFreeStep(M,t,to){ const T=M.teams[t]; if(!T.free||!trFreeTargets(M,t).some(x=>x.to===to)) return null; const from=T.pos; trEv(M,t,'free',{from,node:to}); return trMoveTo(M,t,to,'free')||{kind:'moved'}; }
+/* تذكرة «تقدّم»: يفعّلها الفريق صراحةً في دوره (وهو غير عالق) فتصير خطوة مجانية واحدة إلى موقع أمامي مجاور */
+function trTicketUse(M,t){ const T=M.teams[t]; if(!(T.tickets>0)||T.free||T.stuck>=0||!trFreeTargets(M,t).length) return false; T.tickets--; T.free=true; M.helps.push({k:'ticket',team:t,left:Math.round(M.left),from:T.pos}); trEv(M,t,'ticket'); return true; }
+/* المركبة: تتجاوز العقبة التي عَلِق فيها الفريق فقط (to = موقعها) دون سؤال، مرة واحدة من رصيدها */
+function trVehicleUse(M,t,to){ const T=M.teams[t]; if(!(T.opts.vehicle>0)||T.stuck<0||to!==T.stuck) return false; T.opts.vehicle--; T.vehTo=to; M.helps.push({k:'vehicle',team:t,left:Math.round(M.left),from:T.pos,to}); return true; }
+/* إجابة: الصحيحة تُسجَّل تقدمًا نحو المتطلبات، والخطأ يلغي التقدم ويخسر الدور فقط (الفريق يبقى في موقعه، وإن كان عالقًا يبقى عالقًا) */
+function trAnswer(M,ok,why,ctx){ const t=M.turn, T=M.teams[t], p=trCurP(M); p.plays++; ctx=ctx||{}; const key=ctx.obstacle?'o'+ctx.node:ctx.node;
+  if(ok){ p.right++; T.right++; T.qprog[key]=(T.qprog[key]||0)+1; trEv(M,t,'right',{name:p.name,ob:ctx.ob||'',stage:ctx.stage||0,node:ctx.node,obstacle:!!ctx.obstacle}); return; }
+  p.wrong++; T.wrong++; T.errors++; T.qprog={}; trEv(M,t,why==='timeout'?'timeout':'wrong',{name:p.name,ob:ctx.ob||'',stage:ctx.stage||0,node:ctx.node,obstacle:!!ctx.obstacle}); }
+/* تبديل الدور: الفريق الذي أصابه فخ يخسر دوره مرة واحدة فيعود الدور للآخر؛ تُعاد قائمة الفرق التي خسرت دورها */
+function trAdvance(M){ const sk=[]; M.turn=1-M.turn; const T=M.teams[M.turn]; if(T.skip>0){ T.skip--; sk.push(M.turn); trEv(M,M.turn,'skip'); M.turn=1-M.turn; } return sk; }
 function trDecide(M){
   const d=[trDist(M,0),trDist(M,1)]; if(d[0]!==d[1]) return {team:d[0]<d[1]?0:1,reason:'near',d};
   const c=[M.teams[0].cross,M.teams[1].cross]; if(c[0]!==c[1]) return {team:c[0]>c[1]?0:1,reason:'crossed',c};
@@ -3418,22 +3463,20 @@ function trDecide(M){
 function trTimeUp(M){ if(M.status!=='run') return; M.status='timeup'; M.win=Object.assign(trDecide(M),{path:null}); M.elapsed=M.time; }
 function trTick(M,dt){ if(M.status!=='run') return; M.left-=dt; if(M.left<=0){ M.left=0; trTimeUp(M); } }
 function trReason(M){ const w=M.win; if(!w) return ''; const T=M.teams, rem=t=>trDist(M,t);
-  if(w.reason==='treasure') return 'وصل إلى الكنز أولًا بعد '+(T[w.team].path.length-1)+' انتقالات';
+  if(w.reason==='treasure') return 'وصل إلى الكنز أولًا بعد '+trNum(T[w.team].path.length-1)+' انتقالات';
   const pre='انتهى الوقت — ';
-  if(w.reason==='near') return pre+'الأقرب إلى الكنز ('+trNum(rem(w.team))+' مواقع متبقية مقابل '+trNum(rem(1-w.team))+')';
+  if(w.reason==='near') return pre+'الأقرب إلى الكنز ('+trNum(rem(w.team))+' مراحل متبقية مقابل '+trNum(rem(1-w.team))+')';
   if(w.reason==='crossed') return pre+'تساوى القرب من الكنز، والأكثر عقبات معبورة ('+trNum(T[w.team].cross)+' مقابل '+trNum(T[1-w.team].cross)+')';
   if(w.reason==='right') return pre+'تساوى القرب والعقبات، والأكثر إجابات صحيحة ('+trNum(T[w.team].right)+' مقابل '+trNum(T[1-w.team].right)+')';
   if(w.reason==='errors') return pre+'تساوى القرب والعقبات والإجابات، والأقل أخطاء ('+trNum(T[w.team].errors)+' مقابل '+trNum(T[1-w.team].errors)+')';
   return pre+'تعادل كامل فحُسمت النتيجة بالقرعة'; }
 function trResultHead(M){ if(!M.win) return 'المباراة قيد اللعب'; const n=M.teams[M.win.team].name; return M.section==='s1'?'الفائز: '+n:'الفريق الفائز: '+n; }
 function trPlayerRows(M){ const out=[]; M.teams.forEach((T,t)=>T.players.forEach(p=>out.push({name:p.name,team:T.name,t,right:p.right,wrong:p.wrong,plays:p.plays}))); return out.sort((a,b)=>b.right-a.right||a.wrong-b.wrong||a.name.localeCompare(b.name,'ar')); }
-/* رؤية الضباب: المواقع ضمن خطوتين من أي فريق + المزارة + البداية والكنز */
+/* رؤية الضباب: المواقع على بعد خطوتين أماميتين من أي فريق + ما مرّ به الفريقان + البداية والكنز */
 function trVisible(M){ const N=M.map.nodes.length; if(!M.fog) return Array(N).fill(true); const vis=Array(N).fill(false); vis[M.map.start]=vis[M.map.treasure]=true;
-  M.teams.forEach((T,t)=>{ T.path.forEach(n=>{ vis[n]=true; }); const d=trBfs(M.map,T.pos,{sc:true}).d; d.forEach((x,i)=>{ if(x>=0&&x<=2) vis[i]=true; }); }); return vis; }
+  M.teams.forEach(T=>{ T.path.forEach(n=>{ vis[n]=true; }); let f=[T.pos]; for(let k=0;k<2;k++){ const nx=[]; f.forEach(a=>M.map.out[a].forEach(b=>{ vis[b]=true; nx.push(b); })); f=nx; } }); return vis; }
 /*==UI==*/
 const TR_CFG_KEY='tr-cfg-v1', TR_USED_KEY='tr-used-v1', TR_LOG_KEY='tr-log-v1';
-const TR_EMOJI='"Segoe UI Emoji","Noto Color Emoji","Apple Color Emoji","Android Emoji",sans-serif';
-const TR_OBCOL={bridge:'#2f7fd6',double:'#8a4fd0',wall:'#d83a3a',easy:'#2e9f57',door:'#d9a000'};
 
 /* ---------- أسئلة ---------- */
 function trDomName(id){ const d=TR_DOMS.find(x=>x[0]===id); return d?d[1]:''; }
@@ -3498,105 +3541,260 @@ function trIcoSVG(k,x,y,s){ return `<g transform="translate(${(x-s/2).toFixed(1)
 function trIcoHTML(k,s){ s=s||18; return `<svg class="tri" viewBox="0 0 24 24" width="${s}" height="${s}" aria-hidden="true">${trIcoInner(k)}</svg>`; }
 function trIcoCanvas(x,k,cx,cy,s){ (TR_ICO[k]||[]).forEach(([d,f,st,w])=>{ x.save(); x.translate(cx-s/2,cy-s/2); x.scale(s/24,s/24); const p=new Path2D(d); if(f&&f!=='none'){ x.fillStyle=f; x.fill(p); } if(st){ x.strokeStyle=st; x.lineWidth=w; x.lineJoin='round'; x.lineCap='round'; x.stroke(p); } x.restore(); }); }
 
-/* ---------- زخارف الخلفية لكل قالب (أشكال بسيطة منخفضة التباين) ---------- */
-function trDecor(map){
-  const th=trTheme(map.theme), P=th.pal, W=map.W, H=map.H, r=trRng(map.seed+99), R=(a,b)=>a+r()*(b-a); let s='';
-  const tree=(x,y,k,c)=>`<g transform="translate(${x.toFixed(0)},${y.toFixed(0)}) scale(${k.toFixed(2)})"><rect x="-3" y="0" width="6" height="12" fill="#6b4a2a"/><path d="M0-34L16-6H-16z" fill="${c}"/><path d="M0-22L19 6H-19z" fill="${c}"/></g>`;
-  const palm=(x,y,k)=>`<g transform="translate(${x.toFixed(0)},${y.toFixed(0)}) scale(${k})"><path d="M0 0Q6-22 2-44" fill="none" stroke="#8a5a2b" stroke-width="5" stroke-linecap="round"/>${[-70,-35,0,35,70].map(a=>`<ellipse cx="2" cy="-50" rx="20" ry="6" fill="#3f9b4a" transform="rotate(${a} 2 -44) translate(16 0)"/>`).join('')}</g>`;
-  if(th.id==='pirates'){ s+=`<path d="M${W*.07} ${H*.5}C${W*.06} ${H*.12} ${W*.4} ${H*.04} ${W*.55} ${H*.07}C${W*.9} ${H*.02} ${W*.98} ${H*.4} ${W*.94} ${H*.62}C${W*.97} ${H*.95} ${W*.6} ${H*.98} ${W*.45} ${H*.93}C${W*.12} ${H*.98} ${W*.03} ${H*.75} ${W*.07} ${H*.5}z" fill="${P.land}" opacity=".9"/>`;
-    for(let i=0;i<26;i++){ const x=R(10,W-30), y=R(10,H-10); s+=`<path d="M${x.toFixed(0)} ${y.toFixed(0)}q6-6 12 0t12 0" fill="none" stroke="#fff" stroke-width="2" opacity=".55"/>`; }
-    s+=palm(W*.1,H*.9,.9)+palm(W*.92,H*.18,.8)+palm(W*.55,H*.97,.7); }
-  else if(th.id==='forest'){ for(let i=0;i<46;i++) s+=tree(R(10,W-10),R(40,H-6),R(.7,1.3),['#3d8f43','#2e7d32','#4aa24f','#2a6f30'][i%4]); }
-  else if(th.id==='desert'){ s+=`<circle cx="${W*.9}" cy="${H*.14}" r="46" fill="#ffd45a" opacity=".85"/>`;
-    [[.78,'#f3cf83'],[.88,'#e8b965'],[.96,'#d9a24c']].forEach(([y,c],k)=>{ s+=`<path d="M0 ${H*y}Q${W*.2} ${H*(y-.1)} ${W*.4} ${H*y}T${W*.8} ${H*y}T${W} ${H*(y-.04)}V${H}H0z" fill="${c}" opacity=".8"/>`; }); s+=palm(W*.08,H*.62,1)+palm(W*.93,H*.55,.85)+palm(W*.5,H*.12,.7); }
-  else if(th.id==='snow'){ for(let i=0;i<7;i++){ const x=R(0,W), h=R(90,190), w=h*1.3, y=H-R(0,40); s+=`<path d="M${x-w/2} ${y}L${x} ${y-h}L${x+w/2} ${y}z" fill="#9fc0de" opacity=".65"/><path d="M${x-w*.14} ${y-h*.72}L${x} ${y-h}L${x+w*.14} ${y-h*.72}L${x+w*.05} ${y-h*.64}L${x} ${y-h*.72}L${x-w*.05} ${y-h*.64}z" fill="#fff" opacity=".95"/>`; }
-    for(let i=0;i<45;i++) s+=`<circle cx="${R(0,W).toFixed(0)}" cy="${R(0,H).toFixed(0)}" r="${R(1.5,4).toFixed(1)}" fill="#fff" opacity=".85"/>`; }
-  else if(th.id==='cave'){ for(let i=0;i<16;i++){ const x=R(0,W), w=R(24,60), h=R(30,90); s+=`<path d="M${x-w/2} 0L${x} ${h}L${x+w/2} 0z" fill="#2a211c" opacity=".75"/><path d="M${x-w/2} ${H}L${x} ${H-h*.8}L${x+w/2} ${H}z" fill="#2a211c" opacity=".7"/>`; }
-    for(let i=0;i<14;i++){ const x=R(20,W-20), y=R(20,H-20); s+=`<path d="M${x} ${y-12}L${x+7} ${y}L${x} ${y+12}L${x-7} ${y}z" fill="#9ad7ff" opacity=".35"/>`; } }
-  else { for(let i=0;i<14;i++){ const x=i*(W/13)+R(-8,8), h=R(50,130), w=R(46,70); s+=`<rect x="${x.toFixed(0)}" y="${(H-h).toFixed(0)}" width="${w.toFixed(0)}" height="${h.toFixed(0)}" fill="#cbb48c" opacity=".7"/>`; for(let k=0;k<4;k++) s+=`<rect x="${(x+10+(k%2)*(w/2-8)).toFixed(0)}" y="${(H-h+12+Math.floor(k/2)*22).toFixed(0)}" width="8" height="12" fill="#8f7550" opacity=".7"/>`; }
-    for(let i=0;i<9;i++){ const x=R(0,W), h=R(40,90); s+=`<rect x="${x.toFixed(0)}" y="0" width="34" height="${h.toFixed(0)}" fill="#cbb48c" opacity=".55"/>`; } }
-  return `<rect width="${W}" height="${H}" fill="url(#trbg)"/>`+s; }
 
-/* ---------- هندسة المسارات ---------- */
-function trEdgeGeom(map,e){ const a=map.nodes[e.a], b=map.nodes[e.b], dx=b.x-a.x, dy=b.y-a.y, L=Math.hypot(dx,dy)||1; let k;
-  if(e.sc){ const c=map.chains.lg[e.i+2], n=map.nodes[c], side=Math.sign((b.x-a.x)*(n.y-a.y)-(b.y-a.y)*(n.x-a.x))||1, off=Math.max(72,L*.5); k=side*off; }
-  else k=map.curve*L*((e.id%2)?1:-1);
-  const tt=b.kind==='treasure'?.42:a.kind==='start'?.58:.5, cx=(a.x+b.x)/2-dy/L*k, cy=(a.y+b.y)/2+dx/L*k; return {ax:a.x,ay:a.y,bx:b.x,by:b.y,cx,cy,mx:(1-tt)*(1-tt)*a.x+2*tt*(1-tt)*cx+tt*tt*b.x,my:(1-tt)*(1-tt)*a.y+2*tt*(1-tt)*cy+tt*tt*b.y,L,d:`M${a.x} ${a.y}Q${cx.toFixed(1)} ${cy.toFixed(1)} ${b.x} ${b.y}`}; }
-function trNodeR(map){ return {short:25,normal:22,long:19}[map.size]||22; }
-/* ---------- رسم الخريطة SVG ---------- */
+/* ===== صائد الكنز: الرسم (SVG مرسوم يدويًا): خلفيات بطبقات ومرشحات، طرق، مواقع مرسومة، عقبات، قطع الفرق ===== */
+function trMix(h,k){ const n=parseInt(h.slice(1),16); let r=n>>16,g=(n>>8)&255,b=n&255; const t=k>0?255:0,a=Math.min(1,Math.abs(k)); r=Math.round(r+(t-r)*a); g=Math.round(g+(t-g)*a); b=Math.round(b+(t-b)*a); return '#'+((1<<24)|(r<<16)|(g<<8)|b).toString(16).slice(1); }
+const trF=v=>(Math.round(v*10)/10);
+const trSh=(rx,ry,dx)=>`<ellipse cx="${dx==null?4:dx}" cy="2" rx="${rx}" ry="${ry}" fill="#000" opacity=".27"/>`;
+const trPoly=(pts,f,x)=>`<path d="M${pts.map(p=>trF(p[0])+' '+trF(p[1])).join('L')}z" fill="${f}"${x||''}/>`;
+const TR_OBCOL={bridge:'#2f7fd6',double:'#8a4fd0',wall:'#d83a3a',easy:'#2e9f57',door:'#d9a000'};
+const TR_EMOJI='"Segoe UI Emoji","Noto Color Emoji","Apple Color Emoji","Android Emoji",sans-serif';
+/* ألوان كل قالب */
+const TR_PAL={
+ forest:{g1:'#6f9a45',g2:'#3f6a2b',leaf:'#3f8a3a',wood:'#8a5a2c',rock:'#8d8a82',water:'#4aa3c7',sky1:'#bfe3f5',sky2:'#eaf5e0',hz:'#a9c7a0',road:{base:'#a98657',edge:'#5e4526',hi:'#cfae7c',kind:'dirt'},roof:'#8a4b2a',wall:'#a9794a',pad:'#8aa65a',ink:'#2a3d1a'},
+ pirates:{g1:'#3bb2d0',g2:'#0f7096',leaf:'#3f9a4a',wood:'#8a5a2c',rock:'#8d8780',water:'#2aa3c9',sky1:'#9ad8f2',sky2:'#e6f6fb',hz:'#bfe6f1',road:{base:'#9a6a35',edge:'#4d3015',hi:'#c99a5c',kind:'wood'},roof:'#b5461f',wall:'#d8b27a',pad:'#ecd9a0',ink:'#17405f',land:'#ecd7a1',grass:'#7fae52'},
+ desert:{g1:'#ecc880',g2:'#d3a252',leaf:'#6a9a3a',wood:'#8a5a2c',rock:'#b58f5e',water:'#3aa8b8',sky1:'#9fd4ee',sky2:'#fbe9bd',hz:'#f6dca0',road:{base:'#c49a55',edge:'#8a6428',hi:'#e8c987',kind:'dirt'},roof:'#b5461f',wall:'#d9b37a',pad:'#f0d595',ink:'#4a2e0a'},
+ snow:{g1:'#f2f8fd',g2:'#cfe0ee',leaf:'#2f6b4a',wood:'#7a5230',rock:'#8f9bad',water:'#7fc4e6',sky1:'#a8d2f0',sky2:'#eef7ff',hz:'#dcecf8',road:{base:'#b9cce0',edge:'#7d97b3',hi:'#ffffff',kind:'snow'},roof:'#7a4b2a',wall:'#9a7a58',pad:'#ffffff',ink:'#17324f'},
+ cave:{g1:'#6d5a4b',g2:'#352b25',leaf:'#4a6a3a',wood:'#7a5230',rock:'#7d6f64',water:'#2f7fa0',sky1:'#1b1511',sky2:'#3b2f29',hz:'#4a3b32',road:{base:'#a8906b',edge:'#3a2c1f',hi:'#cdb48a',kind:'gravel'},roof:'#7a4b2a',wall:'#8a6a48',pad:'#7a6858',ink:'#f2e2c4'},
+ city:{g1:'#d3bf98',g2:'#b49b73',leaf:'#4a8a3a',wood:'#7a5230',rock:'#9b8d78',water:'#4aa3c7',sky1:'#bfe0f2',sky2:'#f7ecd6',hz:'#e8d9bd',road:{base:'#8f7e66',edge:'#4d4030',hi:'#c4b394',kind:'stone'},roof:'#b5461f',wall:'#e6d3ab',pad:'#d9c6a0',ink:'#3a2a18'}};
+/* ----- عناصر مرسومة (الأصل عند منتصف القاعدة، الأعلى سالب) ----- */
+const TRG={};
+TRG.pine=(r,c)=>{ const g=c.leaf||'#2f6b35'; let s=trSh(15,4)+`<rect x="-2.5" y="-8" width="5" height="10" fill="#5a3b1f"/><rect x="0" y="-8" width="2.5" height="10" fill="#3e2813"/>`;
+  for(let i=0;i<3;i++){ const w=17-i*4,y=-7-i*11,h=19-i*2,col=trMix(g,(i-1)*.08+(r()-.5)*.12);
+    s+=trPoly([[0,y-h],[-w,y],[0,y+2]],trMix(col,.2))+trPoly([[0,y-h],[w,y],[0,y+2]],trMix(col,-.25))+trPoly([[0,y-h],[-w*.5,y-h*.3],[-w*.1,y-h*.25]],trMix(col,.42),' opacity=".5"');
+    if(c.snow) s+=trPoly([[0,y-h],[-w*.62,y-h*.42],[-w*.2,y-h*.55],[w*.1,y-h*.4],[w*.62,y-h*.42]],'#fff',' opacity=".92"'); }
+  return s; };
+TRG.tree=(r,c)=>{ const g=c.leaf||'#3f8a3a',k=(r()-.5)*.14,m=(a)=>trMix(g,a+k);
+  return trSh(17,5)+`<path d="M-3.5 2L-2.5-18h5L3.5 2z" fill="#6b4a2a"/><path d="M0 2L3.5 2L2.5-18H0z" fill="#46301b"/><circle cx="-9" cy="-24" r="12" fill="${m(-.28)}"/><circle cx="10" cy="-25" r="11" fill="${m(-.32)}"/><circle cx="0" cy="-34" r="13" fill="${m(-.2)}"/><circle cx="-7" cy="-27" r="10" fill="${m(0)}"/><circle cx="6" cy="-30" r="9" fill="${m(.06)}"/><circle cx="-3" cy="-37" r="8" fill="${m(.16)}"/><circle cx="-6" cy="-39" r="4" fill="${m(.36)}" opacity=".7"/>`; };
+TRG.palm=(r,c)=>{ const lean=(r()-.5)*14, tx=lean, ty=-38, d1=trMix(c.leaf||'#3f9a4a',-.25), d2=trMix(c.leaf||'#3f9a4a',.2); let s=trSh(13,3.5)+`<path d="M-2 2Q${trF(lean*.5)} -20 ${trF(lean)} -38" stroke="#5c3d1e" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M.5 2Q${trF(lean*.5+1.5)} -20 ${trF(lean+1.5)} -38" stroke="#b58a52" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".8"/>`;
+  for(let i=0;i<5;i++){ const y=-6-i*6.5; s+=`<path d="M${trF(-3+lean*(i+1)/6)} ${y}h6" stroke="#3e2813" stroke-width=".8" opacity=".6"/>`; }
+  [-172,-145,-115,-75,-40,-10].forEach(a=>{ const rad=a*Math.PI/180, L=24+r()*6, dx=Math.cos(rad)*L, dy=Math.sin(rad)*L*.35+9;
+    s+=`<path d="M${tx} ${ty}Q${trF(tx+dx*.5)} ${trF(ty+Math.sin(rad)*L*.7-5)} ${trF(tx+dx)} ${trF(ty+dy)}" stroke="${d1}" stroke-width="5.5" fill="none" stroke-linecap="round"/><path d="M${tx} ${ty}Q${trF(tx+dx*.5)} ${trF(ty+Math.sin(rad)*L*.7-6)} ${trF(tx+dx)} ${trF(ty+dy-1)}" stroke="${d2}" stroke-width="2" fill="none" stroke-linecap="round"/>`; });
+  return s+`<circle cx="${tx-2}" cy="${ty+3}" r="2.6" fill="#6b4a1f"/><circle cx="${tx+2.5}" cy="${ty+4}" r="2.6" fill="#5a3b14"/>`; };
+TRG.rock=(r,c)=>{ const b=c.rock||'#8d8a85', w=9+r()*8, h=6+r()*8, J=()=>(r()-.5)*2.2, P=[[-w,0],[-w*.85+J(),-h*.55],[-w*.35+J(),-h],[w*.35+J(),-h*.95],[w*.9+J(),-h*.35],[w,0]];
+  return trSh(w*1.1,3)+trPoly(P,trMix(b,-.28))+trPoly([P[0],P[1],P[2],[w*.1,-h*.6],[-w*.1,-h*.1]],trMix(b,.12))+trPoly([P[1],P[2],[-w*.1,-h*.85]],trMix(b,.45),' opacity=".55"')+`<path d="M${trF(w*.1)} ${trF(-h*.6)}l${trF(w*.2)} ${trF(h*.5)}" stroke="${trMix(b,-.5)}" stroke-width=".8" opacity=".6"/>`; };
+TRG.rocks=(r,c)=>{ let s=''; [[-12,2,.9],[8,0,1.1],[-1,-5,.7]].forEach(([x,y,k])=>{ s+=`<g transform="translate(${x} ${y}) scale(${k})">${TRG.rock(r,c)}</g>`; }); return s; };
+TRG.bush=(r,c)=>{ const g=c.leaf||'#3f8a3a'; return trSh(13,3.5)+`<circle cx="-7" cy="-6" r="7" fill="${trMix(g,-.3)}"/><circle cx="7" cy="-6" r="7.5" fill="${trMix(g,-.35)}"/><circle cx="0" cy="-10" r="8.5" fill="${trMix(g,-.1)}"/><circle cx="-3" cy="-12" r="5" fill="${trMix(g,.2)}"/><circle cx="3" cy="-8" r="1.2" fill="#e63946"/><circle cx="-6" cy="-7" r="1.2" fill="#e63946"/>`; };
+TRG.grass=(r,c)=>{ let s=''; for(let i=0;i<6;i++){ const x=(i-2.5)*2.4+(r()-.5)*2, h=4+r()*5; s+=`<path d="M${trF(x)} 0q${trF((r()-.5)*3)} ${-h/2} ${trF((r()-.5)*4)} ${-h}" stroke="${trMix(c.leaf||'#4a8a3a',(r()-.3)*.4)}" stroke-width="1.1" fill="none"/>`; } return s; };
+TRG.mush=(r,c)=>{ let s=trSh(10,2.5); [[-5,0,.8],[5,1,1],[0,-4,.6]].forEach(([x,y,k])=>{ s+=`<g transform="translate(${x} ${y}) scale(${k})"><rect x="-1.6" y="-5" width="3.2" height="6" fill="#f3e9d2"/><path d="M-6.5-4.5a6.5 5.5 0 0 1 13 0z" fill="#d63a32"/><path d="M-6.5-4.5a6.5 5.5 0 0 1 6.5-5.5v5.5z" fill="#ec5a50" opacity=".7"/><circle cx="-2" cy="-7" r="1" fill="#fff"/><circle cx="2.5" cy="-6" r=".9" fill="#fff"/></g>`; }); return s; };
+TRG.log=(r,c)=>`${trSh(20,4)}<rect x="-18" y="-10" width="30" height="11" rx="3" fill="#7a5230"/><rect x="-18" y="-10" width="30" height="4" rx="2" fill="#a67b4c"/><path d="M-14-6h22M-16-3h20" stroke="#4a2f17" stroke-width=".7" opacity=".6"/><ellipse cx="12" cy="-4.5" rx="4" ry="5.5" fill="#c99a63"/><ellipse cx="12" cy="-4.5" rx="2.4" ry="3.4" fill="none" stroke="#7a5230" stroke-width=".8"/><ellipse cx="12" cy="-4.5" rx="1" ry="1.5" fill="#7a5230"/>`;
+TRG.logs=(r,c)=>`<g transform="translate(-4 2)">${TRG.log(r,c)}</g><g transform="translate(6 -6) scale(.9)">${TRG.log(r,c)}</g><g transform="translate(-10 -9) scale(.8)">${TRG.log(r,c)}</g>`;
+TRG.hut=(r,c)=>{ const w=c.wall||'#a9794a', ro=c.roof||'#8a4b2a'; return trSh(26,5)+`<rect x="-16" y="-20" width="32" height="22" fill="${w}"/><rect x="2" y="-20" width="14" height="22" fill="${trMix(w,-.22)}"/><path d="M-16-15h32M-16-9h32M-16-3h32" stroke="${trMix(w,-.4)}" stroke-width=".9" opacity=".7"/><path d="M-4 2v-13a4 4 0 0 1 8 0v13z" fill="#3e2813"/><rect x="7" y="-15" width="6" height="6" fill="#ffd966"/><rect x="7" y="-15" width="6" height="6" fill="none" stroke="#3e2813" stroke-width="1"/>`+trPoly([[-22,-18],[0,-40],[0,-17]],trMix(ro,.15))+trPoly([[22,-18],[0,-40],[0,-17]],trMix(ro,-.2))+`<path d="M-17-24l17-14M-12-21l12-10" stroke="${trMix(ro,.4)}" stroke-width=".9" opacity=".5"/><rect x="9" y="-44" width="5" height="12" fill="#6b625a"/><circle cx="12" cy="-49" r="3.5" fill="#fff" opacity=".6"/><circle cx="15" cy="-55" r="4.5" fill="#fff" opacity=".4"/>`; };
+TRG.cave=(r,c)=>{ const b=c.rock||'#7d756c'; return trSh(30,6)+trPoly([[-28,2],[-24,-14],[-12,-30],[4,-36],[18,-28],[28,-10],[30,2]],trMix(b,-.3))+trPoly([[-28,2],[-24,-14],[-12,-30],[4,-36],[0,-18],[-10,-4]],trMix(b,.1))+trPoly([[-12,-30],[4,-36],[-4,-24]],trMix(b,.4),' opacity=".6"')+`<path d="M-11 2v-12a11 11 0 0 1 22 0v12z" fill="#0d0a08"/><path d="M-11 2v-12a11 11 0 0 1 22 0" fill="none" stroke="${trMix(b,-.5)}" stroke-width="2.5"/><path d="M-6 2v-8a6 6 0 0 1 12 0v8" fill="#1d1612"/>`+`<g transform="translate(-24 3) scale(.6)">${TRG.rock(r,c)}</g><g transform="translate(24 3) scale(.7)">${TRG.rock(r,c)}</g>`; };
+TRG.pond=(r,c)=>{ const w=c.water||'#4aa3c7'; return `<ellipse cx="0" cy="-2" rx="30" ry="12" fill="${trMix(w,-.55)}" opacity=".5"/><ellipse cx="0" cy="-3" rx="27" ry="10" fill="${trMix(w,-.3)}"/><ellipse cx="-1" cy="-4" rx="24" ry="8" fill="${w}"/><ellipse cx="-5" cy="-6" rx="14" ry="3.5" fill="${trMix(w,.35)}" opacity=".6"/><path d="M-12-3q4-2 8 0M6-1q4-2 8 0" stroke="#fff" stroke-width="1" fill="none" opacity=".7"/>`+[[-24,-1],[22,-4],[-20,-7]].map(([x,y])=>`<path d="M${x} ${y}v-10M${x+2} ${y}l2-8M${x-2} ${y}l-2-8" stroke="#5a7a2a" stroke-width="1.4" fill="none"/><ellipse cx="${x}" cy="${y-11}" rx="1.4" ry="3.2" fill="#6b4a2a"/>`).join(''); };
+TRG.hill=(r,c)=>{ const g=c.pad||'#8aa65a'; return trSh(32,5)+`<path d="M-32 2Q-20-26 0-28Q20-26 32 2z" fill="${trMix(g,-.25)}"/><path d="M-32 2Q-20-26 0-28Q-6-12-8 2z" fill="${trMix(g,.15)}"/><path d="M-20-10Q-8-20 4-22" stroke="${trMix(g,.45)}" stroke-width="2" fill="none" opacity=".6"/><g transform="translate(10 -16) scale(.38)">${TRG.pine(r,c)}</g><g transform="translate(-6 -18) scale(.32)">${TRG.pine(r,c)}</g>`; };
+TRG.tent=(r,c)=>{ const k=c.tent||'#c0392b'; return trSh(24,4)+trPoly([[-22,2],[0,-34],[0,2]],trMix(k,.15))+trPoly([[22,2],[0,-34],[0,2]],trMix(k,-.2))+`<path d="M-4 2L0-14L4 2z" fill="#2a1a0e"/><path d="M0-34v-10" stroke="#5a3b1f" stroke-width="1.5"/><path d="M0-44l10 3-10 3z" fill="#f2c14e"/><path d="M-22 2l-6 1M22 2l6 1" stroke="#5a3b1f" stroke-width="1"/>`; };
+TRG.camp=(r,c)=>`<g transform="translate(-6 0) scale(.9)">${TRG.tent(r,c)}</g>`+`<g transform="translate(20 3)"><path d="M-6 0l12-4M-6-4l12 4" stroke="#5a3b1f" stroke-width="2.5" stroke-linecap="round"/><path d="M0-3q-5-7 0-14q1 5 4 6q2-3 1-6q6 7-1 14z" fill="#f08a1d"/><path d="M0-3q-2-4 0-8q3 3 1 8z" fill="#ffd966"/></g>`;
+TRG.deer=(r,c)=>`${trSh(14,3)}<path d="M-9-12q-2 6 0 12M-4-12v12M6-12v12M10-12q1 6 0 12" stroke="#7a4a22" stroke-width="2.2" stroke-linecap="round"/><ellipse cx="0" cy="-15" rx="12" ry="6.5" fill="#a9703a"/><ellipse cx="-2" cy="-17" rx="9" ry="3" fill="#c98f55" opacity=".7"/><path d="M9-18l5-9" stroke="#a9703a" stroke-width="3.5" stroke-linecap="round"/><ellipse cx="16" cy="-29" rx="4.2" ry="3" fill="#a9703a"/><path d="M15-32l-2-6l3 2l0-5M17-32l3-5l-1 4l3-3" stroke="#5a3b1f" stroke-width="1" fill="none"/><circle cx="17.5" cy="-29.5" r=".7" fill="#000"/><circle cx="-5" cy="-16" r="1" fill="#fff" opacity=".8"/><circle cx="0" cy="-14" r="1" fill="#fff" opacity=".8"/>`;
+TRG.rabbit=(r,c)=>`${trSh(8,2)}<ellipse cx="0" cy="-5" rx="7" ry="5" fill="#c9bfae"/><circle cx="6" cy="-9" r="3.6" fill="#d8cfbe"/><path d="M5-12q-1-6 1-8q2 2 0 8M8-12q1-6 3-7q0 3-2 7" fill="#d8cfbe" stroke="#9a8f7c" stroke-width=".5"/><circle cx="-7" cy="-5" r="2" fill="#fff"/><circle cx="7.5" cy="-9.5" r=".6" fill="#000"/>`;
+TRG.camel=(r,c)=>`${trSh(20,3.5)}<path d="M-12-14v13M-6-14v13M6-14v13M12-14v13" stroke="#8a5a2b" stroke-width="2.6" stroke-linecap="round"/><path d="M-16-18q0-8 6-8q3-6 7 0q4-6 8 0q8 0 10 8q0 5-8 5h-18q-5 0-5-5z" fill="#c4914f"/><path d="M-14-20q4-4 10-3q3-4 6 0" stroke="#e0b57a" stroke-width="2" fill="none" opacity=".7"/><path d="M14-22q6-4 8-12" stroke="#c4914f" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="25" cy="-34" rx="5" ry="3" fill="#c4914f"/><circle cx="26" cy="-35" r=".8" fill="#000"/><path d="M-17-20q-3 3-2 8" stroke="#8a5a2b" stroke-width="1.5" fill="none"/>`;
+TRG.fish=(r,c)=>`<path d="M-8 0q5-6 12 0q-7 6-12 0zM-8 0l-5-4v8z" fill="#f08a3c" stroke="#a8541a" stroke-width=".8"/><circle cx="2" cy="-1" r=".9" fill="#000"/><path d="M-12 6q4-2 8 0M2 7q4-2 8 0" stroke="#fff" stroke-width="1" fill="none" opacity=".7"/>`;
+TRG.bird=(r,c)=>`<path d="M-8 0q4-5 8 0q4-5 8 0" stroke="#2a2a2a" stroke-width="1.6" fill="none" stroke-linecap="round"/>`;
+TRG.light=(r,c)=>`${trSh(18,4)}<path d="M-9 2L-6-40h12L9 2z" fill="#f4efe6"/><path d="M0 2V-40h6L9 2z" fill="#cdc3b2"/><path d="M-8.4-8h16.8l-.4 7h-16zM-7.4-24h14.8l-.4 7h-14z" fill="#c0392b" opacity=".92"/><rect x="-8" y="-46" width="16" height="7" fill="#33414f"/><rect x="-5" y="-45" width="10" height="5" fill="#ffe27a"/><path d="M-10-46h20l-10-9z" fill="#c0392b"/><path d="M-3-43l-26-8v8zM3-43l26-8v8z" fill="#ffe27a" opacity=".28"/><rect x="-3" y="-12" width="6" height="10" rx="3" fill="#3e2813"/>`;
+TRG.boat=(r,c)=>`<ellipse cx="0" cy="2" rx="30" ry="9" fill="#1f8fb4"/><ellipse cx="-2" cy="1" rx="26" ry="6.5" fill="#5cc8e2"/><ellipse cx="0" cy="3" rx="22" ry="5" fill="#000" opacity=".18"/><path d="M-20-4h40q-4 10-12 10h-16q-8 0-12-10z" fill="#7a4b22"/><path d="M-20-4h40l-1 3h-38z" fill="#c99a5c"/><path d="M0-4v-34" stroke="#4d3015" stroke-width="2"/><path d="M2-36q16 14 14 30h-14z" fill="#f6f0e0"/><path d="M-2-32q-12 12-12 26h12z" fill="#e5dcc4"/><path d="M0-38l8 3-8 3z" fill="#d83a3a"/><path d="M-26 5q4-3 8 0M16 6q4-3 8 0" stroke="#fff" stroke-width="1.2" fill="none" opacity=".8"/>`;
+TRG.dune=(r,c)=>`${trSh(34,4,0)}<path d="M-34 2Q-18-22 4-24Q22-22 34 2z" fill="#cc9a52"/><path d="M-34 2Q-18-22 4-24Q-4-8 2 2z" fill="#f2d594"/><path d="M-20-6Q-6-16 6-14" stroke="#fff3cf" stroke-width="1.5" fill="none" opacity=".6"/>`;
+TRG.well=(r,c)=>`${trSh(18,4)}<ellipse cx="0" cy="-8" rx="15" ry="6" fill="#6b6256"/><path d="M-15-8v10q15 8 30 0v-10z" fill="#b8a98f"/><path d="M0-6v8q15 6 15-2v-6z" fill="#948466"/><ellipse cx="0" cy="-8" rx="11" ry="4" fill="#1a2630"/><path d="M-13-8v-24M13-8v-24" stroke="#6b4a2a" stroke-width="3"/><path d="M-16-30l16-9l16 9z" fill="#a8582a"/><path d="M0-30v14" stroke="#e8dcc0" stroke-width="1"/><rect x="-2" y="-17" width="4" height="4" fill="#8a5a2b"/>`;
+TRG.ruins=(r,c)=>`${trSh(32,4)}<rect x="-26" y="-26" width="9" height="28" fill="#d6c093"/><rect x="-21" y="-26" width="4" height="28" fill="#b4996a"/><rect x="-29" y="-30" width="15" height="5" fill="#e6d3a8"/><rect x="-5" y="-18" width="9" height="20" fill="#d6c093"/><path d="M-5-18l3-4l3 3l3-3l1 4z" fill="#d6c093"/><rect x="17" y="-30" width="9" height="32" fill="#d6c093"/><rect x="22" y="-30" width="4" height="32" fill="#b4996a"/><path d="M-17-26q22-22 34-4" stroke="#d6c093" stroke-width="6" fill="none"/><path d="M-17-26q22-22 34-4" stroke="#b4996a" stroke-width="2" fill="none" transform="translate(0 3)"/><path d="M-30 2h6M12 2h6M-2 2h4" stroke="#8a7650" stroke-width="3" stroke-linecap="round"/>`;
+TRG.oasis=(r,c)=>`<ellipse cx="0" cy="-3" rx="27" ry="10" fill="#7a8a3a" opacity=".6"/><ellipse cx="0" cy="-3" rx="23" ry="8" fill="#2f8fa8"/><ellipse cx="-4" cy="-5" rx="14" ry="3" fill="#8fd6e6" opacity=".6"/><g transform="translate(-22 -2) scale(.8)">${TRG.palm(r,c)}</g><g transform="translate(20 -2) scale(.9)">${TRG.palm(r,c)}</g><g transform="translate(2 -9) scale(.55)">${TRG.palm(r,c)}</g>`;
+TRG.peak=(r,c)=>`${trSh(34,5,0)}`+trPoly([[-34,2],[-8,-44],[6,-30],[14,-40],[36,2]],'#6f7d92')+trPoly([[-34,2],[-8,-44],[-2,-20],[-12,2]],'#93a2b8')+trPoly([[-8,-44],[-16,-28],[-10,-31],[-5,-24],[0,-32],[6,-30]],'#fff')+trPoly([[14,-40],[8,-28],[12,-30],[17,-26],[20,-32]],'#f1f6fb')+`<path d="M-8-44L6-30" stroke="#51607a" stroke-width="1" opacity=".5"/>`;
+TRG.snowhut=(r,c)=>`${trSh(26,5)}<path d="M-24 2a24 24 0 0 1 48 0z" fill="#dfeaf5"/><path d="M-24 2a24 24 0 0 1 24-24v24z" fill="#fff"/><path d="M0 2a24 24 0 0 0 24 0h-24z" fill="#b9cde0"/><path d="M-18-8h30M-12-16h20M-22-1h44" stroke="#9db5cf" stroke-width="1" fill="none" opacity=".7"/><path d="M-7 2v-8a7 7 0 0 1 14 0v8z" fill="#1d2a3a"/><path d="M-7 2v-8a7 7 0 0 1 14 0" fill="none" stroke="#9db5cf" stroke-width="2"/>`;
+TRG.ropebridge=(r,c)=>`<path d="M-34-20q0 14 0 26M34-20v26" stroke="#5a3b1f" stroke-width="5" stroke-linecap="round"/><path d="M-34-12Q0 4 34-12" stroke="#6b4a2a" stroke-width="1.5" fill="none"/><path d="M-34-22Q0-6 34-22" stroke="#6b4a2a" stroke-width="1.5" fill="none"/>`+Array.from({length:9},(_,i)=>{ const x=-30+i*7.5, y=-12+ (1-Math.pow((x/34),2))*10+0; return `<rect x="${trF(x-3)}" y="${trF(y-2)}" width="6" height="3.6" rx=".8" fill="#a67b4c" stroke="#4d3015" stroke-width=".6"/><path d="M${trF(x)} ${trF(y-2)}v-9" stroke="#6b4a2a" stroke-width=".8"/>`; }).join('')+`<path d="M-30 6l-10 12M30 6l10 12" stroke="#9fb2c8" stroke-width="2" opacity=".6"/>`;
+TRG.crystal=(r,c)=>{ let s=`<ellipse cx="0" cy="-8" rx="26" ry="14" fill="#7fe0ff" opacity=".18"/>`+trSh(22,4); [[-12,0,.8,'#7fd0ff'],[10,1,.9,'#c58bff'],[0,-2,1.15,'#6ff0d0'],[-4,2,.6,'#ff9fd0']].forEach(([x,y,k,col])=>{ const h=26*k,w=7*k; s+=`<g transform="translate(${x} ${y})">`+trPoly([[-w,0],[-w*.7,-h*.75],[0,-h],[0,0]],trMix(col,.3))+trPoly([[w,0],[w*.7,-h*.75],[0,-h],[0,0]],trMix(col,-.15))+`<path d="M${-w*.4} ${-h*.2}L${-w*.3} ${-h*.7}" stroke="#fff" stroke-width="1.2" opacity=".8"/></g>`; }); return s; };
+TRG.cart=(r,c)=>`${trSh(24,4)}<path d="M-24 5h48" stroke="#5a5048" stroke-width="2"/><path d="M-20 5v-3M20 5v-3M-8 5v-3M8 5v-3" stroke="#3a322c" stroke-width="3"/><path d="M-18-16h36l-4 16h-28z" fill="#8a6a4a"/><path d="M-18-16h36l-1 4h-34z" fill="#b08a62"/><path d="M-14-16q4-8 10-6q4-6 10-2q6-2 10 4q3 2 2 4z" fill="#6a6560"/><path d="M-14-16q4-8 10-6l-2 6z" fill="#8d8780"/><circle cx="-12" cy="4" r="5" fill="#2a2420"/><circle cx="12" cy="4" r="5" fill="#2a2420"/><circle cx="-12" cy="4" r="1.8" fill="#8a7a6a"/><circle cx="12" cy="4" r="1.8" fill="#8a7a6a"/>`;
+TRG.tunnel=(r,c)=>`${trSh(28,5)}<path d="M-28 2v-26q0-10 10-10h36q10 0 10 10v26z" fill="#5a4a3e"/><path d="M-28 2v-26q0-10 10-10h12L-12 2z" fill="#75645a"/><path d="M-17 2v-18q0-9 17-9t17 9v18z" fill="#0b0806"/><path d="M-20 2v-20q0-12 20-12t20 12v20" fill="none" stroke="#8a6a3a" stroke-width="3.5"/><path d="M-20-8h40" stroke="#8a6a3a" stroke-width="3"/><path d="M-30 4h60" stroke="#8a7a68" stroke-width="1.5"/>${Array.from({length:6},(_,i)=>`<path d="M${-26+i*10} 5v3" stroke="#4a3a2a" stroke-width="3"/>`).join('')}<circle cx="0" cy="-26" r="3" fill="#ffd966"/><circle cx="0" cy="-26" r="7" fill="#ffd966" opacity=".25"/>`;
+TRG.lake=(r,c)=>`<ellipse cx="0" cy="-2" rx="32" ry="13" fill="#1d3f55"/><ellipse cx="0" cy="-3" rx="28" ry="10" fill="#2f7fa0"/><ellipse cx="-6" cy="-5" rx="16" ry="3.5" fill="#8fdcff" opacity=".55"/><path d="M-14-1q4-2 8 0M8 1q4-2 8 0" stroke="#d6f4ff" stroke-width="1" fill="none" opacity=".7"/>`+`<g transform="translate(24 -2) scale(.7)">${TRG.crystal(r,c)}</g>`;
+TRG.stalag=(r,c)=>{ let s=trSh(22,4); [[-12,22,5],[2,30,6.5],[14,18,4.5]].forEach(([x,h,w])=>{ s+=trPoly([[x-w,2],[x,-h],[x+w,2]],'#7d6f64')+trPoly([[x-w,2],[x,-h],[x-1,2]],'#a39484'); }); return s; };
+TRG.lantern=(r,c)=>`<path d="M0 2v-24" stroke="#4a3a2a" stroke-width="2.5"/><rect x="-5" y="-34" width="10" height="12" rx="2" fill="#ffd966" stroke="#3a2a1a" stroke-width="1.6"/><circle cx="0" cy="-28" r="16" fill="#ffd966" opacity=".22"/>`;
+TRG.house=(r,c)=>{ const w=c.wall||'#e6d3ab', ro=r()<.5?(c.roof||'#b5461f'):'#a8582a'; return trSh(26,5)+`<rect x="-18" y="-24" width="36" height="26" fill="${w}"/><rect x="4" y="-24" width="14" height="26" fill="${trMix(w,-.2)}"/><rect x="-14" y="-18" width="7" height="8" fill="#3b5a7a"/><rect x="-14" y="-18" width="7" height="8" fill="none" stroke="#5a4328" stroke-width="1.2"/><path d="M-1 2v-12a5 5 0 0 1 10 0v12z" fill="#6b4a2a"/>`+trPoly([[-22,-22],[-14,-36],[14,-36],[22,-22]],trMix(ro,.12))+trPoly([[22,-22],[14,-36],[-14,-36],[-14,-30],[10,-30],[18,-22]],trMix(ro,-.18))+`<path d="M-16-26l5-8M-8-26l4-8M0-26l4-8" stroke="${trMix(ro,.4)}" stroke-width=".8" opacity=".5"/>`; };
+TRG.tower=(r,c)=>`${trSh(18,4)}<path d="M-11 2L-9-44h18L11 2z" fill="#e0cba0"/><path d="M0 2V-44h9L11 2z" fill="#b9a073"/><path d="M-12-44h24v-4h-5v-4h-4v4h-6v-4h-4v4h-5z" fill="#d1ba8c"/><path d="M-11-44l11-22l11 22z" fill="#b5461f"/><path d="M0-66l11 22h-11z" fill="#8a2f12"/><path d="M0-66v-8" stroke="#4a3a2a" stroke-width="1.5"/><path d="M0-74l8 2-8 3z" fill="#f2c14e"/><path d="M-2-30v-9a2 2 0 0 1 4 0v9z" fill="#2a1a0e"/><path d="M-3 2v-12a3 3 0 0 1 6 0v12z" fill="#4a3320"/>`;
+TRG.market=(r,c)=>{ let s=trSh(30,5)+`<rect x="-26" y="-18" width="52" height="20" fill="#d9bf90"/><rect x="-26" y="-18" width="52" height="4" fill="#b9a073"/>`; const cols=['#d83a3a','#f6efe0']; for(let i=0;i<7;i++){ const x=-28+i*8; s+=`<path d="M${x} -32h8l2 12h-12z" fill="${cols[i%2]}"/>`; } s+=`<path d="M-28-32h56" stroke="#7a4b2a" stroke-width="2"/><path d="M-26-20v22M26-20v22" stroke="#7a4b2a" stroke-width="3"/>`; [[-14,'#e8a23a'],[-4,'#6aa84f'],[6,'#d9534f'],[16,'#f2c14e']].forEach(([x,f])=>{ s+=`<circle cx="${x}" cy="-6" r="4" fill="${f}"/><circle cx="${x-1}" cy="-7" r="1.3" fill="#fff" opacity=".5"/>`; }); return s; };
+TRG.arch=(r,c)=>`${trSh(30,4)}<path d="M-28 2v-40h14v12q0-12 14-12t14 12v-12h14v40h-14v-28q0-8-14-8t-14 8v28z" fill="#d9c59a" stroke="#8a7650" stroke-width="1.2"/><path d="M14 2v-40h14v40z" fill="#b39a6c"/><path d="M-14-26q0-12 14-12t14 12" fill="none" stroke="#8a7650" stroke-width="2"/><path d="M-14 2v-24q0-8 14-8t14 8v24" fill="#241a10"/><path d="M-28-40h56v-4h-56z" fill="#c4ac7e"/>`;
+TRG.fountain=(r,c)=>`<ellipse cx="0" cy="-2" rx="26" ry="10" fill="#8a7a62"/><ellipse cx="0" cy="-5" rx="23" ry="8.5" fill="#c9b894"/><ellipse cx="0" cy="-5" rx="19" ry="6.5" fill="#4aa3c7"/><ellipse cx="-3" cy="-6" rx="9" ry="2.2" fill="#a6e0f0" opacity=".7"/><rect x="-3" y="-20" width="6" height="16" fill="#b39a6c"/><ellipse cx="0" cy="-20" rx="9" ry="3" fill="#c9b894"/><path d="M0-24q-9-10-12 4M0-24q9-10 12 4M0-24v-9" stroke="#bfe9f7" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="0" cy="-34" r="1.8" fill="#e8f9ff"/>`;
+TRG.plaza=(r,c)=>`<ellipse cx="0" cy="-2" rx="32" ry="12" fill="#a8946f"/><ellipse cx="0" cy="-3" rx="29" ry="10.5" fill="#cdb98f"/>`+Array.from({length:12},(_,i)=>`<path d="M${trF(-24+(i%6)*9+(Math.floor(i/6)*4))} ${-3+Math.floor(i/6)*6-3}h7" stroke="#a8946f" stroke-width="1.2"/>`).join('')+`<g transform="translate(-14 -4) scale(.7)">${TRG.tree(r,{leaf:'#5a9a3a'})}</g><g transform="translate(16 -4) scale(.7)">${TRG.tree(r,{leaf:'#4a8a3a'})}</g>`;
+TRG.cove=(r,c)=>`<ellipse cx="0" cy="-2" rx="32" ry="13" fill="#e9d49a"/><ellipse cx="2" cy="-3" rx="24" ry="9" fill="#38b4d2"/><ellipse cx="-2" cy="-4" rx="20" ry="6" fill="#74d4ea" opacity=".7"/><path d="M-18-3q4-2 8 0M6 0q4-2 8 0" stroke="#fff" stroke-width="1" fill="none" opacity=".8"/><g transform="translate(-26 0) scale(.5)">${TRG.rock(r,c)}</g><g transform="translate(-4 -9) scale(.8)">${TRG.fish(r,c)}</g>`;
+TRG.palms=(r,c)=>`<g transform="translate(-14 2) scale(.85)">${TRG.palm(r,c)}</g><g transform="translate(14 2) scale(.95)">${TRG.palm(r,c)}</g><g transform="translate(2 -4) scale(.7)">${TRG.palm(r,c)}</g>`;
+TRG.bigtree=(r,c)=>`<g transform="scale(1.35)">${TRG.tree(r,c)}</g>`;
+TRG.pines=(r,c)=>`<g transform="translate(-14 2) scale(.7)">${TRG.pine(r,c)}</g><g transform="translate(14 3) scale(.8)">${TRG.pine(r,c)}</g><g transform="translate(0 -3) scale(.95)">${TRG.pine(r,c)}</g>`;
+TRG.ice=(r,c)=>`${trSh(22,4)}`+[[-12,0,.8],[8,2,1],[0,-3,1.2]].map(([x,y,k])=>{ const h=22*k,w=6*k; return `<g transform="translate(${x} ${y})">`+trPoly([[-w,0],[-w*.6,-h*.8],[0,-h],[0,0]],'#d9f0ff')+trPoly([[w,0],[w*.6,-h*.8],[0,-h],[0,0]],'#8fc4e6')+`<path d="M${-w*.3} ${-h*.2}v${-h*.5}" stroke="#fff" stroke-width="1.2" opacity=".9"/></g>`; }).join('');
+/* ----- عقبات: رسوم كبيرة متميزة (الألوان من القالب) ----- */
+function trObGlyph(type,c){ const w=c.water, wd=c.wood, st=c.rock; let s='';
+  const planks=(y0,n,gap)=>Array.from({length:n},(_,i)=>{ if(gap&&(i===2||i===3)) return ''; const x=-30+i*(60/n); return `<rect x="${trF(x)}" y="${y0}" width="${trF(60/n-1.6)}" height="14" rx="1" fill="${i%2?trMix(wd,.1):wd}" stroke="${trMix(wd,-.5)}" stroke-width=".8" transform="rotate(${gap&&i>3?-8:gap&&i<2?4:0} ${trF(x+3)} ${y0+7})"/>`; }).join('');
+  const river=(y)=>`<path d="M-38 ${y}q10-6 20 0t20 0t20 0t18 -2v18q-10 4-20 0t-20 0t-20 0t-18 2z" fill="${trMix(w,-.3)}"/><path d="M-38 ${y+2}q10-6 20 0t20 0t20 0t18-2v12q-10 4-20 0t-20 0t-20 0t-18 2z" fill="${w}"/><path d="M-30 ${y+4}q6-2 12 0M6 ${y+8}q6-2 12 0" stroke="#fff" stroke-width="1.2" fill="none" opacity=".7"/>`;
+  if(type==='bridge') s=trSh(38,6,0)+river(-12)+planks(-14,8,true)+`<path d="M-30-17v-12M30-17v-12M-30-26h60" stroke="${trMix(wd,-.35)}" stroke-width="2.6"/>`;
+  else if(type==='double') s=trSh(40,6,0)+river(-26)+planks(-28,8,false)+river(-4)+planks(-6,8,true)+`<path d="M-30-31v-10M30-31v-10M-30-39h60" stroke="${trMix(wd,-.35)}" stroke-width="2.6"/>`;
+  else if(type==='wall'){ s=trSh(38,6,0)+`<path d="M-36 2V-38h72V2z" fill="${trMix(st,-.2)}"/><path d="M-36 2V-38h40L-4 2z" fill="${trMix(st,.15)}"/>`; for(let i=0;i<7;i++) s+=`<rect x="${-36+i*10.4}" y="-46" width="7.4" height="9" fill="${i%2?trMix(st,-.1):trMix(st,.1)}"/>`; for(let j=0;j<5;j++) for(let i=0;i<6;i++) s+=`<rect x="${trF(-34+i*12+(j%2)*6)}" y="${-34+j*7.4}" width="10" height="6" rx=".8" fill="none" stroke="${trMix(st,-.5)}" stroke-width=".7" opacity=".7"/>`; }
+  else if(type==='easy'){ s=trSh(30,5)+Array.from({length:6},(_,i)=>`<path d="M${-27+i*11} 2v-17" stroke="${wd}" stroke-width="3"/><path d="M${-27+i*11-1.5} -15l1.5-4l1.5 4z" fill="${trMix(wd,.3)}"/>`).join('')+`<path d="M-30-10h60M-30-4h60" stroke="${trMix(wd,.2)}" stroke-width="2.2"/><g transform="translate(-18 2) scale(.55)">${TRG.bush(()=>.5,{leaf:'#4a9a3a'})}</g><g transform="translate(20 2) scale(.6)">${TRG.bush(()=>.4,{leaf:'#5aa84a'})}</g>`; }
+  else s=trSh(34,6,0)+`<path d="M-34 2V-30q0-8 8-8h52q8 0 8 8V2z" fill="${trMix(st,-.15)}"/><path d="M-34 2V-30q0-8 8-8h22L-12 2z" fill="${trMix(st,.15)}"/><path d="M-14 2v-24q0-12 14-12t14 12v24z" fill="#5a3a1c" stroke="#2a1a0c" stroke-width="2"/><path d="M0-34v36M-14-14h28M-14-4h28" stroke="#3a240f" stroke-width="1.4" opacity=".8"/><circle cx="-8" cy="-26" r=".8" fill="#caa05a"/><circle cx="8" cy="-26" r=".8" fill="#caa05a"/><rect x="-7" y="-14" width="14" height="11" rx="2" fill="#f2c14e" stroke="#7a5200" stroke-width="1.3"/><path d="M-4-14v-4a4 4 0 0 1 8 0v4" fill="none" stroke="#7a5200" stroke-width="2"/><circle cx="0" cy="-9" r="1.6" fill="#7a5200"/>`;
+  return s; }
+function trPennant(type,x,y){ const lv=TR_LVLCOL[TR_OB[type].lvl], sym={
+  bridge:'<path d="M-6 3q6-9 12 0" fill="none" stroke="#333" stroke-width="2.2" stroke-linecap="round"/><path d="M-7 3h14" stroke="#333" stroke-width="2"/>',
+  double:'<path d="M-6 -1q6-8 12 0M-6 5q6-8 12 0" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>',
+  wall:'<path d="M-6-4h12v8h-12zM-6 0h12M-2-4v4M2 0v4" fill="none" stroke="#333" stroke-width="1.7" stroke-linejoin="round"/>',
+  easy:'<path d="M-5 0l3.4 3.6L5-3.6" fill="none" stroke="#333" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>',
+  door:'<rect x="-5" y="-1" width="10" height="7.5" rx="1.4" fill="#333"/><path d="M-3-1v-2.6a3 3 0 0 1 6 0v2.6" fill="none" stroke="#333" stroke-width="2"/>'}[type];
+  return `<g class="trpn" transform="translate(${x} ${y})"><circle r="14" fill="#000" opacity=".25" cy="2"/><circle r="13.4" fill="${lv}" stroke="#fff" stroke-width="2"/><circle r="9.6" fill="#fff"/><g transform="translate(0 .4)">${sym}</g></g>`; }
+/* مواقع مرسومة لكل قالب: [مفتاح الرسم، الاسم، مقياس] */
+const TR_GLYPHS={
+ forest:[['hut','كوخ حطّاب'],['cave','كهف صغير'],['pond','غدير'],['hill','تلّة'],['logs','جذوع'],['mush','فطر'],['bigtree','شجرة كبيرة'],['camp','مخيّم'],['rocks','صخور'],['deer','مرج الغزلان']],
+ pirates:[['palms','نخيل'],['light','برج مراقبة'],['tent','خيمة'],['boat','قارب'],['rocks','صخور الساحل'],['cove','خليج'],['camp','مخيّم الشاطئ'],['palm','نخلة']],
+ desert:[['oasis','واحة'],['dune','كثيب'],['well','بئر'],['tent','خيمة'],['ruins','أطلال'],['camel','جمّال'],['palms','نخيل']],
+ snow:[['peak','قمة'],['cave','كهف'],['snowhut','كوخ ثلجي'],['ropebridge','جسر حبال'],['pines','صنوبر'],['ice','جليد'],['rocks','صخور']],
+ cave:[['crystal','بلّورات'],['cart','عربة مناجم'],['tunnel','فتحة نفق'],['lake','بحيرة جوفية'],['stalag','صواعد'],['lantern','فانوس'],['rocks','حجارة']],
+ city:[['house','بيت'],['tower','برج'],['market','سوق'],['arch','قوس'],['fountain','نافورة'],['plaza','ساحة'],['house','دار']]};
+/* ----- الخلفية الثابتة: سماء وأفق وأرض بنسيج وإضاءة وزينة وطرق وإطار ورق قديم ----- */
+function trEdgePts(map,e,n){ const a=map.nodes[e.a], b=map.nodes[e.b], g=trEdgeGeom(map,e), out=[]; for(let i=0;i<=n;i++){ const t=i/n; out.push([(1-t)*(1-t)*a.x+2*t*(1-t)*g.cx+t*t*b.x,(1-t)*(1-t)*a.y+2*t*(1-t)*g.cy+t*t*b.y]); } return out; }
+/* صعوبة الطريق = أعلى مستوى بين سؤال الدخول وسؤال العقبة في الموقع الذي يؤدي إليه */
+const TR_LVLCOL={e:'#2fa84f',m:'#e4b400',h:'#d8403a'};
+function trEdgeLvl(map,e){ const nf=trNodeInfo(map,e.b), rk={e:0,m:1,h:2,'':0}; if(nf.door) return 'h'; return rk[nf.obLvl]>rk[nf.lvl]?nf.obLvl:nf.lvl; }
+function trEdgeGeom(map,e){ const a=map.nodes[e.a], b=map.nodes[e.b], dx=b.x-a.x, dy=b.y-a.y, L=Math.hypot(dx,dy)||1, k=((((e.id*2654435761+map.seed)>>>0)%1000)/1000-.5)*.32*L;
+  return {cx:(a.x+b.x)/2-dy/L*k, cy:(a.y+b.y)/2+dx/L*k, d:`M${a.x} ${a.y}Q${trF((a.x+b.x)/2-dy/L*k)} ${trF((a.y+b.y)/2+dx/L*k)} ${b.x} ${b.y}`}; }
+function trNodeScale(map){ return {short:1.15,normal:1.08,long:1.12}[map.size]||1; }
+function trBgSVG(map){
+  const th=trTheme(map.theme), P=TR_PAL[th.id], W=map.W, H=map.H, r=trRng(map.seed*31+th.id.length*7+5), R=(a,b)=>a+r()*(b-a), id=th.id;
+  const nodes=map.nodes, roadPts=[]; map.edges.forEach(e=>{ roadPts.push(...trEdgePts(map,e,10)); });
+  const free=(x,y,m)=>{ if(x<34||x>W-34||y<30||y>H-30) return false; for(const n of nodes) if(Math.hypot(n.x-x,(n.y-y)*1.25)<(m||56)) return false; for(const p of roadPts) if(Math.hypot(p[0]-x,p[1]-y)<24) return false; return true; };
+  let d=`<defs><linearGradient id="gGround" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${P.g1}"/><stop offset="1" stop-color="${P.g2}"/></linearGradient><linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${P.sky1}"/><stop offset="1" stop-color="${P.sky2}"/></linearGradient>
+   <linearGradient id="gHaze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${P.hz}" stop-opacity="0"/><stop offset="1" stop-color="${P.hz}" stop-opacity=".85"/></linearGradient>
+   <radialGradient id="gVig" cx=".5" cy=".5" r=".75"><stop offset=".6" stop-color="#2a1608" stop-opacity="0"/><stop offset="1" stop-color="#2a1608" stop-opacity=".55"/></radialGradient>
+   <filter id="fBump" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".011 .02" numOctaves="4" seed="${map.seed%97}" result="n"/><feDiffuseLighting in="n" surfaceScale="2.6" diffuseConstant="1.05" lighting-color="#fff"><feDistantLight azimuth="225" elevation="52"/></feDiffuseLighting></filter>
+   <filter id="fGrain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="${map.seed%53}"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.3 -.45"/></filter>
+   <filter id="fRough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".07" numOctaves="2" seed="${map.seed%31}" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="2.6"/></filter>
+   <filter id="fPaper" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".035 .06" numOctaves="5" seed="${map.seed%19}" result="n"/><feDiffuseLighting in="n" surfaceScale="1.6" diffuseConstant="1.15" lighting-color="#f1deb0"><feDistantLight azimuth="235" elevation="60"/></feDiffuseLighting></filter>
+   <filter id="fBlur"><feGaussianBlur stdDeviation="3"/></filter><filter id="fBlur2"><feGaussianBlur stdDeviation="1.3"/></filter></defs>`;
+  const hy=104; /* خط الأفق */
+  /* الأرض */
+  if(id==='pirates'){ d+=`<rect width="${W}" height="${H}" fill="url(#gGround)"/><rect width="${W}" height="${H}" filter="url(#fBump)" opacity=".28" style="mix-blend-mode:overlay"/>`;
+    for(let i=0;i<40;i++){ const x=R(20,W-20), y=R(hy+8,H-20); d+=`<path d="M${trF(x)} ${trF(y)}q8-5 16 0t16 0" fill="none" stroke="#fff" stroke-width="1.6" opacity="${trF(R(.2,.5))}"/>`; }
+    const pts=[]; const cx=W/2, cy=(hy+H)/2+8, rx=W*.47, ry=(H-hy)*.46; for(let i=0;i<22;i++){ const a=i/22*Math.PI*2, k=1+Math.sin(a*3+map.seed)*.06+Math.sin(a*5+1)*.04+(r()-.5)*.05; pts.push([cx+Math.cos(a)*rx*k,cy+Math.sin(a)*ry*k]); }
+    const blob=(pp,k)=>{ const m=pp.map(p=>[cx+(p[0]-cx)*k,cy+(p[1]-cy)*k]); let s=`M${trF((m[m.length-1][0]+m[0][0])/2)} ${trF((m[m.length-1][1]+m[0][1])/2)}`; m.forEach((p,i)=>{ const q=m[(i+1)%m.length]; s+=`Q${trF(p[0])} ${trF(p[1])} ${trF((p[0]+q[0])/2)} ${trF((p[1]+q[1])/2)}`; }); return s+'z'; };
+    d+=`<path d="${blob(pts,1.1)}" fill="#7fd6e6" opacity=".5" filter="url(#fBlur)"/><path d="${blob(pts,1.04)}" fill="#cfeff0"/><path d="${blob(pts,1)}" fill="${P.land}"/><path d="${blob(pts,.9)}" fill="#e2c88a"/><path d="${blob(pts,.86)}" fill="${P.grass}"/><clipPath id="cpI"><path d="${blob(pts,.86)}"/></clipPath><rect width="${W}" height="${H}" clip-path="url(#cpI)" filter="url(#fBump)" opacity=".3" style="mix-blend-mode:overlay"/>`; }
+  else { d+=`<rect width="${W}" height="${H}" fill="url(#gGround)"/><rect width="${W}" height="${H}" filter="url(#fBump)" opacity="${id==='cave'?.45:.34}" style="mix-blend-mode:overlay"/>`;
+    for(let i=0;i<34;i++){ const x=R(0,W), y=R(hy+10,H), rx=R(30,90), ry=rx*R(.25,.45); d+=`<ellipse cx="${trF(x)}" cy="${trF(y)}" rx="${trF(rx)}" ry="${trF(ry)}" fill="${trMix(P.g1,r()<.5?.12:-.14)}" opacity=".35" filter="url(#fBlur)"/>`; } }
+  if(id==='desert'){ for(let i=0;i<9;i++){ const y=R(hy+40,H-20), x=R(-40,W-200), w=R(160,330); d+=`<path d="M${trF(x)} ${trF(y)}q${trF(w*.3)} ${-R(14,30)} ${trF(w*.6)} 0t${trF(w*.5)} ${-R(0,6)}" fill="none" stroke="#fff6d8" stroke-width="3" opacity=".35"/><path d="M${trF(x)} ${trF(y+3)}q${trF(w*.3)} ${-R(14,30)} ${trF(w*.6)} 0t${trF(w*.5)} ${-R(0,6)}" fill="none" stroke="#9a6a2a" stroke-width="2.5" opacity=".28"/>`; } }
+  if(id==='snow'){ for(let i=0;i<22;i++){ const x=R(0,W), y=R(hy+10,H), rx=R(30,80); d+=`<ellipse cx="${trF(x)}" cy="${trF(y)}" rx="${trF(rx)}" ry="${trF(rx*.22)}" fill="#a9c7e2" opacity=".35" filter="url(#fBlur)"/>`; } }
+  /* سماء وأفق (أعلى الإطار) */
+  let sky='';
+  if(id==='cave'){ sky+=`<rect width="${W}" height="${hy+20}" fill="#120d0a"/>`; for(let i=0;i<22;i++){ const x=R(0,W), w=R(14,46), h=R(26,92); sky+=trPoly([[x-w/2,-2],[x+R(-4,4),h],[x+w/2,-2]],trMix('#4a3b32',R(-.3,.1)))+trPoly([[x-w/2,-2],[x+R(-4,4),h],[x-w*.1,-2]],'#6b5a4c',' opacity=".6"'); } for(let i=0;i<14;i++){ sky+=`<circle cx="${trF(R(0,W))}" cy="${trF(R(4,70))}" r="${trF(R(.8,2))}" fill="#9ad7ff" opacity=".8"/>`; } }
+  else { sky+=`<rect width="${W}" height="${hy+30}" fill="url(#gSky)"/>`;
+    if(id!=='pirates'&&id!=='city') sky+=`<circle cx="${trF(R(80,W-80))}" cy="34" r="24" fill="#fff8d0" opacity=".9"/><circle cx="${trF(R(80,W-80))}" cy="34" r="0"/>`; else sky+=`<circle cx="${trF(R(120,W-120))}" cy="34" r="22" fill="#fff4c0" opacity=".9"/>`;
+    for(let i=0;i<5;i++){ const x=R(0,W), y=R(10,60); sky+=`<g opacity=".8" filter="url(#fBlur2)"><ellipse cx="${trF(x)}" cy="${trF(y)}" rx="${trF(R(28,60))}" ry="7" fill="#fff"/><ellipse cx="${trF(x+14)}" cy="${trF(y-6)}" rx="22" ry="8" fill="#fff"/></g>`; }
+    const far=(base,col,amp,k)=>{ let p=`M0 ${base}`; for(let x=0;x<=W;x+=20) p+=`L${x} ${trF(base-amp*(.5+.5*Math.sin(x*k+map.seed))*(.6+r()*.5))}`; return `<path d="${p}L${W} ${hy+34}L0 ${hy+34}z" fill="${col}"/>`; };
+    if(id==='snow') sky+=far(hy+6,'#9bb6d2',46,.012)+far(hy+16,'#7f9cbd',34,.02)+`<path d="M0 ${hy+34}h${W}" stroke="#fff" opacity="0"/>`;
+    else if(id==='city'){ for(let i=0;i<30;i++){ const x=i*34+R(-6,6), h=R(18,52), w=R(18,32); sky+=`<rect x="${trF(x)}" y="${trF(hy+14-h)}" width="${trF(w)}" height="${trF(h+20)}" fill="${trMix('#9aa3ad',R(-.1,.2))}" opacity=".8"/>`; if(i%6===2) sky+=trPoly([[x,hy+14-h],[x+w/2,hy-h-12],[x+w,hy+14-h]],'#8d97a4',' opacity=".85"'); } }
+    else if(id==='desert') sky+=far(hy+14,'#e3b46c',22,.01)+far(hy+22,'#d6a055',16,.016);
+    else if(id==='pirates') sky+=far(hy+8,'#4a9a8a',14,.03)+`<rect y="${hy+8}" width="${W}" height="30" fill="#2aa3c9" opacity="0"/>`;
+    else sky+=far(hy+4,'#6d9a78',40,.014)+far(hy+16,'#4f8a58',26,.022);
+    sky+=`<rect y="${hy-30}" width="${W}" height="60" fill="url(#gHaze)"/>`; }
+  d+=sky;
+  /* طرق */
+  const rd=P.road; let road='', arrows='';
+  map.edges.forEach(e=>{ const g=trEdgeGeom(map,e).d, lc=TR_LVLCOL[trEdgeLvl(map,e)];
+    road+=`<path d="${g}" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="10.5" stroke-linecap="round" transform="translate(1 2.5)"/><path d="${g}" fill="none" stroke="${lc}" stroke-width="9.6" stroke-linecap="round"/><path d="${g}" fill="none" stroke="${rd.base}" stroke-width="6" stroke-linecap="round"/><path d="${g}" fill="none" stroke="${rd.hi}" stroke-width="1.8" stroke-linecap="round" opacity=".5" transform="translate(0 -1)"/>`;
+    if(rd.kind==='wood') road+=`<path d="${g}" fill="none" stroke="${rd.edge}" stroke-width="6" stroke-dasharray="1 5" opacity=".45"/>`; else if(rd.kind==='stone') road+=`<path d="${g}" fill="none" stroke="${rd.edge}" stroke-width="6" stroke-dasharray="1.2 6" opacity=".4"/>`; else road+=`<path d="${g}" fill="none" stroke="${rd.edge}" stroke-width="4" stroke-dasharray="1 9" stroke-linecap="round" opacity=".3"/>`; });
+  d+=`<g filter="url(#fRough)">${road}</g>`;
+  /* أسهم الاتجاه نحو الكنز، خفيفة */
+  map.edges.forEach(e=>{ const a=nodes[e.a], b=nodes[e.b], g=trEdgeGeom(map,e), t=.58, x=(1-t)*(1-t)*a.x+2*t*(1-t)*g.cx+t*t*b.x, y=(1-t)*(1-t)*a.y+2*t*(1-t)*g.cy+t*t*b.y, dx=2*(1-t)*(g.cx-a.x)+2*t*(b.x-g.cx), dy=2*(1-t)*(g.cy-a.y)+2*t*(b.y-g.cy), ang=Math.atan2(dy,dx)*180/Math.PI;
+    d+=`<g transform="translate(${trF(x)} ${trF(y)}) rotate(${trF(ang)})"><path d="M-3.6-3.6L2.6 0L-3.6 3.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/></g>`; });
+  /* زينة طبيعية مبذورة، مرتبة بالعمق */
+  const items=[]; const T=(k,w,sc)=>({k,w,sc});
+  const sets={forest:[T('tree',7,[.7,1.1]),T('pine',6,[.7,1.1]),T('bush',4,[.7,1]),T('rock',3,[.6,1]),T('mush',1.2,[.7,1]),T('grass',5,[.8,1.3]),T('log',1,[.7,.9]),T('pond',.5,[.8,1]),T('deer',.35,[.7,.85]),T('rabbit',.5,[.9,1.1])],
+   pirates:[T('palm',6,[.6,1]),T('rock',3,[.6,1]),T('bush',3,[.7,1]),T('grass',3,[.8,1.3]),T('boat',.0,[.5,.6]),T('fish',.0,[.7,.9])],
+   desert:[T('rock',4,[.6,1.1]),T('palm',2,[.6,.9]),T('grass',2,[.8,1.2]),T('camel',.5,[.6,.8]),T('dune',2,[.7,1.1]),T('bush',1.5,[.5,.8])],
+   snow:[T('pine',8,[.6,1.05]),T('rock',3,[.6,1]),T('ice',2,[.6,.9]),T('peak',1.2,[.6,.9])],
+   cave:[T('stalag',5,[.6,1.1]),T('rock',6,[.6,1.1]),T('crystal',2.6,[.5,.8]),T('lantern',1,[.7,.9]),T('mush',1.5,[.6,.9])],
+   city:[T('house',5,[.6,.85]),T('tree',3,[.6,.9]),T('tower',1.5,[.55,.7]),T('market',1.5,[.6,.8]),T('fountain',.6,[.6,.8]),T('rock',1,[.5,.8])]}[id];
+  const tw=sets.reduce((s,x)=>s+x.w,0), cnt={short:70,normal:88,long:105}[map.size]||85; let tries=0;
+  while(items.length<cnt&&tries<cnt*12){ tries++; const x=R(30,W-30), y=R(id==='cave'?hy+4:hy+12,H-26); if(!free(x,y,id==='city'?70:50)) continue;
+    if(id==='pirates'){ const ex=(x-W/2)/(W*.43), ey=(y-(hy+H)/2-8)/((H-hy)*.4); const inside=ex*ex+ey*ey<.82; let q=r()*tw,k=sets[0]; for(const s of sets){ if((q-=s.w)<=0){ k=s; break; } } if(inside?(k.k==='boat'||k.k==='fish'):false) continue; if(!inside&&!['boat','fish'].includes(k.k)){ if(r()<.85) continue; } items.push({k:inside?k.k:(r()<.5?'boat':'fish'),x,y,s:R(k.sc[0],k.sc[1])*(.7+.3*(y-hy)/(H-hy)),r:r()}); continue; }
+    let q=r()*tw,k=sets[0]; for(const s of sets){ if((q-=s.w)<=0){ k=s; break; } } items.push({k:k.k,x,y,s:R(k.sc[0],k.sc[1])*(.68+.42*(y-hy)/(H-hy)),r:r()}); }
+  items.sort((a,b)=>a.y-b.y);
+  const hue=()=>trMix(P.leaf,R(-.2,.2)); items.forEach(it=>{ const rr=trRng(Math.floor(it.r*1e9)), flip=rr()<.5?-1:1, f=TRG[it.k]; if(!f) return; const cc=Object.assign({},P,{leaf:trMix(P.leaf,(rr()-.5)*.35),snow:id==='snow'});
+    d+=`<g transform="translate(${trF(it.x)} ${trF(it.y)}) scale(${trF(it.s*flip)} ${trF(it.s)})">${f(rr,cc)}</g>`; });
+  /* ضباب جوي خفيف على الأفق، تظليل، إطار ورقي */
+  d+=`<rect y="${hy-4}" width="${W}" height="70" fill="url(#gHaze)" opacity=".42"/><rect width="${W}" height="${H}" filter="url(#fGrain)" opacity=".14"/><rect width="${W}" height="${H}" fill="url(#gVig)"/>`;
+  const fr=16; d+=`<path fill-rule="evenodd" d="M0 0H${W}V${H}H0zM${fr} ${fr}V${H-fr}H${W-fr}V${fr}z" fill="#ecd9a8"/><path fill-rule="evenodd" d="M0 0H${W}V${H}H0zM${fr} ${fr}V${H-fr}H${W-fr}V${fr}z" filter="url(#fPaper)" opacity=".55" style="mix-blend-mode:multiply"/>`+
+   `<rect x="${fr}" y="${fr}" width="${W-2*fr}" height="${H-2*fr}" fill="none" stroke="#5a3b14" stroke-width="2.4"/><rect x="${fr-7}" y="${fr-7}" width="${W-2*fr+14}" height="${H-2*fr+14}" fill="none" stroke="#7a5424" stroke-width="1.2"/><rect x="2" y="2" width="${W-4}" height="${H-4}" fill="none" stroke="#3a2410" stroke-width="2.5" opacity=".8"/>`;
+  [[fr+4,fr+4,1,1],[W-fr-4,fr+4,-1,1],[fr+4,H-fr-4,1,-1],[W-fr-4,H-fr-4,-1,-1]].forEach(([x,y,sx,sy])=>{ d+=`<g transform="translate(${x} ${y}) scale(${sx} ${sy})"><path d="M0 0h22M0 0v22M6 6h12M6 6v12" stroke="#5a3b14" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="10" cy="10" r="2.6" fill="#b5461f" stroke="#5a3b14" stroke-width="1"/></g>`; });
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${d}</svg>`; }
+function trBgURL(map){ if(!map._bgu){ const s=trBgSVG(map); map._bgu='data:image/svg+xml;base64,'+btoa(unescape(encodeURIComponent(s))); } return map._bgu; }
+/* ----- قطع الفرق: راية وبيدق بلون الفريق مع اسمه ----- */
+function trPawnBody(t,color){ const dk=trMix(color,-.35), lt=trMix(color,.35);
+  return t===0?`<ellipse cx="0" cy="1" rx="9" ry="3" fill="#000" opacity=".3"/><path d="M-8 1q8-4 16 0v-3h-16z" fill="#6b625a"/><path d="M0-2V-40" stroke="#3a2a12" stroke-width="2.4" stroke-linecap="round"/><path d="M1-39q9-5 17 0t15-2v15q-7 4-15 0t-17 2z" fill="${color}" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M1-39q9-5 17 0v14q-8-4-17 0z" fill="${lt}" opacity=".55"/><circle cx="0" cy="-41" r="2.2" fill="#f2c14e" stroke="#7a5200" stroke-width=".8"/>`
+   :`<ellipse cx="0" cy="1" rx="10" ry="3.2" fill="#000" opacity=".3"/><path d="M-10 0q0-4 3-4h14q3 0 3 4z" fill="${dk}" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/><path d="M-6-4q1-9 3-14h6q2 5 3 14z" fill="${color}" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/><path d="M-6-4q1-9 3-14h2q-3 6-3 14z" fill="${lt}" opacity=".6"/><ellipse cx="0" cy="-19" rx="7" ry="2" fill="${dk}" stroke="#fff" stroke-width="1.2"/><circle cx="0" cy="-27" r="8" fill="${color}" stroke="#fff" stroke-width="1.8"/><circle cx="-2.6" cy="-29.4" r="3" fill="${lt}" opacity=".7"/>`; }
+/* أيقونة القطعة للوحة الجانبية (الراية للفريق الأول والبيدق للثاني) */
+function trPieceIcon(t,color,h){ return `<svg class="trpiece" viewBox="-14 -48 44 54" width="${Math.round(h*.82)}" height="${h}" aria-hidden="true">${trPawnBody(t,color)}</svg>`; }
+/* ----- قطع الفرق: راية وبيدق بلون الفريق، دون أرقام ودون أسماء (الاسم في اللوحة الجانبية) ----- */
+function trPawnSVG(t,color,name,x,y,act,stuck){
+  return `<g transform="translate(${trF(x)} ${trF(y)})"><g class="trpawn${act?' act':''}">${trPawnBody(t,color)}${stuck?`<g transform="translate(0 -52)"><circle r="9" fill="#d83a3a" stroke="#fff" stroke-width="1.6"/><rect x="-4" y="-1" width="8" height="6" rx="1" fill="#fff"/><path d="M-2.6-1v-2.2a2.6 2.6 0 0 1 5.2 0v2.2" fill="none" stroke="#fff" stroke-width="1.5"/></g><g transform="translate(0 13)"><rect x="-22" y="-7" width="44" height="14" rx="7" fill="#d83a3a" stroke="#fff" stroke-width="1.4"/><text x="0" y="1" font-size="10" font-weight="800" text-anchor="middle" dominant-baseline="central" fill="#fff">عالق</text></g>`:''}</g></g>`; }
+/* ----- الخريطة الحية ----- */
+function trStartGlyph(){ return `${trSh(26,5)}<path d="M-24 2l6-6h36l6 6z" fill="#8a6a42"/><path d="M-3 2V-44" stroke="#5a3b1f" stroke-width="3"/><path d="M-3-44q14-8 28 0t0 16q-14-8-28 0z" fill="#e8c14e" stroke="#7a5200" stroke-width="1.4"/><path d="M-3-44q14-8 14 0v16q-10-4-14 0z" fill="#fff2b0" opacity=".5"/><g transform="translate(-16 0) scale(.55)">${TRG.tent(()=>.5,{tent:'#2f8f8a'})}</g>`; }
+function trTreasureGlyph(){ let s=`<ellipse cx="0" cy="-12" rx="46" ry="30" fill="#ffd54f" opacity=".3" class="trglow"/>`+trSh(28,6,0); for(let i=0;i<8;i++){ const a=(i/8)*Math.PI*2; s+=`<path d="M0-14L${trF(Math.cos(a)*44)} ${trF(-14+Math.sin(a)*30)}" stroke="#fff2a0" stroke-width="2" opacity=".35"/>`; }
+  return s+`<path d="M-22-14l-2-16q22-14 48 0l-2 16z" fill="#c98236" stroke="#4a2a0c" stroke-width="1.6" transform="rotate(-18 -22 -14)"/><path d="M-24 2v-18h48v18z" fill="#a8672b" stroke="#4a2a0c" stroke-width="1.8"/><path d="M-24-16h48v5h-48z" fill="#c98236"/><path d="M-24-6h48" stroke="#4a2a0c" stroke-width="1.2"/><path d="M-3-16h6v10h-6z" fill="#ffd54f" stroke="#7a5200" stroke-width="1"/>`+[[-14,-18],[-4,-23],[6,-19],[14,-17],[0,-17]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="4.6" fill="#ffcc33" stroke="#9a6a00" stroke-width="1"/><circle cx="${x-1.2}" cy="${y-1.2}" r="1.4" fill="#fff6bf"/>`).join('')+`<path d="M-10-25l2-5l2 5l5 2l-5 2l-2 5l-2-5l-5-2z" fill="#fff" opacity=".9" transform="translate(16 -8) scale(.7)"/>`; }
 function trBoardSVG(M,o){
-  o=o||{}; const map=M.map, th=trTheme(map.theme), P=th.pal, R=trNodeR(map), vis=o.raster||o.nofog?Array(map.nodes.length).fill(true):trVisible(M), tc=M.teams.map(t=>t.color), tg=new Set(o.tg||[]), lk=new Set(o.lk||[]);
-  const taken=M.taken||{}, pos=M.teams.map(t=>t.pos);
-  let s=`<defs><linearGradient id="trbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${P.bg1}"/><stop offset="1" stop-color="${P.bg2}"/></linearGradient></defs>`+(o.nodecor?`<rect width="${map.W}" height="${map.H}" fill="url(#trbg)"/>`:trDecor(map));
-  const eg=map.edges.map(e=>trEdgeGeom(map,e));
-  /* المسارات */
-  map.edges.forEach((e,k)=>{ if(!(vis[e.a]&&vis[e.b])) return; const g=eg[k];
-    if(e.sc){ s+=`<path d="${g.d}" fill="none" stroke="${P.ink}" stroke-opacity=".35" stroke-width="4" stroke-dasharray="2 9" stroke-linecap="round"/>`;
-      M.teams.forEach((T,t)=>{ if(T.crossed[e.need]) s+=`<path d="${g.d}" fill="none" stroke="${tc[t]}" stroke-width="5" stroke-dasharray="9 9" stroke-dashoffset="${t*9}" stroke-linecap="round"/>`; }); }
-    else s+=`<path d="${g.d}" fill="none" stroke="${P.road}" stroke-opacity=".28" stroke-width="16" stroke-linecap="round"/><path d="${g.d}" fill="none" stroke="${P.road}" stroke-width="9" stroke-linecap="round"/><path d="${g.d}" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round"/>`; });
-  /* أثر الفريقين */
-  M.teams.forEach((T,t)=>{ const used=new Set(); T.path.forEach((n,i)=>{ if(!i) return; const a=T.path[i-1], e=map.edges.find(x=>((x.a===a&&x.b===n)||(x.a===n&&x.b===a))&&(!x.sc||T.crossed[x.need])); if(!e||used.has(e.id)) return; used.add(e.id); s+=`<path d="${eg[e.id].d}" fill="none" stroke="${tc[t]}" stroke-opacity=".75" stroke-width="${t?4:7}" stroke-linecap="round"/>`; }); });
-  /* الطريق الأقصر (بوصلة) */
-  M.teams.forEach((T,t)=>{ if(!T.compass||M.status!=='run') return; const rt=trRoute(M,t); if(!rt) return; let d=''; rt.forEach((n,i)=>{ if(!i) return; const a=rt[i-1], e=map.edges.find(x=>((x.a===a&&x.b===n)||(x.a===n&&x.b===a))&&(!x.sc||T.crossed[x.need])); if(e) d+=eg[e.id].d; }); s+=`<path class="trcmp" d="${d}" fill="none" stroke="#ffc400" stroke-width="6" stroke-dasharray="14 10" stroke-linecap="round" filter="none"/>`; });
-  /* شارات العقبات */
-  map.edges.forEach((e,k)=>{ if(!e.ob||!(vis[e.a]&&vis[e.b])) return; const g=eg[k], ty=e.ob.type, ic=trObIcon(map.theme,ty), col=TR_OBCOL[ty], both=M.teams.every(T=>T.crossed[e.id]);
-    const lock=ty==='door'&&M.teams.some(T=>T.crossed[e.id])?'🔓':ic;
-    s+=`<g class="tb ${ty}" data-e="${e.id}"><circle cx="${g.mx.toFixed(1)}" cy="${g.my.toFixed(1)}" r="16" fill="#fff" stroke="${col}" stroke-width="4"${both?' opacity=".6"':''}/><text x="${g.mx.toFixed(1)}" y="${(g.my+1).toFixed(1)}" font-size="18" text-anchor="middle" dominant-baseline="central" style="font-family:${TR_EMOJI}">${lock}</text>`;
-    if(ty==='double') s+=`<text x="${(g.mx+14).toFixed(1)}" y="${(g.my-14).toFixed(1)}" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="central" fill="#fff" stroke="#8a4fd0" stroke-width="4" paint-order="stroke">٢</text>`;
-    M.teams.forEach((T,t)=>{ if(T.crossed[e.id]) s+=`<circle cx="${(g.mx+(t?7:-7)).toFixed(1)}" cy="${(g.my+21).toFixed(1)}" r="5" fill="${tc[t]}" stroke="#fff" stroke-width="1.5"/>`; });
+  o=o||{}; const map=M.map, th=trTheme(map.theme), P=TR_PAL[th.id], vis=o.raster||o.nofog?Array(map.nodes.length).fill(true):trVisible(M), tc=M.teams.map(t=>t.color), tg=new Set(o.tg||[]), lk=new Set(o.lk||[]), sc=trNodeScale(map);
+  const taken=M.taken||{}, pos=M.teams.map(t=>t.pos), pr=trRng(map.seed+11);
+  let s=`<image href="${trBgURL(map)}" x="0" y="0" width="${map.W}" height="${map.H}" preserveAspectRatio="none"/>`;
+  const eg=map.edges.map(e=>trEdgeGeom(map,e)), eIdx=(a,b)=>map.edges.findIndex(x=>x.a===a&&x.b===b);
+  /* أثر الفريقين: طريق ملوّن على الوصلات المقطوعة */
+  M.teams.forEach((T,t)=>{ const used=new Set(); T.path.forEach((n,i)=>{ if(!i) return; const k=eIdx(T.path[i-1],n); if(k<0||used.has(k)) return; used.add(k); s+=`<path d="${eg[k].d}" fill="none" stroke="${tc[t]}" stroke-opacity=".8" stroke-width="${t?4:8}" stroke-linecap="round" stroke-linejoin="round"/>`; }); });
+  M.teams.forEach((T,t)=>{ if(!T.compass||M.status!=='run') return; const rt=trRoute(M,t); if(!rt) return; let d=''; for(let i=1;i<rt.length;i++){ const k=eIdx(rt[i-1],rt[i]); if(k>=0) d+=eg[k].d; } s+=`<path class="trcmp" d="${d}" fill="none" stroke="#ffc400" stroke-width="6" stroke-dasharray="14 10" stroke-linecap="round"/>`; });
+  /* إبراز الخيارات المتاحة: تعتيم خفيف للباقي وإضاءة الطرق الخارجة من موقع الفريق صاحب الدور فقط */
+  const hl=!o.raster&&tg.size>0; if(hl){ s+=`<rect x="0" y="0" width="${map.W}" height="${map.H}" fill="#1b1206" opacity=".2" pointer-events="none"/>`;
+    const p0=M.teams[M.turn].pos; map.out[p0].forEach(to=>{ if(!tg.has(to)||to===p0) return; const k=eIdx(p0,to); if(k<0) return; const lc=TR_LVLCOL[trEdgeLvl(map,map.edges[k])];
+      s+=`<path d="${eg[k].d}" fill="none" stroke="#fff" stroke-opacity=".9" stroke-width="16" stroke-linecap="round"/><path d="${eg[k].d}" fill="none" stroke="${lc}" stroke-width="10" stroke-linecap="round"/><path class="trhl" d="${eg[k].d}" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="3 12" stroke-linecap="round"/>`; }); }
+  /* المواقع مرتبة بالعمق */
+  const order=map.nodes.slice().sort((a,b)=>a.y-b.y);
+  order.forEach(n=>{ const v=vis[n.id], X=n.x, Y=n.y;
+    if(!v){ s+=`<g class="tn fog"><g transform="translate(${X} ${Y})" opacity=".92" filter="none"><ellipse cx="-12" cy="-6" rx="22" ry="12" fill="#e6edf5"/><ellipse cx="10" cy="-8" rx="24" ry="14" fill="#f3f7fb"/><ellipse cx="0" cy="-16" rx="18" ry="12" fill="#fff"/><ellipse cx="0" cy="0" rx="34" ry="8" fill="#c7d3e0" opacity=".7"/></g></g>`; return; }
+    const isS=n.kind==='start', isT=n.kind==='treasure', cls=['tn',tg.has(n.id)?'tgt':'',lk.has(n.id)?'lock':'',(o.fx&&o.fx.to===n.id)?'fx-pop':'',isT?'tre':'',n.ob?'ob':''].filter(Boolean).join(' ');
+    const label=isS?'البداية':isT?'الكنز':(n.ob?trObName(map.theme,n.ob)+' — ':'')+n.nm;
+    s+=`<g class="${cls}" data-i="${n.id}" role="button" aria-label="${esc(label)}"><circle class="hit" cx="${X}" cy="${Y-12}" r="${isT?46:40}" fill="transparent"/><ellipse class="nc" cx="${X}" cy="${Y+2}" rx="${isT?44:40}" ry="${isT?18:16}" fill="${tg.has(n.id)?'rgba(255,240,170,.38)':'none'}" stroke="none" stroke-width="3.4"/><g transform="translate(${X} ${Y}) scale(${trF(isT?sc*1.3:sc*(n.ob?1.05:1))})">`;
+    if(!isS&&!isT){ s+=`<ellipse cx="0" cy="3" rx="34" ry="12" fill="${P.pad}" opacity=".55"/><ellipse cx="0" cy="3" rx="34" ry="12" fill="none" stroke="${P.road.edge}" stroke-width="1" opacity=".45"/>`; }
+    if(isS) s+=trStartGlyph(); else if(isT) s+=trTreasureGlyph();
+    else if(n.ob){ const rr=trRng(map.seed+n.id*131); s+=trObGlyph(n.ob,P)+trPennant(n.ob,34,-46); }
+    else { const rr=trRng(map.seed*7+n.id*977), f=TRG[n.g]; s+=f?f(rr,Object.assign({},P,{snow:th.id==='snow',tent:['#c0392b','#2f6fd6','#d98a00','#2f8f8a'][n.id%4]})):''; }
+    s+='</g>';
+    if(isS||isT) s+=`<text x="${X}" y="${Y+30}" font-size="15" font-weight="800" text-anchor="middle" fill="#3a2410" stroke="#fff3cf" stroke-width="4" paint-order="stroke">${isS?'البداية':'الكنز'}</text>`;
+    else if(n.ob&&!o.raster) s+=`<text class="lab" x="${X}" y="${Y+26}" font-size="11.5" font-weight="800" text-anchor="middle" fill="${TR_OBCOL[n.ob]}" stroke="#fff" stroke-width="3.6" paint-order="stroke">${esc(trObName(map.theme,n.ob))}</text>`;
+    if(n.ob) M.teams.forEach((T,t)=>{ if(T.crossed[n.id]) s+=`<circle cx="${X+(t?8:-8)}" cy="${Y+36}" r="5" fill="${tc[t]}" stroke="#fff" stroke-width="1.6"/>`; });
+    const tk=taken[n.id]; if(tk) s+=`<g><circle cx="${X+24*sc}" cy="${Y-30*sc}" r="11" fill="${tc[tk.team]}" stroke="#fff" stroke-width="2"/>${trIcoSVG(tk.kind,X+24*sc,Y-30*sc,15)}</g>`;
     s+='</g>'; });
-  /* المواقع */
-  map.nodes.forEach(n=>{ const v=vis[n.id]; if(!v){ s+=`<g class="tn fog"><circle cx="${n.x}" cy="${n.y}" r="${R}" fill="#e9eef5" fill-opacity=".8" stroke="#9aa7b8" stroke-width="2" stroke-dasharray="4 4"/><text x="${n.x}" y="${n.y+1}" font-size="${R}" text-anchor="middle" dominant-baseline="central" fill="#8696ab">؟</text></g>`; return; }
-    const isS=n.kind==='start', isT=n.kind==='treasure', r2=isT?R+7:R, cls=['tn',tg.has(n.id)?'tgt':'',lk.has(n.id)?'lock':'',(o.fx&&o.fx.to===n.id)?'fx-pop':'',isT?'tre':''].filter(Boolean).join(' ');
-    s+=`<g class="${cls}" data-i="${n.id}" role="button" aria-label="${isS?'البداية':isT?'الكنز':'موقع '+trNum(n.n)}">`;
-    s+=`<circle class="hit" cx="${n.x}" cy="${n.y}" r="${r2+12}" fill="transparent"/>`;
-    if(isT) s+=`<circle cx="${n.x}" cy="${n.y}" r="${r2+9}" fill="#ffd54f" opacity=".45" class="trglow"/>`;
-    s+=`<circle class="nc" cx="${n.x}" cy="${n.y}" r="${r2}" fill="${isT?'#fff2b8':P.node}" stroke="${P.ink}" stroke-width="3.2"/>`;
-    if(isS) s+=trIcoSVG('flag',n.x,n.y,R*1.25); else if(isT) s+=trIcoSVG('chest',n.x,n.y,r2*1.5);
-    else s+=`<text class="nt" x="${n.x}" y="${n.y+1}" font-size="${R*.95}" font-weight="800" text-anchor="middle" dominant-baseline="central" fill="${P.ink}">${trNum(n.n)}</text>`;
-    if(isS||isT) s+=`<text x="${n.x}" y="${n.y+r2+16}" font-size="15" font-weight="800" text-anchor="middle" fill="${P.ink}" stroke="#fff" stroke-width="4" paint-order="stroke">${isS?'البداية':'الكنز'}</text>`;
-    const tk=taken[n.id]; if(tk) s+=`<g><circle cx="${n.x+R*.85}" cy="${n.y-R*.85}" r="${R*.55}" fill="${tc[tk.team]}" stroke="#fff" stroke-width="2"/>${trIcoSVG(tk.kind,n.x+R*.85,n.y-R*.85,R*.75)}</g>`;
-    s+='</g>'; });
-  /* القطع */
-  M.teams.forEach((T,t)=>{ const n=map.nodes[T.pos], same=pos[0]===pos[1], dx=same?(t?15:-15):0, cx=n.x+dx, cy=n.y-R-12, act=M.turn===t&&M.status==='run';
-    s+=`<g class="trpawn${act?' act':''}"><path d="M${cx} ${cy+22}l-7-9h14z" fill="${tc[t]}" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><circle cx="${cx}" cy="${cy}" r="14" fill="${tc[t]}" stroke="#fff" stroke-width="3.5"/><text x="${cx}" y="${cy+1}" font-size="15" font-weight="800" text-anchor="middle" dominant-baseline="central" fill="${textOn(tc[t])}">${trNum(t+1)}</text></g>`; });
-  if(o.raster) return `<svg xmlns="http://www.w3.org/2000/svg" width="${map.W*2}" height="${map.H*2}" viewBox="0 0 ${map.W} ${map.H}">${s}</svg>`;
+  /* قطع الفرق */
+  M.teams.forEach((T,t)=>{ const n=map.nodes[T.pos], same=pos[0]===pos[1], act=M.turn===t&&M.status==='run', k=n.kind==='treasure'?1.3:sc; s+=trPawnSVG(t,tc[t],T.name,n.x+(same?(t?22:-22):(t?9:-9))*k,n.y+14*k,act,T.stuck>=0); });
+  if(o.raster) return `<svg xmlns="http://www.w3.org/2000/svg" width="${map.W*1.5}" height="${map.H*1.5}" viewBox="0 0 ${map.W} ${map.H}">${s}</svg>`;
   const ser=o.zoom&&o.zoom!==1?`style="width:${(o.zoom*100).toFixed(0)}%;height:auto"`:'style="width:100%;height:100%"';
   return `<svg id="trboard" class="trsvg${M.win&&M.win.reason==='treasure'?' won':''}" viewBox="0 0 ${map.W} ${map.H}" preserveAspectRatio="xMidYMid meet" ${ser}>${s}</svg>`; }
-/* صورة الخريطة للتقارير: تُرسم من SVG (بزخارفها) ثم تُلصق على Canvas، وعند الفشل تُستعمل نسخة Canvas المبسطة */
+/* صورة الخريطة للتقارير: SVG ثم Canvas، وعند الفشل نسخة مبسطة */
 async function trMapImageCanvas(M,cw,ch){
   try{ const im=await loadImg('data:image/svg+xml;charset=utf-8,'+encodeURIComponent(trBoardSVG(M,{raster:true})));
     if(im&&im.width){ const [cv,x]=xcvNew(cw,ch), sc=Math.min(cw/im.width,ch/im.height), w=im.width*sc, h=im.height*sc; x.drawImage(im,(cw-w)/2,(ch-h)/2,w,h); return cv; } }catch(e){ console.warn(e); }
   return trMapCanvas(M,cw,ch); }
-/* صورة الخريطة (Canvas) للتقارير */
 function trMapCanvas(M,cw,ch){
-  const map=M.map, th=trTheme(map.theme), P=th.pal, R=trNodeR(map), [cv,x]=xcvNew(cw,ch), sc=Math.min(cw/map.W,ch/map.H), ox=(cw-map.W*sc)/2, oy=(ch-map.H*sc)/2, X=v=>ox+v*sc, Y=v=>oy+v*sc, tc=M.teams.map(t=>t.color);
-  const g=x.createLinearGradient(0,oy,0,oy+map.H*sc); g.addColorStop(0,P.bg1); g.addColorStop(1,P.bg2); x.fillStyle=g; x.fillRect(ox,oy,map.W*sc,map.H*sc);
-  const eg=map.edges.map(e=>trEdgeGeom(map,e)), path=(gg)=>{ x.beginPath(); x.moveTo(X(gg.ax),Y(gg.ay)); x.quadraticCurveTo(X(gg.cx),Y(gg.cy),X(gg.bx),Y(gg.by)); };
-  x.lineCap='round'; x.lineJoin='round';
-  map.edges.forEach((e,k)=>{ path(eg[k]); if(e.sc){ x.strokeStyle='rgba(60,60,60,.4)'; x.lineWidth=Math.max(2,3.5*sc); x.setLineDash([2*sc,8*sc]); x.stroke(); x.setLineDash([]); M.teams.forEach((T,t)=>{ if(T.crossed[e.need]){ path(eg[k]); x.strokeStyle=tc[t]; x.lineWidth=Math.max(2,5*sc); x.setLineDash([9*sc,9*sc]); x.lineDashOffset=-t*9*sc; x.stroke(); x.setLineDash([]); x.lineDashOffset=0; } }); } else { x.strokeStyle=P.road; x.lineWidth=Math.max(3,9*sc); x.stroke(); } });
-  M.teams.forEach((T,t)=>{ const used=new Set(); T.path.forEach((n,i)=>{ if(!i) return; const a=T.path[i-1], e=map.edges.find(z=>((z.a===a&&z.b===n)||(z.a===n&&z.b===a))&&(!z.sc||T.crossed[z.need])); if(!e||used.has(e.id)) return; used.add(e.id); path(eg[e.id]); x.strokeStyle=tc[t]; x.globalAlpha=.8; x.lineWidth=Math.max(2,(t?4:7)*sc); x.stroke(); x.globalAlpha=1; }); });
-  x.textAlign='center'; x.textBaseline='middle';
-  map.edges.forEach((e,k)=>{ if(!e.ob) return; const gg=eg[k], mx=X(gg.mx), my=Y(gg.my), rr=15*sc; x.beginPath(); x.arc(mx,my,rr,0,7); x.fillStyle='#fff'; x.fill(); x.lineWidth=Math.max(2,4*sc); x.strokeStyle=TR_OBCOL[e.ob.type]; x.stroke();
-    x.font=`${Math.round(17*sc)}px ${TR_EMOJI}`; x.fillStyle='#000'; x.fillText(e.ob.type==='door'&&M.teams.some(T=>T.crossed[e.id])?'🔓':trObIcon(map.theme,e.ob.type),mx,my+1);
-    M.teams.forEach((T,t)=>{ if(T.crossed[e.id]){ x.beginPath(); x.arc(mx+(t?7:-7)*sc,my+21*sc,5*sc,0,7); x.fillStyle=tc[t]; x.fill(); } }); });
-  map.nodes.forEach(n=>{ const isS=n.kind==='start', isT=n.kind==='treasure', r2=(isT?R+7:R)*sc, nx=X(n.x), ny=Y(n.y); x.beginPath(); x.arc(nx,ny,r2,0,7); x.fillStyle=isT?'#fff2b8':P.node; x.fill(); x.lineWidth=Math.max(2,3*sc); x.strokeStyle=P.ink; x.stroke();
-    if(isS) trIcoCanvas(x,'flag',nx,ny,R*1.25*sc); else if(isT) trIcoCanvas(x,'chest',nx,ny,r2*1.5); else { x.fillStyle=P.ink; x.font=`800 ${Math.round(R*.95*sc)}px ${ANN_FONT}`; x.fillText(trNum(n.n),nx,ny+1); }
-    const tk=M.taken[n.id]; if(tk){ x.beginPath(); x.arc(nx+R*.85*sc,ny-R*.85*sc,R*.55*sc,0,7); x.fillStyle=tc[tk.team]; x.fill(); x.lineWidth=2; x.strokeStyle='#fff'; x.stroke(); trIcoCanvas(x,tk.kind,nx+R*.85*sc,ny-R*.85*sc,R*.75*sc); } });
-  M.teams.forEach((T,t)=>{ const n=map.nodes[T.pos], same=M.teams[0].pos===M.teams[1].pos, cx=X(n.x)+(same?(t?15:-15)*sc:0), cy=Y(n.y)-(R+12)*sc;
-    x.beginPath(); x.arc(cx,cy,14*sc,0,7); x.fillStyle=tc[t]; x.fill(); x.lineWidth=Math.max(2,3.5*sc); x.strokeStyle='#fff'; x.stroke(); x.fillStyle=textOn(tc[t]); x.font=`800 ${Math.round(15*sc)}px ${ANN_FONT}`; x.fillText(trNum(t+1),cx,cy+1); });
+  const map=M.map, P=TR_PAL[map.theme], [cv,x]=xcvNew(cw,ch), sc=Math.min(cw/map.W,ch/map.H), X=v=>v*sc, Y=v=>v*sc, tc=M.teams.map(t=>t.color);
+  x.fillStyle=P.g1; x.fillRect(0,0,cw,ch); x.lineCap='round';
+  map.edges.forEach(e=>{ const a=map.nodes[e.a], b=map.nodes[e.b]; x.beginPath(); x.moveTo(X(a.x),Y(a.y)); x.lineTo(X(b.x),Y(b.y)); x.strokeStyle=P.road.base; x.lineWidth=Math.max(3,10*sc); x.stroke(); });
+  map.nodes.forEach(n=>{ x.beginPath(); x.arc(X(n.x),Y(n.y),16*sc,0,7); x.fillStyle=n.ob?TR_OBCOL[n.ob]:P.pad; x.fill(); });
+  M.teams.forEach((T,t)=>{ const n=map.nodes[T.pos]; x.beginPath(); x.arc(X(n.x)+(t?9:-9)*sc,Y(n.y)-24*sc,9*sc,0,7); x.fillStyle=tc[t]; x.fill(); });
   return cv; }
 
-/* ===== صائد الكنز: واجهة اللعب (الأدوار، الأسئلة، الصناديق، الخيارات، النهاية) ===== */
+/* توزيع الرسوم على المواقع العادية: لا يتكرر الرسم نفسه في الطبقة الواحدة ما أمكن */
+function trAssignGlyphs(map){ const L=TR_GLYPHS[map.theme]||TR_GLYPHS.forest, r=trRng(map.seed*13+7); let bag=[];
+  map.layers.forEach(ids=>{ const used=new Set(); ids.forEach(id=>{ const n=map.nodes[id]; if(n.kind!=='node') return; if(!bag.length) bag=trShuf(r,L.map((_,i)=>i)); let k=bag.findIndex(i=>!used.has(i)); if(k<0) k=0; const gi=bag.splice(k,1)[0]; used.add(gi); n.g=L[gi][0]; n.nm=L[gi][1]; }); }); }
+
+/* أيقونات العقبات للرسائل والدليل: نفس رسمة الخريطة مصغّرة (لا إيموجي) */
+function trObIconHTML(themeId,type,h){ const P=TR_PAL[themeId]||TR_PAL.forest; return `<svg class="tri" viewBox="-44 -54 88 64" width="${Math.round(h*1.38)}" height="${h}" aria-hidden="true">${trObGlyph(type,P)}</svg>`; }
+
+/* ===== صائد الكنز: واجهة اللعب (الأدوار، الأسئلة، الصناديق، الخيارات، النهاية) =====
+   كل رسالة لعب تبقى على الشاشة حتى يضغط المعلم «حسنًا» (مرحلة note)، والمباراة (الساعة) متوقفة أثناءها. */
 function trE(){ return state.tr; }
 function trBegin(M,cfg){
   trStop(); const w=window.innerWidth||1280, z=w<700?({short:1.3,normal:1.8,long:2.3}[M.map.size]||1.6):1;
-  state.tr={M,cfg:cfg||{},ph:'intro',zoom:z,paused:false,hold:false,qa:null,fb:null,fx:null,helper:null,ob:null,tg:[],_last:0,qleft:0,qtot:0,rev:false,needCenter:true};
+  state.tr={M,cfg:cfg||{},ph:'intro',zoom:z,paused:false,hold:false,qa:null,note:null,fx:null,helper:null,ob:null,tg:[],_last:0,qleft:0,qtot:0,rev:false,needCenter:true};
   state.screen='trplay'; render();
 }
 function trStop(){ const E=state.tr; if(E){ if(E._iv){ clearInterval(E._iv); E._iv=null; } if(E._sp){ clearInterval(E._sp); E._sp=null; } (E._to||[]).forEach(clearTimeout); E._to=[]; } }
-function trLater(fn,ms){ const E=state.tr; if(!E) return; const id=setTimeout(()=>{ if(state.tr===E) fn(); },ms); (E._to=E._to||[]).push(id); }
-function trRunning(E){ return E&&E.M.status==='run'&&!['intro','lot','lotok','end'].includes(E.ph); }
+function trLater(fn,ms){ const E=state.tr; if(!E) return; const id=setTimeout(()=>{ if(state.tr===E) fn(); },ms); (E._to||(E._to=[])).push(id); }
+function trRunning(E){ return E&&E.M.status==='run'&&!['intro','lot','note','end'].includes(E.ph); }
 function trClock(){
   const E=state.tr; if(!E||state.screen!=='trplay'){ if(E) trStop(); return; }
   const now=Date.now(), dt=E._last?(now-E._last)/1000:0, M=E.M; E._last=now;
@@ -3608,21 +3806,25 @@ function trClock(){
   if(E.ph==='q'&&E.qtot>0){ E.qleft-=dt; const q=$('#trQs'), b=$('#trQbar'); if(q) q.textContent=Math.max(0,Math.ceil(E.qleft)); if(b){ b.style.width=Math.max(0,E.qleft/E.qtot*100)+'%'; b.classList.toggle('low',E.qleft<=5); } if(E.qleft<=0) trTimeoutQ(); }
 }
 function trEnd(){
-  const E=state.tr, M=E.M; E.ph='end'; E.qa=null; E.fb=null; E.fx=null; E.ob=null; E.tg=[]; (E._to||[]).forEach(clearTimeout); E._to=[]; if(E._sp){ clearInterval(E._sp); E._sp=null; }
+  const E=state.tr, M=E.M; E.ph='end'; E.qa=null; E.note=null; E.fx=null; E.ob=null; E.tg=[]; (E._to||[]).forEach(clearTimeout); E._to=[]; if(E._sp){ clearInterval(E._sp); E._sp=null; }
   if(M.status==='run') trTimeUp(M); if(!M.elapsed) M.elapsed=M.time-M.left;
   trOnEnd(E); trSfx('win'); render();
 }
 function trOnEnd(E){ const M=E.M; if(M._done) return; M._done=true; trUsedAdd(M); trLogRun(M);
   state.trRes=state.trRes||{}; state.trRes[M.section]=M; if(M.section==='s3') state.trT=Object.assign(state.trT||{},{M});
   if(E.cfg.onEnd) E.cfg.onEnd(E); }
+/* رسالة دائمة: لا تُغلق إلا بزر «حسنًا»، ثم تُنفَّذ then */
+function trNote(o){ const E=trE(); if(!E) return; E.note=Object.assign({ic:'',title:'',html:'',cls:'',then:null},o); E.ph='note'; render(); }
+function trNoteOk(){ const E=trE(); if(!E||E.ph!=='note'||!E.note) return; const n=E.note; E.note=null; E._last=Date.now(); if(n.then) n.then(); else { E.ph='sel'; render(); } }
+const trTN=(M,t)=>`<b style="color:${M.teams[t].color}">${esc(M.teams[t].name)}</b>`;
 function trStartMatch(){ const E=trE(); E.ph='lot'; E._last=Date.now(); trSfx('start'); if(!E._iv) E._iv=setInterval(trClock,250); render(); trLottery(); }
 function trLottery(){
   const E=trE(), M=E.M, names=M.teams.map(t=>t.name), win=Math.random()<.5?0:1; M.first=win; M.turn=win; let k=0; const t0=Date.now(); clearInterval(E._sp);
   E._sp=setInterval(()=>{ const e=$('#trLot'); if(e){ const t=k++%2; e.textContent=names[t]; e.style.color=M.teams[t].color; } trSfx('spin');
-    if(Date.now()-t0>(E.cfg.fast?900:1700)){ clearInterval(E._sp); E._sp=null; E.ph='lotok'; trSfx('claim'); render(); trLater(()=>{ if(E.ph==='lotok') trBeginTurn(); },E.cfg.fast?1300:2000); } },100);
+    if(Date.now()-t0>(E.cfg.fast?900:1700)){ clearInterval(E._sp); E._sp=null; trSfx('claim'); trNote({ic:'🎲',title:'نتيجة القرعة',html:`يبدأ اللعب: ${trTN(M,M.first)}`,then:trBeginTurn}); } },100);
 }
 function trBeginTurn(){
-  const E=trE(), M=E.M; E.fb=null; E.fx=null; E.helper=null; E.qa=null; E.ob=null;
+  const E=trE(), M=E.M; E.fx=null; E.helper=null; E.qa=null; E.ob=null; E.note=null; E._last=Date.now();
   if(M.section==='s1'){ M.cp=M.teams[M.turn].players[0].id; E.ph='sel'; render(); }
   else trStartSpin(false);
 }
@@ -3634,105 +3836,106 @@ function trStartSpin(replace){
 }
 function trCurName(){ const E=trE(); return E?trCurP(E.M).name:''; }
 function trQuestion(lvl){ const M=trE().M, id=trNextQid(M,lvl); if(id==null) return null; return M.qmap[id]; }
-/* المواقع التي يمكن للفريق صاحب الدور اختيارها الآن، مع ما يلزم لعبور كل مسار */
-function trTargets(M,t){ const T=M.teams[t]; return trAdj(M,t,T.pos).map(x=>Object.assign({},x,{nd:trNeedOf(M,t,x.e)})); }
-function trObLabel(M,type){ return {ic:trObIcon(M.map.theme,type),nm:trObName(M.map.theme,type)}; }
+function trLocName(M,n){ const x=M.map.nodes[n]; return x.kind==='start'?'البداية':x.kind==='treasure'?'الكنز':x.nm; }
+function trObLabel(M,type){ return {ic:trObIconHTML(M.map.theme,type,64),icS:trObIconHTML(M.map.theme,type,28),nm:trObName(M.map.theme,type)}; }
+/* يتحدد الدور التالي دون تغيير الحالة: من يصيبه فخ يخسر دوره فيعود الدور للفريق الآخر */
+function trPeek(M){ const n=1-M.turn; if(M.teams[n].skip>0) return {skip:n,next:M.turn}; return {skip:-1,next:n}; }
+function trTurnLine(M){ const p=trPeek(M); return (p.skip>=0?`<br>⏳ ${trTN(M,p.skip)} يخسر دوره هذه المرة (أثر الفخ)، فيلعب ${trTN(M,p.next)} مرة أخرى.`:`<br>الدور التالي: ${trTN(M,p.next)}.`); }
+/* ينهي الدور بعد رسالة دائمة */
+function trNoteThenNext(o){ const E=trE(), M=E.M; o.html=(o.html||'')+trTurnLine(M); o.then=trFinishTurn; trNote(o); }
+function trFinishTurn(){
+  const E=trE(), M=E.M; if(M.status!=='run') return;
+  E.fx=null; E.ob=null; E.qa=null; trAdvance(M); trBeginTurn();
+}
 
 /* ---------- النقر على موقع ---------- */
 async function trNodeClick(i){
-  const E=trE(); if(!E) return; const M=E.M; if(E.paused||M.status!=='run'||E.hold) return; const t=M.turn, T=M.teams[t];
+  const E=trE(); if(!E) return; const M=E.M; if(E.paused||M.status!=='run'||E.hold) return; const t=M.turn, T=M.teams[t], back=()=>{ E.ph=E.ph==='free'?'free':'sel'; render(); };
+  const ask=(lvl,o)=>{ const q=trQuestion(lvl); if(!q){ trNote({ic:'❓',title:'لا توجد أسئلة متاحة',html:'أضف أسئلة أو غيّر مجال الأسئلة.',then:back}); return; }
+      E.ob=Object.assign({stage:0},o); E.qa=state.qaTr=newQA(q,'tr'+Date.now()); E.qtot=E.cfg.qsec||0; E.qleft=E.qtot; E.helper=null; E.ph='q'; render(); };
   if(E.ph==='sel'){
-    if(i===T.pos){ toast('فريقك هنا الآن — اختر موقعًا مجاورًا متصلًا بمسارك'); return; }
-    const x=trTargets(M,t).find(z=>z.to===i); if(!x){ toast('اختر موقعًا مجاورًا متصلًا بمسارك'); return; }
+    /* عالق في عقبة: لا يتحرك إلى أي موقع قبل أن يجتازها؛ بالنقر على موقعه يواجه سؤالها */
+    if(T.stuck>=0){ const need=trObNeed(M,t), ob=trObLabel(M,need.type);
+      if(i!==T.pos) return; /* العالق لا يختار موقعًا آخر: النقر لا يفعل شيئًا */
+      trSfx('key'); trNote({ic:ob.ic,title:'عقبة: '+ob.nm,html:`${trTN(M,t)} عالق في «<b>${esc(ob.nm)}</b>».<br>${TR_OBDESC[need.type]}.<br>مستوى السؤال: <b>${TR_LV[need.lvl]}</b>${need.n>1?' · عدد الأسئلة: '+trNum(need.n):''}.<br>الخطأ يخسر الدور ويبقى الفريق عالقًا (لا رجوع)، والمركبة تتخطى العقبة.`,cls:'obc',then:()=>ask(need.lvl,{obstacle:true,to:T.pos,from:T.pos,type:need.type,n:need.n,lvl:need.lvl})}); return; }
+    const x=trTargets(M,t).find(z=>z.to===i);
+    if(!x) return; /* موقع غير أمامي أو خلفي أو بعيد: لا يُنقر ولا يفعل شيئًا */
     const nd=x.nd;
-    if(nd.k==='free'){ trMove(i); return; }
-    if(nd.k==='key'){ trCommitCross(M,t,x.e,T.pos,i,'key'); toast('فُتح الباب بالمفتاح'); trSfx('key'); trMove(i); return; }
-    if(nd.k==='locked'){
-      const ob=trObLabel(M,'door');
-      if(T.opts.vehicle>0){ E.hold=true; const v=await confirmBox(ob.nm,'«'+ob.nm+'» يحتاج مفتاحًا لم تجمعه بعد. هل تستخدم «'+trTheme(M.map.theme).veh[0]+'» لتجاوزه؟ (يُستهلك خيار المركبة)','نعم، استخدمها'); E.hold=false; E._last=Date.now();
-        if(v&&trE()===E&&E.ph==='sel'&&M.status==='run'){ trVehicleUse(M,t,x.e); trEv(M,t,'cross',{ob:'door',how:'veh',from:T.pos,node:i}); trSfx('key'); trMove(i); } else render(); }
-      else toast('هذا الموقع خلف «'+ob.nm+'»: اجمع مفتاحًا من صندوق في موقع آخر أو اختر طريقًا آخر');
-      return; }
-    const q=trQuestion(nd.lvl); if(!q){ toast('لا توجد أسئلة متاحة'); return; }
-    E.ob={e:x.e,to:i,from:T.pos,type:x.e.ob.type,stage:0,n:nd.n,lvl:nd.lvl};
-    E.qa=state.qaTr=newQA(q,'tr'+Date.now()); E.qtot=E.cfg.qsec||0; E.qleft=E.qtot; E.helper=null; E.ph='q'; render(); }
+    if(nd.k==='locked'){ const ob=trObLabel(M,'door'); trNote({ic:ob.ic,title:ob.nm,html:'هذا الموقع خلف «'+esc(ob.nm)+'»: لا يُختار إلا بمفتاح يُجمع من صندوق في موقع آخر. اختر طريقًا آخر.',cls:'badc',then:back}); return; }
+    ask(nd.lvl,{to:i,from:T.pos,type:'',obType:nd.type,n:1,lvl:nd.lvl}); }
   else if(E.ph==='free'){
-    const x=trFreeTargets(M,t).find(z=>z.to===i); if(!x){ toast('اختر موقعًا مجاورًا مفتوحًا لك'); return; }
-    const res=trFreeStep(M,t,i); E.fx={to:i,k:'pop'}; trSfx('claim'); trAfterArrive(res); }
+    const x=trFreeTargets(M,t).find(z=>z.to===i); if(!x) return;
+    const res=trFreeStep(M,t,i); E.fx={to:i,k:'pop'}; trSfx('claim'); trAfterArrive(res,'free'); }
 }
-function trMove(to){ const E=trE(), M=E.M, t=M.turn; const res=trMoveTo(M,t,to); E.fx={to,k:'pop'}; E.ob=null; E.tg=[]; trAfterArrive(res); }
-function trAfterArrive(res){
-  const E=trE(), M=E.M, t=M.turn, nm=trCurName();
-  if(M.status==='won'){ E.fb={kind:'treasure',name:nm}; E.ph='fb'; trSfx('win'); render(); trLater(trEnd,1700); return; }
-  if(res&&res.kind==='chest'){ E.fb={kind:'chest',chest:res.chest,res,name:nm,team:t}; E.ph='chest'; E.fx={to:M.teams[t].pos,k:res.chest==='trap'?'trap':'pop'}; trSfx(res.chest==='trap'?'trap':res.chest==='key'?'key':'chest'); render(); trLater(trChestNext,2700); return; }
-  E.fb={kind:'right',name:nm}; E.ph='fb'; trSfx('claim'); render(); trLater(trFinishTurn,1000);
-}
-function trChestNext(){
-  const E=trE(), M=E.M, f=E.fb; if(!f||E.ph!=='chest'||M.status!=='run') return;
-  if(f.chest==='step'){ if(trFreeTargets(M,M.turn).length){ E.ph='free'; render(); return; } toast('لا يوجد موقع مجاور مفتوح للتقدم المجاني'); }
-  trFinishTurn();
-}
-function trFinishTurn(){
-  const E=trE(), M=E.M; if(M.status!=='run') return;
-  E.fb=null; E.fx=null; E.ob=null; M.turn=1-M.turn; trBeginTurn();
+function trMove(to,how){ const E=trE(), M=E.M, t=M.turn; const res=trMoveTo(M,t,to,how); E.fx={to,k:'pop'}; E.ob=null; E.qa=null; E.tg=[]; trAfterArrive(res,how); }
+/* بعد الوصول: رسالة دائمة واحدة تجمع ما حدث (عبور/عالق/صندوق/فوز) ثم الدور التالي */
+function trAfterArrive(res,how){
+  const E=trE(), M=E.M, t=M.turn, T=M.teams[t], nm=trCurName(), loc=esc(trLocName(M,T.pos));
+  if(M.status==='won'){ trSfx('win'); trNote({ic:trIcoHTML('chest',84),title:'وصل إلى الكنز!',html:`${trTN(M,t)} يصل أولًا`,cls:'okc',then:trEnd}); return; }
+  const veh=trTheme(M.map.theme).veh, way={q:`✔ أجاب ${esc(nm)} إجابة صحيحة، فانتقل ${trTN(M,t)} إلى «${loc}».`,veh:`${veh[1]} استخدم ${trTN(M,t)} «${esc(veh[0])}» فتخطى سؤال الخطوة إلى «${loc}» (وسيلة مساعدة مسجَّلة).`,free:`⚡ خطوة «تقدّم» مجانية: انتقل ${trTN(M,t)} إلى «${loc}» دون سؤال.`}[how]||'';
+  const stuck=T.stuck>=0?(()=>{ const ob=trObLabel(M,M.map.nodes[T.stuck].ob); return `<br>⛔ هذا موقع عقبة «<b>${esc(ob.nm)}</b>»: الفريق <b>عالق</b> فيه ولا يتحرك قبل أن يجتازها بسؤالها في دوره القادم.`; })():'';
+  if(res&&res.kind==='chest'){ const c=TR_CHESTS[res.chest], opp=1-t, optNm=k=>k==='vehicle'?veh[0]:((TR_OPTS.find(o=>o.k===k)||{}).nm||k); let extra='';
+    if(res.chest==='compass') extra=`أيسر طريق متبقٍ لفريق ${trTN(M,t)} يظهر الآن مضيئًا على الخريطة.`;
+    else if(res.chest==='step') extra=`أُضيفت لفريق ${trTN(M,t)} <b>تذكرة تقدّم</b>: يفعّلها بنفسه في دوره من اللوحة الجانبية فيتحرك إلى موقع أمامي مجاور واحد دون سؤال.`;
+    else if(res.chest==='magnet') extra=res.stolen?`أخذ ${trTN(M,t)} من ${trTN(M,opp)} خيار «${esc(optNm(res.stolen))}».`:`لا يملك ${trTN(M,opp)} أي خيار ليؤخذ منه.`;
+    else if(res.chest==='trap') extra=`وقع ${trTN(M,t)} في فخ: يخسر دوره القادم (لا رجوع للخلف).`;
+    else extra=`حصل ${trTN(M,t)} على مفتاح يفتح بابًا مقفلًا.`;
+    trSfx(res.chest==='trap'?'trap':res.chest==='key'?'key':'chest'); E.fx={to:T.pos,k:res.chest==='trap'?'trap':'pop'};
+    const o={ic:trIcoHTML(res.chest,84),title:'صندوق! '+c.nm,html:`${way}<br><b>${extra}</b>`,cls:res.chest==='trap'?'badc':'okc'};
+    trNoteThenNext(o); return; }
+  trSfx(stuck?'key':'claim'); trNoteThenNext({ic:stuck?trObLabel(M,M.map.nodes[T.pos].ob).ic:'✔',title:stuck?'وصل وعَلِق في عقبة':'تقدّم الفريق',html:way+stuck,cls:stuck?'obc':'okc'});
 }
 /* ---------- الإجابة ---------- */
 function trAnswered(ok,why){
-  const E=trE(), M=E.M, qa=E.qa, ob=E.ob; if(!qa||E.ph!=='q'||!ob) return; const t=M.turn, nm=trCurName();
-  trAnswer(M,ok,why,{ob:ob.type,stage:ob.stage,node:ob.to});
-  if(!ok){ E.fb={kind:'wrong',name:nm,timeout:why==='timeout',ans:qAnswerText(qa.q),stage:ob.stage,n:ob.n,ob:ob.type}; E.ob=null; E.ph='fb'; trSfx('x'); render(); trLater(trFinishTurn,2400); return; }
-  if(ob.stage+1<ob.n){ ob.stage++; const q=trQuestion(ob.lvl); if(q){ E.qa=state.qaTr=newQA(q,'tr'+Date.now()); E.qleft=E.qtot; trSfx('claim'); toast('✔ صحيحة — السؤال الثاني'); render(); return; } }
-  trCommitCross(M,t,ob.e,ob.from,ob.to,'q'); trSfx('claim'); trMove(ob.to);
+  const E=trE(), M=E.M, qa=E.qa, ob=E.ob; if(!qa||E.ph!=='q'||!ob) return; const t=M.turn, nm=trCurName(), obl=trObLabel(M,ob.obstacle?ob.type:(ob.obType||'bridge'));
+  trAnswer(M,ok,why,{ob:ob.type,stage:ob.stage,node:ob.to,obstacle:!!ob.obstacle});
+  if(!ok){ trSfx('x'); const ans=qAnswerText(qa.q); E.ob=null; E.qa=null; trNoteThenNext({ic:'✖',title:why==='timeout'?'انتهى وقت السؤال':'إجابة خاطئة',html:`${esc(nm)} — ${why==='timeout'?'انتهى وقت السؤال':'إجابة خاطئة'}: يخسر ${trTN(M,t)} دوره ويبقى ${ob.obstacle?'<b>عالقًا</b> في «'+esc(obl.nm)+'»':'في موقعه (<b>'+esc(trLocName(M,M.teams[t].pos))+'</b>)'}.${ob.n>1&&ob.stage>0?'<br>أجاب الأول صحيحًا، وتُعاد المحاولة كاملة في دور لاحق.':''}<br>الإجابة الصحيحة: <b>${esc(ans)}</b>`,cls:'badc'}); return; }
+  if(ob.stage+1<ob.n){ const q=trQuestion(ob.lvl); if(q){ trSfx('claim'); ob.stage++; E.ph='note'; E.qa=null;
+    trNote({ic:'✔',title:'إجابة صحيحة',html:`أجاب ${esc(nm)} صحيحًا. بقي سؤال واحد لعبور «${esc(obl.nm)}».`,cls:'okc',then:()=>{ E.qa=state.qaTr=newQA(q,'tr'+Date.now()); E.qleft=E.qtot; E.ph='q'; render(); }}); return; } }
+  trSfx('claim');
+  if(ob.obstacle){ trClearOb(M,t,'q'); E.ob=null; E.qa=null; E.fx={to:M.teams[t].pos,k:'pop'}; trNoteThenNext({ic:'✔',title:'اجتاز العقبة',html:`✔ أجاب ${esc(nm)} صحيحًا، فاجتاز ${trTN(M,t)} «${esc(obl.nm)}» ولم يعد عالقًا. سيتقدم إلى موقع مجاور في دوره القادم.`,cls:'okc'}); return; }
+  trMove(ob.to,'q');
 }
 function trTimeoutQ(){ const E=trE(), qa=E.qa; if(!qa||E.ph!=='q'||qa.status!=='ask') return; qa.picked=null; qa.status='wrong'; qa.timeout=true; trAnswered(false,'timeout'); render(); }
 
 /* ---------- لوحة الفريق والخيارات ---------- */
-function trPickInfo(E){ const M=E.M, T=M.teams[M.turn], who=`فريق <b style="color:${T.color}">${esc(T.name)}</b>`;
+function trPickInfo(E){ const M=E.M, T=M.teams[M.turn], who=`فريق <b style="color:${T.color}">${esc(T.name)}</b>`, nmp=M.section==='s1'?'':' — اللاعب: <b>'+esc(trCurName())+'</b>';
   if(E.ph==='free') return `⚡ خطوة مجانية: اختر موقعًا مجاورًا لـ${who}`;
-  return `🎯 دور <b style="color:${T.color}">${esc(T.name)}</b>${M.section==='s1'?'':' — اللاعب: <b>'+esc(trCurName())+'</b>'} · اختر موقعًا مجاورًا متصلًا بمسارك`; }
+  if(T.stuck>=0){ const o=trObLabel(M,M.map.nodes[T.stuck].ob); return `⛔ ${who}${nmp} <b>عالق في «${esc(o.nm)}»</b> — اضغط موقعك لتواجه سؤال العقبة`; }
+  return `🎯 دور <b style="color:${T.color}">${esc(T.name)}</b>${nmp} · اختر موقعًا مجاورًا في المرحلة التالية (للأمام فقط)`; }
 function trHelpBtns(E,t){
-  const M=E.M, T=M.teams[t]; if(!TR_OPTS.some(o=>T.opts0[o.k]>0||T.opts[o.k]>0)) return '';
+  const M=E.M, T=M.teams[t]; if(!TR_OPTS.some(o=>T.opts0[o.k]>0||T.opts[o.k]>0)&&!(T.tickets>0)) return '';
   const mine=M.turn===t&&M.status==='run'&&!E.hold&&!E.paused, veh=trTheme(M.map.theme).veh;
-  return `<div class="trhelp">${TR_OPTS.map(o=>{ const n=T.opts[o.k], ok=mine&&n>0&&E.ph==='q'&&!!E.ob, nm=o.k==='vehicle'?veh[0]:o.nm, ic=o.k==='vehicle'?veh[1]:o.ic;
+  return `<div class="trhelp">${T.tickets>0?`<button class="btn sm trhb" data-act="trticket" data-t="${t}" ${mine&&E.ph==='sel'&&T.stuck<0?'':'disabled'} title="تذكرة تقدّم">${trIcoHTML('step',18)} تذكرة تقدّم <i dir="ltr">×${T.tickets}</i></button>`:''}${TR_OPTS.map(o=>{ const n=T.opts[o.k], ok=mine&&n>0&&(o.k==='vehicle'?(T.stuck>=0&&(E.ph==='sel'||(E.ph==='q'&&!!E.ob&&E.ob.obstacle))):(E.ph==='q'&&!!E.ob)), nm=o.k==='vehicle'?veh[0]:o.nm, ic=o.k==='vehicle'?veh[1]:o.ic;
     return `<button class="btn sm trhb${n<=0?' used':''}" data-act="trhelp" data-k="${o.k}" data-t="${t}" ${ok?'':'disabled'} title="${nm}">${ic} ${nm} <i dir="ltr">×${n}</i></button>`; }).join('')}</div>`; }
 function trTeamPanel(E,t){
-  const M=E.M, T=M.teams[t], me=M.turn===t&&M.status==='run'&&!['intro','lot','lotok','end'].includes(E.ph), cur=me?trCurP(M):null;
-  return `<aside class="trteam${me?' turn':''}" style="--tc:${T.color};--tx:${textOn(T.color)}"><div class="trth"><b>${esc(T.name)}</b></div>
-    <div class="trcells"><span>${trNum(trDist(M,t))}</span><small>مواقع متبقية</small></div>
+  const M=E.M, T=M.teams[t], me=M.turn===t&&M.status==='run'&&!['intro','lot','end'].includes(E.ph), cur=me?trCurP(M):null;
+  return `<aside class="trteam${me?' turn':''}" style="--tc:${T.color};--tx:${textOn(T.color)}"><div class="trth">${trPieceIcon(t,T.color,30)}<b>${esc(T.name)}</b></div>
+    <div class="trcells"><span>${trNum(trDist(M,t))}</span><small>مراحل متبقية</small></div>
     <div class="trgoal">عقبات معبورة: <b>${trNum(T.cross)}</b>${T.keys>0?` · ${trIcoHTML('key',16)}×${trNum(T.keys)}`:''}${T.compass?` · ${trIcoHTML('compass',16)}`:''}</div>
+    ${T.stuck>=0?`<div class="trstuck">⛔ عالق في: <b>${esc(trObLabel(M,M.map.nodes[T.stuck].ob).nm)}</b></div>`:''}${T.skip>0?'<div class="trstuck">⏳ يخسر دوره القادم</div>':''}${T.tickets>0?`<div class="trpl">${trIcoHTML('step',16)} تذاكر تقدّم: ${trNum(T.tickets)}</div>`:''}
     ${cur&&M.section!=='s1'?`<div class="trpl">🎯 ${esc(cur.name)}</div>`:(me?'<div class="trpl">🎯 دوره الآن</div>':'')}
     <div class="trst"><span>✔ ${T.right}</span><span>✖ ${T.wrong}</span></div>${trHelpBtns(E,t)}</aside>`;
 }
-function trObHead(E){ const M=E.M, o=E.ob; if(!o) return ''; const l=trObLabel(M,o.type);
-  return `<div class="trobh"><span class="trobi">${l.ic}</span> <b>${esc(l.nm)}</b>${o.n>1?` · السؤال ${trNum(o.stage+1)} من ${trNum(o.n)}`:''} <small class="muted">· ${TR_LV[o.lvl]||''}</small></div>`; }
+function trObHead(E){ const M=E.M, o=E.ob; if(!o) return ''; const lv=TR_LV[o.lvl]||'';
+  if(o.obstacle){ const l=trObLabel(M,o.type); return `<div class="trobh obc"><span class="trobi">${l.icS}</span> عقبة: <b>${esc(l.nm)}</b>${o.n>1?` · السؤال ${trNum(o.stage+1)} من ${trNum(o.n)}`:''} <small class="muted">· ${lv} · أجب لتجتازها</small></div>`; }
+  const ob=o.obType?trObLabel(M,o.obType):null; return `<div class="trobh">🧭 سؤال الانتقال إلى «<b>${esc(trLocName(M,o.to))}</b>» <small class="muted">· ${lv}</small>${ob?`<br><small>⛔ في هذا الموقع عقبة «${esc(ob.nm)}» تعلّقك حتى تجتازها</small>`:''}</div>`; }
 function trOverlay(E){
   const M=E.M, T=M.teams, th=trTheme(M.map.theme);
   if(E.paused) return `<div class="trov"><div class="trcard"><h2>⏸ متوقف مؤقتًا</h2><p class="muted">الوقت متوقف الآن.</p><div class="btnrow"><button class="btn primary lg" data-act="trpause">▶ متابعة</button></div></div></div>`;
   const tn=t=>`<b style="color:${T[t].color}">${esc(T[t].name)}</b>`;
   switch(E.ph){
     case 'intro': return `<div class="trov"><div class="trcard"><div class="tric">${th.ic}</div><h2>صائد الكنز — ${esc(th.nm)}</h2>
-      <p>${tn(0)} و${tn(1)} يتسابقان على مسار مشترك إلى الكنز ${trIcoHTML('chest',22)} — أجب عن أسئلة العقبات لتعبرها، ومن يصل أولًا يفوز!</p>
-      <div class="trfacts"><span>📍 ${trNum(M.map.K)} موقعًا</span><span>🚧 ${trNum(M.map.edges.filter(e=>e.ob).length)} عقبة</span><span>⏱ ${trFmt(M.time)}</span>${E.cfg.qsec?`<span>❓ ${trNum(E.cfg.qsec)} ث للسؤال</span>`:''}<span>${M.fog?'🌫 ضباب الاستكشاف':'🗺 خريطة مكشوفة'}</span></div>
+      <p>${tn(0)} و${tn(1)} يتسابقان على شبكة طرق مشتركة إلى الكنز ${trIcoHTML('chest',22)}. كل خطوة إلى الأمام بسؤال، ولا رجوع. ومن يصل أولًا يفوز!</p>
+      <div class="trfacts"><span>📍 ${trNum(M.map.K)} موقعًا في ${trNum(M.map.L)} مراحل</span><span>🚧 ${trNum(M.map.nodes.filter(n=>n.ob).length)} عقبة</span><span>⏱ ${trFmt(M.time)}</span>${E.cfg.qsec?`<span>❓ ${trNum(E.cfg.qsec)} ث للسؤال</span>`:''}<span>${M.fog?'🌫 ضباب الاستكشاف':'🗺 خريطة مكشوفة'}</span></div>
       <div class="btnrow"><button class="btn primary lg" data-act="trstart">▶ ابدأ المباراة</button></div></div></div>`;
     case 'lot': return `<div class="trov soft"><div class="trcard small"><p class="muted">🎲 القرعة تحدد من يبدأ…</p><div class="trpn" id="trLot">…</div></div></div>`;
-    case 'lotok': return `<div class="trov soft"><div class="trcard small"><p class="muted">🎲 نتيجة القرعة: يبدأ اللعب</p><div class="trpn" style="color:${T[M.first].color}">${esc(T[M.first].name)}</div></div></div>`;
     case 'spin': return `<div class="trov soft"><div class="trcard small"><p class="muted">القرعة تختار لاعبًا من ${esc(T[M.turn].name)}…</p><div class="trpn" id="trPN">…</div></div></div>`;
     case 'pickok': return `<div class="trov soft"><div class="trcard small"><p class="muted">اللاعب المختار من ${esc(T[M.turn].name)}</p><div class="trpn" style="color:${T[M.turn].color}">${esc(trCurName())}</div>
       <div class="btnrow"><button class="btn good lg" data-act="trok">✔ اعتماد</button><button class="btn lg" data-act="trreplace">🔄 استبدال</button></div></div></div>`;
     case 'q': { const qa=E.qa; return `<div class="trov"><div class="trcard trq" style="--tc:${T[M.turn].color}"><div class="trwho">🎯 <b style="color:${T[M.turn].color}">${esc(M.section==='s1'?T[M.turn].name:trCurName())}</b>${M.section==='s1'?'':` <small>(${esc(T[M.turn].name)})</small>`}${E.helper?` · 🤝 يساعده ${esc(E.helper)}`:''}</div>${trObHead(E)}
       ${E.qtot>0?`<div class="trqt"><span id="trQs">${Math.ceil(E.qleft)}</span><u><s id="trQbar" style="width:${Math.max(0,E.qleft/E.qtot*100)}%"></s></u></div>`:''}${qCardHTML(qa,'Tr')}</div></div>`; }
-    case 'fb': { const f=E.fb; if(!f) return '';
-      if(f.kind==='wrong') return `<div class="trx"><span>✖</span><small>${esc(f.name)} — ${f.timeout?'انتهى وقت السؤال':'إجابة خاطئة'} · يخسر الدور${f.n>1&&f.stage>0?' (أجاب الأول صحيحًا، وتُعاد المحاولة كاملة لاحقًا)':''}<br>العقبة كما هي. الإجابة الصحيحة: <b>${esc(f.ans)}</b></small></div>`;
-      if(f.kind==='right') return `<div class="trtoast ok">✔ عبر ${esc(T[M.turn].name)} إلى الموقع الجديد</div>`;
-      if(f.kind==='treasure') return `<div class="trov soft"><div class="trcard small trsur okc"><div class="tric big">${trIcoHTML('chest',84)}</div><h2>وصل إلى الكنز!</h2><p>${tn(M.turn)} يصل أولًا</p></div></div>`;
-      return ''; }
-    case 'chest': { const f=E.fb, c=TR_CHESTS[f.chest], t=f.team, opp=1-t, r=f.res||{}; let extra=''; const optNm=k=>(TR_OPTS.find(o=>o.k===k)||{}).nm||k;
-      if(f.chest==='compass') extra=`الطريق الأقصر المتبقي لفريق ${tn(t)} يظهر الآن مضيئًا على الخريطة`;
-      else if(f.chest==='step') extra=`فريق ${tn(t)} يتقدم خطوة مجانية إلى موقع مجاور`;
-      else if(f.chest==='magnet') extra=r.stolen?`فريق ${tn(t)} أخذ من ${tn(opp)} خيار «${esc(r.stolen==='vehicle'?trTheme(M.map.theme).veh[0]:optNm(r.stolen))}»`:`لا يملك ${tn(opp)} أي خيار ليؤخذ منه`;
-      else if(f.chest==='trap') extra=r.back!=null?`رجع فريق ${tn(t)} إلى الموقع ${esc(trNum(M.map.nodes[r.back].n)||'البداية')}`:'لا يوجد موقع سابق للرجوع إليه';
-      else extra=`فريق ${tn(t)} حصل على مفتاح يفتح بابًا مقفلًا`;
-      return `<div class="trov soft"><div class="trcard small trsur ${f.chest==='trap'?'badc':'okc'}"><div class="tric big">${trIcoHTML(f.chest,84)}</div><h2>صندوق! ${c.nm}</h2><p>${extra}</p></div></div>`; }
+    case 'note': { const n=E.note; if(!n) return ''; return `<div class="trov soft"><div class="trcard small trsur trnote ${n.cls||''}" role="alertdialog"><div class="tric big">${n.ic}</div><h2>${esc(n.title)}</h2><p>${n.html}</p><div class="btnrow"><button class="btn primary lg" data-act="trnoteok" autofocus>حسنًا</button></div></div></div>`; }
     case 'end': { if(E.rev) return ''; const won=M.win.reason==='treasure', rows=trPlayerRows(M).slice(0,10), w=T[M.win.team];
       return `<div class="trov"><div class="trcard trend" style="--tc:${w.color}"><div class="tric">${won?trIcoHTML('chest',64):'⏱'}</div><h2>${esc(trResultHead(M))}</h2><p class="trreason">${esc(trReason(M))}</p>
         <div class="trfacts"><span>⏱ ${trFmt(M.elapsed||M.time-M.left)}</span><span style="color:${T[0].color}">● ${trNum(trDist(M,0))} متبقية</span><span style="color:${T[1].color}">● ${trNum(trDist(M,1))} متبقية</span></div>
@@ -3744,21 +3947,27 @@ function trOverlay(E){
 function trEndBtns(E){ const M=E.M, v='<button class="btn" data-act="trrev">🗺 عرض الخريطة</button>';
   if(M.section==='s3') return v+'<button class="btn good" data-act="trreport">📄 تقرير البطولة</button><button class="btn primary" data-act="tr3back">↩ العودة إلى الدرس</button>';
   return v+'<button class="btn primary" data-act="tragain">🔁 مباراة جديدة</button><button class="btn good" data-act="trreport">📄 تقرير</button><button class="btn" data-act="trquit">↩ الإعدادات</button>'; }
+function trBadgeHTML(k,h){ return `<svg class="trbadge" viewBox="-16 -16 32 32" width="${h}" height="${h}" aria-hidden="true">${trPennant(k,0,0)}</svg>`; }
 function trLegendHTML(M){ const th=trTheme(M.map.theme);
-  return `<ul class="howl">${TR_OBKEYS.map(k=>`<li><span class="trobi">${trObIcon(M.map.theme,k)}</span> <b>${esc(trObName(M.map.theme,k))}</b> — ${TR_OBDESC[k]}.</li>`).join('')}<li><span class="trobi">${th.veh[1]}</span> <b>${th.veh[0]}</b> — خيار المركبة يتخطى عقبة واحدة دون سؤال.</li>
+  return `<ul class="howl"><li>الحركة <b>للأمام فقط</b> إلى موقع مجاور في المرحلة التالية، وكل انتقال بسؤال. لا رجوع ولا قفز.</li>
+  <li><b>لون حافة الطريق = مستوى سؤال الخطوة:</b><div class="trleg"><span><i style="background:${TR_LVLCOL.e}"></i>سهل</span><span><i style="background:${TR_LVLCOL.m}"></i>متوسط</span><span><i style="background:${TR_LVLCOL.h}"></i>صعب</span></div>الطرق المتوهّجة بالأبيض هي المتاحة للفريق صاحب الدور فقط، والسهم الأبيض يبيّن الاتجاه نحو الكنز.</li>
+  <li>الدائرة الصغيرة فوق الموقع = <b>عقبة</b> (لون حلقتها = مستواها):</li>
+  ${TR_OBKEYS.map(k=>`<li><span class="trobi">${trObIconHTML(M.map.theme,k,28)}</span> ${trBadgeHTML(k,28)} <b>${esc(trObName(M.map.theme,k))}</b> — ${TR_OBDESC[k]}.</li>`).join('')}
+  <li>🔒 <b>الباب المقفل</b> لا يُفتح إلا بمفتاح 🗝 مجموع من صندوق، ثم يلزم سؤاله؛ بلا مفتاح يظهر الباب بحلقة حمراء متقطعة ولا يمكن دخوله.</li>
+  <li>موقع العقبة يعلّق فيه الفريق (تظهر شارة «عالق» على قطعته) حتى يجيب سؤالها؛ والخطأ يخسر الدور ويبقى عالقًا.</li><li><span class="trobi">${th.veh[1]}</span> <b>${th.veh[0]}</b> — المركبة تتخطى السؤال الحالي (سؤال خطوة أو عقبة عالق فيها) مرة.</li>
   ${Object.keys(TR_CHESTS).map(k=>`<li>${trIcoHTML(k,20)} <b>${TR_CHESTS[k].nm}</b> — ${TR_CHESTS[k].d}.</li>`).join('')}</ul>`; }
 function trPlayView(){
   const E=trE(); if(!E||!E.M){ state.screen='menu'; return menuView(); }
   const M=E.M, pick=['sel','free'].includes(E.ph)&&!E.paused;
   const ban=pick?`<div class="trban">${trPickInfo(E)}</div>`:(E.rev?`<div class="trban"><b>🗺 الخريطة النهائية</b><button class="btn sm primary" data-act="trback">↩ النتائج</button></div>`:'');
   let tg=[], lk=[];
-  if(E.ph==='sel') trTargets(M,M.turn).forEach(x=>{ if(x.nd.k==='locked') lk.push(x.to); tg.push(x.to); });
+  if(E.ph==='sel'){ if(M.teams[M.turn].stuck>=0) tg=[M.teams[M.turn].pos]; else trTargets(M,M.turn).forEach(x=>{ if(x.nd.k==='locked') lk.push(x.to); tg.push(x.to); }); }
   else if(E.ph==='free') tg=trFreeTargets(M,M.turn).map(x=>x.to);
   E.needCenter=true;
   return `<div class="trp trscr"><div class="trbar">
     <button class="btn sm" data-act="trquit" title="خروج">✖</button><b class="trttl">${trTheme(M.map.theme).ic} صائد الكنز — ${esc(trTheme(M.map.theme).nm)}</b>
     <div class="trtools"><span class="trtime${M.left<=30?' low':''}" id="trTime">${trFmt(M.left)}</span>
-    <button class="btn sm" data-act="trlegend" title="دليل العقبات والصناديق">📜</button>
+    <button class="btn sm" data-act="trlegend" title="مفتاح الخريطة: العقبات والألوان والصناديق">📜 مفتاح الخريطة</button>
     <button class="btn sm" data-act="trpause" title="إيقاف مؤقت">${E.paused?'▶':'❚❚'}</button>
     <button class="btn sm${E.cfg.tick===false?'':' on'}" data-act="trtick" title="صوت عقارب الساعة">🕒</button>
     <button class="btn sm" data-act="mute" title="الصوت">${state.settings.muted?'🔇':'🔊'}</button>
@@ -3771,9 +3980,10 @@ function trPlayView(){
   sc.scrollLeft+=(b.left+b.width/2)-(a.left+a.width/2); sc.scrollTop+=(b.top+b.height/2)-(a.top+a.height/2); }).observe(app,{childList:true}); }; if(document.getElementById('app')) init(); else document.addEventListener('DOMContentLoaded',init); })();
 document.addEventListener('click',async e=>{
   const E=state.tr; if(!E||state.screen!=='trplay') return;
-  const o=e.target.closest('.tn'); if(o&&!o.classList.contains('fog')){ trNodeClick(+o.dataset.i); return; }
+  const o=E.ph==='note'?null:e.target.closest('.tn'); if(o&&!o.classList.contains('fog')){ trNodeClick(+o.dataset.i); return; }
   const b=e.target.closest('[data-act]'); if(!b) return; const a=b.dataset.act, M=E.M;
-  if(a==='trstart') trStartMatch();
+  if(a==='trnoteok') trNoteOk();
+  else if(a==='trstart') trStartMatch();
   else if(a==='trok'){ E.ph='sel'; render(); }
   else if(a==='trreplace'){ trStartSpin(true); }
   else if(a==='trpause'){ E.paused=!E.paused; E._last=Date.now(); render(); }
@@ -3784,19 +3994,27 @@ document.addEventListener('click',async e=>{
   else if(a==='tr3back'){ trStop(); state.tr=null; state.screen='lesson'; render(); }
   else if(a==='trquit'){ const ok=E.ph==='end'||await confirmBox('الخروج من المباراة؟','ستتوقف المباراة الحالية.'); if(ok){ trStop(); state.tr=null; if(E.cfg.quit) E.cfg.quit(); else { state.screen='menu'; render(); } } }
   else if(a==='trhelp'){ await trHelp(b.dataset.k,+b.dataset.t); }
+  else if(a==='trticket'){ await trTicket(+b.dataset.t); }
   else if(a==='trlegend'){ E.hold=true; await modal({title:'دليل العقبات والصناديق — '+trTheme(M.map.theme).nm,html:trLegendHTML(M),actions:[{label:'حسنًا',value:'ok',cls:'primary'}]}); E.hold=false; E._last=Date.now(); }
 });
 async function trHelp(k,t){
-  const E=trE(), M=E.M; if(E.hold||M.status!=='run'||t!==M.turn||E.ph!=='q'||!E.ob) return; const T=M.teams[t]; if(!(T.opts[k]>0)) return;
-  const used=()=>{ T.opts[k]--; M.helps.push({k,team:t,left:Math.round(M.left)}); };
-  if(k==='swap'){ const q=trQuestion(E.ob.lvl); if(!q){ toast('لا توجد أسئلة بديلة'); return; } E.qa=state.qaTr=newQA(q,'tr'+Date.now()); E.qleft=E.qtot; used(); trSfx('key'); render(); }
+  const E=trE(), M=E.M; if(E.hold||M.status!=='run'||t!==M.turn) return; const T=M.teams[t]; if(!(T.opts[k]>0)) return;
+  if(k==='vehicle'){ if(T.stuck<0||!(E.ph==='sel'||(E.ph==='q'&&E.ob&&E.ob.obstacle))) return; } else if(E.ph!=='q'||!E.ob) return;
+  const used=()=>{ T.opts[k]--; M.helps.push({k,team:t,left:Math.round(M.left)}); }, back=()=>{ E.ph='q'; render(); };
+  if(k==='swap'){ const q=trQuestion(E.ob.lvl); if(!q){ trNote({ic:'❓',title:'لا توجد أسئلة بديلة',html:'لا يوجد سؤال آخر في هذا المستوى.',then:back}); return; } E.qa=state.qaTr=newQA(q,'tr'+Date.now()); E.qleft=E.qtot; used(); trSfx('key'); render(); }
   else if(k==='friend'){
     let list; if(M.section==='s1'){ const own=M.teams.map(x=>x.name); list=(typeof trRoster==='function'?trRoster():[]).map(s=>s.name).filter(n=>!own.includes(n)); } else list=T.players.filter(p=>p.id!==M.cp).map(p=>p.name);
-    if(!list.length){ E.helper='زميل من الفصل'; used(); toast('استعن بزميل من الفصل'); render(); return; }
+    if(!list.length){ E.helper='زميل من الفصل'; used(); trNote({ic:'🤝',title:'مساعدة صديق',html:'استعن بزميل من الفصل للإجابة.',then:back}); return; }
     E.hold=true; const v=await modal({title:'مساعدة صديق',html:'<p class="muted" style="margin:0">اختر اسم الزميل الذي سيساعد</p>',actions:[{label:'إلغاء',value:'no',cls:'ghost'},...list.map(n=>({label:n,value:n}))]}); E.hold=false; E._last=Date.now();
     if(!v||v==='no'){ render(); return; } E.helper=v; used(); render(); }
-  else if(k==='vehicle'){ const ob=E.ob; if(!trVehicleUse(M,t,ob.e)) return; trEv(M,t,'cross',{ob:ob.type,how:'veh',from:ob.from,node:ob.to}); E.qa=null; trSfx('key'); toast('استُخدمت «'+trTheme(M.map.theme).veh[0]+'» لتخطي العقبة'); trMove(ob.to); }
+  else if(k==='vehicle'){ const veh=trTheme(M.map.theme).veh, ob=trObLabel(M,M.map.nodes[T.stuck].ob), prev=E.ph; E.hold=true; const v=await confirmBox('استخدام «'+veh[0]+'»','يتجاوز فريقك «'+ob.nm+'» دون سؤال، ويُستهلك من رصيد المركبة مرة. هل تؤكد؟','نعم، تجاوز العقبة'); E.hold=false; E._last=Date.now();
+    if(!v||trE()!==E||M.status!=='run'||E.ph!==prev){ render(); return; } if(!trVehicleUse(M,t,T.stuck)) return; trSfx('key');
+    trClearOb(M,t,'veh'); E.ob=null; E.qa=null; E.fx={to:T.pos,k:'pop'}; trNoteThenNext({ic:veh[1],title:'المركبة',html:`${veh[1]} استخدم ${trTN(M,t)} «${esc(veh[0])}» فتجاوز «${esc(ob.nm)}» دون سؤال (وسيلة مساعدة مسجَّلة) ولم يعد عالقًا.`,cls:'okc'}); }
 }
+async function trTicket(t){
+  const E=trE(), M=E.M; if(E.hold||M.status!=='run'||t!==M.turn||E.ph!=='sel') return; const T=M.teams[t]; if(!(T.tickets>0)||T.stuck>=0||!trFreeTargets(M,t).length) return;
+  E.hold=true; const v=await confirmBox('تذكرة تقدّم','تتحرك قطعة فريقك إلى موقع أمامي مجاور واحد دون سؤال، وتُستهلك التذكرة. هل تفعّلها الآن؟','نعم، فعّلها'); E.hold=false; E._last=Date.now();
+  if(!v||trE()!==E||E.ph!=='sel'||!trTicketUse(M,t)){ render(); return; } trSfx('key'); E.ph='free'; render(); }
 /* ---------- لقطات للتقارير ---------- */
 async function trBoardSnap(){
   const M=state.trT&&state.trT.M; if(!M) return '';
@@ -3806,6 +4024,8 @@ async function trBoardSnap(){
   x.fillText(xtrunc('صائد الكنز — '+(M.status==='run'?'المباراة قيد اللعب':trResultHead(M)),52),500,28);
   return cv.toDataURL('image/jpeg',0.9);
 }
+
+document.addEventListener('keydown',e=>{ const E=typeof trE==='function'?trE():null; if(!E||E.ph!=='note'||!E.note) return; if(e.key==='Enter'||e.key===' '||e.key==='Spacebar'){ e.preventDefault(); e.stopPropagation(); trNoteOk(); } },true);
 
 /* ===== صائد الكنز: الإعدادات + الأقسام الثلاثة + التقارير + الشرح + الرئيسية ===== */
 /* ---------- الإعدادات المحفوظة (tr-cfg-v1) بحماية من المعطوب ---------- */
@@ -3845,13 +4065,13 @@ function trMapCard(C){
   return `<section class="card"><h4 class="trh">🗺️ الخريطة والرحلة</h4><div class="row2">
    <label>الخريطة<select class="inp" data-trin="map"><option value="random" ${C.map==='random'?'selected':''}>🎲 عشوائي</option>${TR_THEMES.map(t=>`<option value="${t.id}" ${C.map===t.id?'selected':''}>${t.ic} ${t.nm}</option>`).join('')}</select></label>
    <label>وقت المباراة<select class="inp" data-trin="time">${trOpt(Array.from({length:28},(_,i)=>(i+3)*60),C.time,v=>(v/60)+' دقائق'+(v===trDefTime(C.size)*60?' (المقترح للرحلة)':''))}</select></label></div>
-   <div style="margin:8px 0 4px" class="muted">حجم الرحلة (عدد المواقع بين البداية والكنز)</div>
-   <div class="btnrow" style="justify-content:flex-start">${TR_SIZEKEYS.map(k=>`<button class="chip ${C.size===k?'sel':''}" style="--tc:#0e6f78;--tx:#fff" data-act="tssize" data-v="${k}"><b>${TR_SIZES[k].nm}</b> <small>${trNum(TR_SIZES[k].k)} مواقع · ${trNum(TR_SIZES[k].time)} د</small></button>`).join('')}</div>
+   <div style="margin:8px 0 4px" class="muted">حجم الرحلة (عدد الخطوات في أقصر طريق إلى الكنز)</div>
+   <div class="btnrow" style="justify-content:flex-start">${TR_SIZEKEYS.map(k=>`<button class="chip ${C.size===k?'sel':''}" style="--tc:#0e6f78;--tx:#fff" data-act="tssize" data-v="${k}"><b>${TR_SIZES[k].nm}</b> <small>${trNum(TR_SIZES[k].k)} خطوة · ${trNum(TR_SIZES[k].time)} د</small></button>`).join('')}</div>
    <div class="btnrow" style="justify-content:flex-start;margin-top:6px"><button class="btn" data-act="tspreview">👁 معاينة خريطة</button></div></section>`;
 }
 function trPlayCard(C){
   return `<section class="card"><h4 class="trh">🎁 الصناديق والخيارات</h4>
-   <div style="margin:0 0 4px" class="muted">كثرة الصناديق على الطريق (بوصلة، تقدم، مغناطيس، فخ، مفتاح)</div>
+   <div style="margin:0 0 4px" class="muted">كثرة الصناديق على الطريق (بوصلة، تقدّم، مغناطيس، فخ يخسر الدور التالي، مفتاح)</div>
    <div class="btnrow" style="justify-content:flex-start">${[['none','بدون'],['normal','عادي'],['many','كثير']].map(([k,n])=>`<button class="chip ${C.chests===k?'sel':''}" style="--tc:#0e6f78;--tx:#fff" data-act="tschests" data-v="${k}">${n}</button>`).join('')}</div>
    ${C.chests==='none'?'<div class="muted" style="font-size:.9em">بلا صناديق لا توجد أبواب مقفلة (لأن مفاتيحها في الصناديق).</div>':''}
    <label class="chkl" style="margin-top:8px"><input type="checkbox" data-trin="fog" ${C.fog?'checked':''}> 🌫 ضباب الاستكشاف <small class="muted">(المواقع البعيدة لا تظهر إلا عند الاقتراب)</small></label>
@@ -3871,7 +4091,7 @@ function trTeamsCard(C,namesToo){
 function trQCard(sec,excl){
   const C=trCfg(), qs=C.q[sec], need=trNeed(C.size);
   let body='';
-  if(qs.src==='gen') body=`<div class="muted" style="margin-top:6px">مستوى السؤال يُشتق من العقبة: سهل (أدغال/اختصار)، متوسط (معبر)، صعب (جدار).</div>
+  if(qs.src==='gen') body=`<div class="muted" style="margin-top:6px">كل انتقال بسؤال (سهل في النصف الأول ومتوسط بعده)، وسؤال العقبة حسب نوعها: سهل، متوسط (معبر/عبور مزدوج/باب)، صعب (جدار).</div>
     <label style="margin-top:6px">مجال الأسئلة<select class="inp" data-trin="dom" data-s="${sec}"><option value="mix" ${qs.dom==='mix'?'selected':''}>🎲 متنوعة (من كل المجالات العامة)</option>${TR_DOMS.map(d=>`<option value="${d[0]}" ${qs.dom===d[0]?'selected':''}>${d[2]} ${esc(d[1])}</option>`).join('')}</select></label>`;
   else { const pool=trBankPool(trSelAll()[sec],excl).length;
     body=`<div class="note ${pool>=need?'ok':'bad'}">الأسئلة المتاحة: <b>${pool}</b> — الموصى به لهذه الرحلة: <b>${need}</b> تقريبًا${pool<need?' (ستُكرَّر بعض الأسئلة)':''} ${sec==='s3'?'':`<button class="btn sm" data-act="tspick" data-s="${sec}">📝 اختيار الأسئلة</button>`}</div>${qfChip()}${sec==='s3'?'<div class="muted" style="font-size:.9em">تُستبعد تلقائيًا أسئلة التأهل في الدرس.</div>':''}`; }
@@ -3977,8 +4197,8 @@ async function trPickQ(sec){
   if(v==='ok'){ trSelAll()[sec]=sel.size===all.length?null:[...sel]; if(!sel.size){ toast('لم تحدد أي سؤال'); trCfg().q[sec].src='gen'; } render(); }
 }
 async function trPreview(){
-  const C=trCfg(), M=trNew({theme:C.map,size:C.size,chests:C.chests,fog:false,teams:[{name:'أ',color:'#d83a3a',players:[{id:'a',name:'أ'}]},{name:'ب',color:'#2f6fd6',players:[{id:'b',name:'ب'}]}],qlist:[]}), f=M.map.fair, th=trTheme(M.map.theme);
-  await modal({title:'معاينة: '+th.nm,html:`<div class="trprev">${trBoardSVG(M,{nofog:true})}</div><p class="muted" style="margin:6px 0 0">${trNum(M.map.K)} مواقع بين البداية والكنز · ${trNum(M.map.edges.filter(e=>e.ob).length)} عقبة · الفرع القصير: ${trNum(f.hopsShort)} مسارات بعقبات أصعب، والطويل: ${trNum(f.hopsLong)} مسارات بعقبات أسهل. المسافة من البداية إلى الكنز واحدة للفريقين.</p>`,actions:[{label:'حسنًا',value:'ok',cls:'primary'}]});
+  const C=trCfg(), M=trNew({theme:C.map,size:C.size,chests:C.chests,fog:false,teams:[{name:'الفريق الأول',color:'#d83a3a',players:[{id:'a',name:'أ'}]},{name:'الفريق الثاني',color:'#2f6fd6',players:[{id:'b',name:'ب'}]}],qlist:[]}), f=M.map.fair, th=trTheme(M.map.theme);
+  await modal({title:'معاينة: '+th.nm,html:`<div class="trprev">${trBoardSVG(M,{nofog:true})}</div><p class="muted" style="margin:6px 0 0">${trNum(M.map.K)} موقعًا في ${trNum(M.map.L)} مراحل · ${trNum(M.map.nodes.filter(n=>n.ob).length)} عقبة · ${trNum(f.paths)} طريقًا ممكنًا إلى الكنز، كلها بـ${trNum(f.hops)} خطوات، والبداية مشتركة للفريقين. الحركة للأمام فقط.</p>`,actions:[{label:'حسنًا',value:'ok',cls:'primary'}]});
 }
 
 /* ---------- موزّع الإعدادات ---------- */
@@ -4029,7 +4249,7 @@ document.addEventListener('click',async e=>{ const b=e.target.closest('[data-act
 function trRepM(kind){ return kind==='s3'?(state.trT&&state.trT.M):(state.trRes&&state.trRes[kind]); }
 function trStats(M){ let r=0,w=0; M.teams.forEach(t=>{ r+=t.right; w+=t.wrong; }); const tp=r+w; return {r,w,tp,pct:tp?Math.round(r/tp*100):0}; }
 const TR_HOW={q:'بإجابة',veh:'بالمركبة',key:'بالمفتاح',free:'بخطوة مجانية'};
-function trNodeName(M,n){ const x=M.map.nodes[n]; return x.kind==='start'?'البداية':x.kind==='treasure'?'الكنز':trNum(x.n); }
+function trNodeName(M,n){ const x=M.map.nodes[n]; return x.kind==='start'?'البداية':x.kind==='treasure'?'الكنز':x.nm+(x.ob?' ('+trObName(M.map.theme,x.ob)+')':'')+' — م'+trNum(x.layer); }
 function trPathText(M,t){ return M.teams[t].path.map(n=>trNodeName(M,n)).join(' ← '); }
 function trCrossList(M,t){ return M.log.filter(l=>l.kind==='cross'&&l.team===t).map(l=>({name:trObName(M.map.theme,l.ob),how:TR_HOW[l.how]||l.how,from:l.from,to:l.node})); }
 function trChestList(M,t){ return M.teams[t].chestsUsed.map(k=>TR_CHESTS[k].nm); }
@@ -4046,7 +4266,7 @@ async function trReportCanvas(kind,opt){
   const y2=yB+bh+12, hw=(W-2*MG-24)/2, ch=yS-y2-48;
   [0,1].forEach(t=>{ const X=t===0?MG+hw+24:MG, Tm=T[t]; xcvBox(x,X,y2,hw,ch,'#fbfdff','#c9dcee',16); xcvBar(x,X+10,y2+10,hw-20,Tm.name+(M.win&&M.win.team===t?' ★':''),Tm.color);
     let y=y2+72; x.textAlign='right'; x.fillStyle='#17405f'; x.font='700 21px '+ANN_FONT;
-    x.fillText(xcvFit(x,`المتبقي: ${trNum(trDist(M,t))} مواقع · عقبات معبورة: ${trNum(Tm.cross)} · ✔ ${Tm.right} ✖ ${Tm.wrong}`,hw-40),X+hw-20,y); y+=32;
+    x.fillText(xcvFit(x,`المتبقي: ${trNum(trDist(M,t))} مراحل · عقبات معبورة: ${trNum(Tm.cross)} · ✔ ${Tm.right} ✖ ${Tm.wrong}`,hw-40),X+hw-20,y); y+=32;
     const blk=(label,txt,n)=>{ x.fillStyle='#8a4b00'; x.font='700 20px '+ANN_FONT; x.fillText(label,X+hw-20,y); y+=28; x.fillStyle='#2b3f55'; x.font='400 19px '+ANN_FONT; trWrap(x,txt||'—',hw-50,n).forEach(l=>{ x.fillText(l,X+hw-24,y); y+=26; }); y+=6; };
     blk('المسار الذي سلكه:',trPathText(M,t),3);
     blk('العقبات المعبورة:',trCrossList(M,t).map(c=>c.name+' ('+c.how+')').join('، '),3);
@@ -4055,7 +4275,7 @@ async function trReportCanvas(kind,opt){
     xcvTable(x,{X:X+14,Y:y,W:hw-28,rh:34,fs:19,hb:Tm.color,cols:[{h:'الترتيب',w:1},{h:'اسم الطالب',w:3,al:'r'},{h:'صحيحة',w:1.1},{h:'خاطئة',w:1.1}],rows:ps.map((p,i)=>[i+1,p.name,p.right,p.wrong])}); });
   const ex=trExcluded(); x.fillStyle='#8a4b00'; x.textAlign='right'; x.font='700 19px '+ANN_FONT; x.fillText(xcvFit(x,'الغائبون والمستبعدون: '+(ex.length?ex.map(e=>e.name+' ('+e.note+')').join('، '):'لا يوجد'),W-2*MG-20),W-MG-10,yS-22);
   xcvBar(x,MG,yS,W-2*MG,'إحصائيات عامة','#0e6f78');
-  const tiles=[['وقت المباراة (من '+trFmt(M.time)+')',trFmt(M.elapsed||M.time)],['حجم الرحلة',trNum(M.map.K)+' موقعًا'],['العقبات',M.map.edges.filter(e=>e.ob).length],['الصناديق المكشوفة',Object.keys(M.taken).length],['إجابات صحيحة',st.r],['إجابات خاطئة',st.w],['نسبة الصحة',st.pct+'%'],['الخريطة',th.nm]];
+  const tiles=[['وقت المباراة (من '+trFmt(M.time)+')',trFmt(M.elapsed||M.time)],['حجم الرحلة',trNum(M.map.L+1)+' خطوات'],['العقبات',M.map.nodes.filter(n=>n.ob).length],['الصناديق المكشوفة',Object.keys(M.taken).length],['إجابات صحيحة',st.r],['إجابات خاطئة',st.w],['نسبة الصحة',st.pct+'%'],['الخريطة',th.nm]];
   const tw=(W-2*MG-30)/4, thh=84, cs=['#e4f0fa','#e2f3f1','#e9f5ea','#edf3f8'];
   tiles.forEach((t,i)=>{ const c=i%4, r=Math.floor(i/4), tx=W-MG-(c+1)*tw-c*10, ty=yS+62+r*(thh+10); xcvBox(x,tx,ty,tw,thh,cs[(c+r)%4],null,14); x.fillStyle='#17405f'; x.textAlign='center'; x.font='800 30px '+ANN_FONT; x.fillText(xcvFit(x,String(t[1]),tw-12),tx+tw/2,ty+34); x.font='400 18px '+ANN_FONT; x.fillText(xcvFit(x,t[0],tw-10),tx+tw/2,ty+66); });
   return cv;
@@ -4066,16 +4286,16 @@ function trSnapReport(){ const M=trRepM('s3'); if(!M) throw new Error('no match'
   xcvTable(x,{X:30,Y:216,W:940,rh:40,fs:22,cols:[{h:'اللاعب',w:3,al:'r'},{h:'الفريق',w:2.2},{h:'صحيحة',w:1.2},{h:'خاطئة',w:1.2}],rows:rows.slice(0,10).map(p=>[p.name,p.team,p.right,p.wrong])});
   xcvTiles(x,30,1000,820,[['وقت المباراة',trFmt(M.elapsed||M.time)],['المتبقي',trDist(M,0)+' : '+trDist(M,1)],['صحيحة',st.r],['نسبة الصحة',st.pct+'%']]); return cv.toDataURL('image/jpeg',0.9); }
 function trXlsxSheets(kind){ const M=trRepM(kind); if(!M) return []; const T=M.teams, st=trStats(M), pl=trPlayerRows(M), th=trTheme(M.map.theme);
-  const evn={right:'إجابة صحيحة',wrong:'إجابة خاطئة',timeout:'انتهى وقت السؤال',cross:'عبور عقبة',chest:'صندوق',free:'خطوة مجانية',treasure:'وصول إلى الكنز'};
-  const obRows=[]; [0,1].forEach(t=>trCrossList(M,t).forEach(c=>obRows.push([T[t].name,c.name,trNodeName(M,c.from)+' ← '+trNodeName(M,c.to),c.how])));
+  const evn={right:'إجابة صحيحة',wrong:'إجابة خاطئة',timeout:'انتهى وقت السؤال',cross:'اجتياز عقبة',move:'انتقال إلى موقع جديد',chest:'صندوق',free:'خطوة مجانية',skip:'خسارة دور (فخ)',treasure:'وصول إلى الكنز'};
+  const obRows=[]; [0,1].forEach(t=>trCrossList(M,t).forEach(c=>obRows.push([T[t].name,c.name,trNodeName(M,c.to),c.how])));
   const chRows=[]; M.log.filter(l=>l.kind==='chest').forEach(l=>chRows.push([l.tn,TR_CHESTS[l.chest].nm,trNodeName(M,l.node)]));
-  return [{name:'النتيجة',rows:[['البند','القيمة'],['الفائز',T[M.win?M.win.team:0].name],['سبب الفوز',trReason(M)],['الخريطة',th.nm],['حجم الرحلة',M.map.K+' موقعًا'],['وقت المباراة',trFmt(M.elapsed||M.time)+' من '+trFmt(M.time)],['المتبقي '+T[0].name,trDist(M,0)],['المتبقي '+T[1].name,trDist(M,1)],['عقبات '+T[0].name,T[0].cross],['عقبات '+T[1].name,T[1].cross],['إجابات صحيحة',st.r],['إجابات خاطئة',st.w],['الصناديق المكشوفة',Object.keys(M.taken).length]],widths:[26,50]},
+  return [{name:'النتيجة',rows:[['البند','القيمة'],['الفائز',T[M.win?M.win.team:0].name],['سبب الفوز',trReason(M)],['الخريطة',th.nm],['حجم الرحلة',(M.map.L+1)+' خطوات في أقصر طريق ('+M.map.K+' موقعًا)'],['وقت المباراة',trFmt(M.elapsed||M.time)+' من '+trFmt(M.time)],['المتبقي '+T[0].name,trDist(M,0)],['المتبقي '+T[1].name,trDist(M,1)],['عقبات '+T[0].name,T[0].cross],['عقبات '+T[1].name,T[1].cross],['إجابات صحيحة',st.r],['إجابات خاطئة',st.w],['الصناديق المكشوفة',Object.keys(M.taken).length]],widths:[26,50]},
     {name:'المسار',rows:[['الفريق','المسار'],...[0,1].map(t=>[T[t].name,trPathText(M,t)])],widths:[24,80]},
-    {name:'العقبات',rows:[['الفريق','العقبة','المسار','طريقة العبور'],...obRows],widths:[22,22,18,18]},
+    {name:'العقبات',rows:[['الفريق','العقبة','الموقع','طريقة الاجتياز'],...obRows],widths:[22,22,18,18]},
     {name:'الصناديق',rows:[['الفريق','الصندوق','الموقع'],...chRows],widths:[22,16,12]},
     {name:'المشاركون',rows:[['اللاعب','الفريق','صحيحة','خاطئة','الأدوار'],...pl.map(p=>[p.name,p.team,p.right,p.wrong,p.plays])],widths:[28,22,10,10,10]},
     {name:'الغائبون',rows:[['الاسم','الحالة'],...trExcluded().map(e=>[e.name,e.note])],widths:[28,14]},
-    {name:'سجل المباراة',rows:[['الفريق','اللاعب','الحدث','الموقع','الوقت المتبقي'],...M.log.map(l=>[l.tn,l.name||'',(evn[l.kind]||l.kind)+(l.ob?' — '+trObName(M.map.theme,l.ob):'')+(l.chest?' — '+TR_CHESTS[l.chest].nm:''),trNodeName(M,l.node!=null&&l.node!==''?l.node:l.at),trFmt(l.left)])],widths:[22,24,40,12,14]}]; }
+    {name:'سجل المباراة',rows:[['الفريق','اللاعب','الحدث','الموقع','الوقت المتبقي'],...M.log.map(l=>[l.tn,l.name||'',(evn[l.kind]||l.kind)+(l.ob?' — '+trObName(M.map.theme,l.ob):'')+(l.how&&TR_HOW[l.how]&&(l.kind==='move'||l.kind==='cross')?' '+TR_HOW[l.how]:'')+(l.chest?' — '+TR_CHESTS[l.chest].nm:''),trNodeName(M,l.node!=null&&l.node!==''?l.node:l.at),trFmt(l.left)])],widths:[22,24,40,12,14]}]; }
 async function trReportFlow(kind){
   let tn=xrepIdent().teacher, cv=await trReportCanvas(kind,{teacher:tn}); if(!cv){ toast('لا توجد نتائج بعد'); return; }
   const show=()=>{ const im=document.getElementById('rpPrev'); if(im) im.src=cv.toDataURL('image/png'); };
@@ -4109,13 +4329,15 @@ function trHowView(){
   const S=(h,items)=>`<section class="card"><h2>${h}</h2><ul class="howl">${items.map(x=>`<li>${x}</li>`).join('')}</ul></section>`;
   const th=TR_THEMES[0];
   return `<div class="trp">${topbar('كيف تُلعب','goMenu')}<div class="wrap narrow">
-  <section class="card"><h2>🗺️ فكرة اللعبة</h2><ul class="howl"><li>خريطة فيها مواقع مرتبطة بمسارات، من <b>البداية</b> إلى <b>الكنز</b>. يتنافس فريقان على <b>مسار مشترك</b>، ومن يصل إلى الكنز أولًا يفوز.</li>
-   <li>المسار يتفرع في الوسط: طريق <b>أقصر بعقبات أصعب</b>، وطريق <b>أطول بعقبات أسهل</b>، والمسافة من البداية إلى الكنز واحدة للفريقين.</li>
-   <li>ست خرائط: ${TR_THEMES.map(t=>t.ic+' '+t.nm).join('، ')}؛ وثلاثة أحجام: قصيرة (٧ مواقع) وعادية (١١) وطويلة (١٦).</li></ul></section>
-  ${S('🎯 سير الدور',['يضغط صاحب الدور موقعًا <b>مجاورًا</b> متصلًا بمساره.','إن كان على المسار عقبة لم يعبرها فريقه يظهر سؤالها: <b>إجابة صحيحة</b> تعبره وتنقله إلى الموقع، و<b>إجابة خاطئة</b> تخسر الدور فقط وتبقى العقبة كما هي (والسؤال يتغير).','المسارات بلا عقبة يُتقدَّم فيها مباشرة. ويجوز الالتفاف حول عقبة بمسار أطول إن وُجد.','العقبة تبقى مفتوحة للفريق الذي عبرها فقط، فمن يتبعه يجيب سؤالها أيضًا. ويجوز أن يقف الفريقان في موقع واحد.'])}
-  <section class="card"><h2>🚧 أنواع العقبات</h2><ul class="howl">${TR_OBKEYS.map(k=>`<li><b>${TR_OB[k].nm}</b> — ${TR_OBDESC[k]}. (مثلًا في ${th.nm}: ${th.ob[k][1]} ${th.ob[k][0]})</li>`).join('')}<li>القواعد ثابتة في كل الخرائط، أما الاسم والرسمة فيتغيران بحسب الخريطة.</li></ul></section>
-  <section class="card"><h2>🎁 الصناديق</h2><ul class="howl">${Object.keys(TR_CHESTS).map(k=>`<li>${trIcoHTML(k,22)} <b>${TR_CHESTS[k].nm}</b> — ${TR_CHESTS[k].d}.</li>`).join('')}<li>الصندوق يُكتشف عند الوصول إلى موقعه، وهو لمن يصل أولًا. والفخاخ لا تحجب الطريق كليًا.</li></ul>
-   <h3 style="font-size:1.05rem">خيارات ظاهرة لكل فريق (مرة لكل خيار، والعدد من ٠ إلى ٣)</h3><ul class="howl"><li>🔄 <b>استبدال سؤال</b> — يظهر سؤال آخر بدل الحالي.</li><li>🤝 <b>مساعدة صديق</b> — يختار الفريق زميلًا يساعده.</li><li>🚀 <b>المركبة</b> — تتخطى عقبة واحدة، واسمها حسب الخريطة: ${TR_THEMES.map(t=>t.veh[1]+' '+t.veh[0]).join('، ')}.</li></ul></section>
+  <section class="card"><h2>🗺️ فكرة اللعبة</h2><ul class="howl"><li>خريطة هي <b>شبكة طرق متقاطعة</b> مرتبة في مراحل، من <b>البداية</b> إلى <b>الكنز</b>. يتسابق فريقان من البداية نفسها على الشبكة نفسها، ومن يصل إلى الكنز أولًا يفوز.</li>
+   <li>كل موقع يتصل بموقعين أو ثلاثة في المرحلة التالية. المواقع <b>أشكال مرسومة</b> (أشجار وبيوت وخيام وبلّورات…) لا أرقام، وكل فريق له قطعة بلونه واسمه (راية وبيدق).</li>
+   <li><b>الحركة للأمام فقط</b>: لا رجوع إلى موقع سابق، ولا قفز فوق المواقع. الطريق الأقصر واحد الطول للجميع.</li>
+   <li>ست خرائط: ${TR_THEMES.map(t=>t.ic+' '+t.nm).join('، ')}؛ وثلاثة أحجام بحسب خطوات أقصر طريق: قصيرة (٧) وعادية (١١) وطويلة (١٦).</li></ul></section>
+  ${S('🎯 سير الدور',['يضغط صاحب الدور موقعًا <b>مجاورًا</b> في المرحلة التالية متصلًا بموقعه، فيظهر <b>سؤال الانتقال</b>.','<b>إجابة صحيحة</b> تنقل الفريق إلى الموقع، و<b>إجابة خاطئة</b> تخسره الدور فقط ويبقى مكانه (والسؤال يتغير).','لا انتقال بلا سؤال، حتى أول خطوة من البداية. الاستثناءات الوحيدة وسائل المساعدة الظاهرة: المركبة وصندوق «تقدّم».','كل رسالة في اللعب تبقى على الشاشة حتى تضغط «حسنًا»، والوقت متوقف أثناءها.'])}
+  <section class="card"><h2>🚧 العقبات (موقع عالق)</h2><ul class="howl"><li>بعض المواقع <b>مواقع عقبة</b> برسمة كبيرة وراية ملوّنة. بعد الوصول إليها (بسؤال الانتقال) يصبح الفريق <b>عالقًا</b>: لا يتحرك ولا يرجع حتى يجيب سؤال العقبة في دوره. الخطأ يخسر الدور ويبقى عالقًا، والصحيح يجتازها.</li>
+   ${TR_OBKEYS.map(k=>`<li><b>${TR_OB[k].nm}</b> — ${TR_OBDESC[k]}. (مثلًا في ${th.nm}: ${trObIconHTML(th.id,k,22)} ${th.ob[k][0]})</li>`).join('')}<li>القواعد ثابتة في كل الخرائط، أما الاسم والرسمة فيتغيران بحسب الخريطة. وتظهر حالة «عالق في …» بجانب الفريق وعلى القطعة.</li></ul></section>
+  <section class="card"><h2>🎁 الصناديق</h2><ul class="howl">${Object.keys(TR_CHESTS).map(k=>`<li>${trIcoHTML(k,22)} <b>${TR_CHESTS[k].nm}</b> — ${TR_CHESTS[k].d}.</li>`).join('')}<li>الصندوق يُكتشف عند الوصول إلى موقعه، وهو لمن يصل أولًا. الفخ لا يُرجع أحدًا؛ يخسر صاحبه دوره التالي فقط.</li></ul>
+   <h3 style="font-size:1.05rem">خيارات ظاهرة لكل فريق (مرة لكل خيار، والعدد من ٠ إلى ٣)</h3><ul class="howl"><li>🔄 <b>استبدال سؤال</b> — يظهر سؤال آخر بدل الحالي.</li><li>🤝 <b>مساعدة صديق</b> — يختار الفريق زميلًا يساعده.</li><li>🚀 <b>المركبة</b> — تتخطى السؤال الحالي مرة واحدة (سؤال الانتقال إلى موقع مجاور، أو عقبة عالق فيها)، ولا تنقل أبعد من موقع مجاور. اسمها حسب الخريطة: ${TR_THEMES.map(t=>t.veh[1]+' '+t.veh[0]).join('، ')}.</li></ul></section>
   ${S('⏱ الوقت والفوز',['مؤقت واحد للمباراة (من ٣ إلى ٣٠ دقيقة) ومؤقت اختياري لكل سؤال.','يفوز من يصل إلى الكنز أولًا. وإن انتهى الوقت: الأقرب إلى الكنز، ثم الأكثر عقبات معبورة وإجابات صحيحة، ثم الأقل أخطاء، ثم القرعة.','«ضباب الاستكشاف» خيار اختياري تظهر فيه المواقع البعيدة عند الاقتراب منها فقط.'])}
   ${S('🧩 الأقسام الثلاثة',['<b>فردي</b>: طالبان يختارهما المعلم بالقرعة من المحضَّرين أو يدويًا.','<b>جماعي</b>: فريقان بأسماء وألوان وتوزيع آلي أو يدوي، ويُستبعد الغائبون.','<b>الدرس التفاعلي</b>: من يجيب صحيحًا عن أسئلة الدرس يتأهل لبطولة الدرس بين فريقين من المتأهلين، وتُستخدم نتيجتها شاهدًا في تقرير الاستراتيجية.','التقارير: صورة (PNG/PDF) وملف Excel فيها المسار والعقبات والإجابات والصناديق والفائز وسبب الفوز.'])}</div></div>`;
 }
